@@ -33,7 +33,7 @@ Periodic table as a ```pandas.Dataframe``` object
 [118 rows x 31 columns]
 ```
 
-```chemlib.Element``` object with accessible properties
+```chemlib.Element``` class with easily accessible properties
 
 ```python
 >>> from chemlib import Element
@@ -45,4 +45,22 @@ Periodic table as a ```pandas.Dataframe``` object
 
 >>> boron.AtomicMass
 10.811
+```
+
+```chemlib.Compound``` 
+
+```python
+>>> from chemlib import Compound
+
+>>> nitric_acid = Compound(['H', 'N'] + ['O']*3)
+
+>>> nitric_acid.occurences
+{'H': 1, 'N': 1, 'O': 3}
+
+>>> nitric_acid.molar_mass()
+63.01
+
+>>> nitric_acid.percentage_by_mass('O')  #Get percentage composition by mass of a constituent element of choice
+76.174
+
 ```
