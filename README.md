@@ -1,7 +1,9 @@
-# chemlib
+# chemlib: a pure Python chemistry library
+=========================================
 
-An easy-to-use library to perform chemistry calculations.
+An easy-to-use library that quickly performs chemistry calculations.
 
 ## Installation
-
-```pip install chemlib```
+```
+pip install chemlib
+```
