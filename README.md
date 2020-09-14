@@ -11,7 +11,7 @@ pip install chemlib
 
 ## Features
 
-Periodic table as a ```pandas.Dataframe``` object
+#### Periodic table as a ```pandas.Dataframe``` object
 
 ```python
 >>> import chemlib
