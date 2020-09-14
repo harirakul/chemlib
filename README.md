@@ -13,7 +13,7 @@ pip install chemlib
 
 Periodic table as a ```pandas.Dataframe``` object
 
-```
+```python
 >>> import chemlib
 
 >>> chemlib.pte
