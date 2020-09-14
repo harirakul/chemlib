@@ -33,7 +33,7 @@ pip install chemlib
 [118 rows x 31 columns]
 ```
 
-```chemlib.Element``` class with easily accessible properties
+#### ```chemlib.Element``` class with easily accessible properties
 
 ```python
 >>> from chemlib import Element
@@ -47,7 +47,7 @@ pip install chemlib
 10.811
 ```
 
-```chemlib.Compound``` 
+#### ```chemlib.Compound``` 
 
 ```python
 >>> from chemlib import Compound
@@ -65,7 +65,8 @@ pip install chemlib
 
 ```
 
-Stoichiometric conversions with compounds (accepted inputs: grams, moles, and molecules)
+#### Stoichiometric conversions with compounds
+Accepted inputs: grams, moles, and molecules
 
 ```python
 >>> from chemlib import Compound
@@ -83,7 +84,7 @@ Stoichiometric conversions with compounds (accepted inputs: grams, moles, and mo
 
 ```
 
-Balancing Chemical Reactions
+#### Balancing Chemical Reactions
 
 ```python
 
