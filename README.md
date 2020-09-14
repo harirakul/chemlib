@@ -11,10 +11,11 @@ pip install chemlib
 
 ## Features
 
-Periodic table as a pandas.Dataframe object
+### Periodic table as a ```pandas.Dataframe``` object
 
 ```
 >>> import chemlib
+
 >>> chemlib.pte
      Unnamed: 0  AtomicNumber  ...                  Config MassNumber
 0             0           1.0  ...                     1s1        1.0
