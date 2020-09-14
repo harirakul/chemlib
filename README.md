@@ -81,6 +81,32 @@ Stoichiometric conversions with compounds (accepted inputs: grams, moles, and mo
 >>> water.get_amounts(molecules = 1.0e+24)
 {'Compound': 'H₁O₂', 'Grams': 54.834, 'Moles': 1.6611, 'Molecules': 1e+24}
 
+```
 
+Balancing Chemical Reactions
+
+```python
+
+>>> from chemlib import Compound, Reaction
+
+>>> H2 = Compound(['H']*2)
+>>> O2 = Compound(['O']*2)
+>>> H2O = Compound(['H'] + ['O']*2)
+
+>>> r = Reaction(reactants = [H2, O2], products = [H2O])
+
+>>> r.formula
+'1H₂ + 1O₂ --> 1H₁O₂'
+
+>>> r.is_balanced
+False
+
+>>> r.balance()
+
+>>> r.formula
+'1H₂ + 2O₂ --> 2H₁O₂'
+
+>>> r.is_balanced
+True
 ```
 
