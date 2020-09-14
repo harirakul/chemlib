@@ -11,7 +11,7 @@ pip install chemlib
 
 ## Features
 
-### Periodic table as a ```pandas.Dataframe``` object
+Periodic table as a ```pandas.Dataframe``` object
 
 ```
 >>> import chemlib
@@ -31,4 +31,18 @@ pip install chemlib
 117         117         118.0  ...  [Rn] 5f14 6d10 7s2 7p6      294.0
 
 [118 rows x 31 columns]
+```
+
+```chemlib.Element``` object with accessible properties
+
+```python
+>>> from chemlib import Element
+
+>>> boron = Element('B')   #Declare Element from its symbol
+
+>>> boron.properties
+{'AtomicNumber': 5.0, 'Element': 'Boron', 'Symbol': 'B', 'AtomicMass': 10.811, 'Neutrons': 6.0, 'Protons': 5.0, 'Electrons': 5.0, 'Period': 2.0, 'Group': 13.0, 'Phase': 'solid', 'Radioactive': False, 'Natural': True, 'Metal': False, 'Nonmetal': False, 'Metalloid': True, 'Type': 'Metalloid', 'AtomicRadius': '1.2', 'Electronegativity': 2.04, 'FirstIonization': '8.298', 'Density': '2.34', 'MeltingPoint': '2573.15', 'BoilingPoint': '4200', 'Isotopes': 6.0, 'Discoverer': 'Gay-Lussac', 'Year': '1808', 'SpecificHeat': '1.026', 'Shells': 2.0, 'Valence': 3.0, 'Config': '[He] 2s2 2p1', 'MassNumber': 11.0}
+
+>>> boron.AtomicMass
+10.811
 ```
