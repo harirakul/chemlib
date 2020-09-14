@@ -64,3 +64,23 @@ Periodic table as a ```pandas.Dataframe``` object
 76.174
 
 ```
+
+Stoichiometric conversions with compounds (accepted inputs: grams, moles, and molecules)
+
+```python
+>>> from chemlib import Compound
+
+>>> water = Compound(['H'] + ['O']*2)
+
+>>> water.get_amounts(grams = 2)
+{'Compound': 'H₁O₂', 'Grams': 2, 'Moles': 0.0606, 'Molecules': 3.647e+22}
+
+>>> water.get_amounts(moles = 1)
+{'Compound': 'H₁O₂', 'Grams': 33.01, 'Moles': 1, 'Molecules': 6.02e+23}
+
+>>> water.get_amounts(molecules = 1.0e+24)
+{'Compound': 'H₁O₂', 'Grams': 54.834, 'Moles': 1.6611, 'Molecules': 1e+24}
+
+
+```
+
