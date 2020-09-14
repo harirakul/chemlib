@@ -65,7 +65,7 @@ pip install chemlib
 
 ```
 
-#### Stoichiometric conversions with compounds
+### Stoichiometric conversions with compounds
 Accepted inputs: grams, moles, and molecules
 
 ```python
@@ -84,7 +84,7 @@ Accepted inputs: grams, moles, and molecules
 
 ```
 
-#### Balancing Chemical Reactions
+### Balancing Chemical Reactions
 
 ```python
 
