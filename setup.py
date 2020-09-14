@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
-with open('README.md') as readme_file:
+with open('README.md', encoding='utf-8') as readme_file:
     README = readme_file.read()
 
 setup_args = dict(
     name='chemlib',
-    version='1.5',
+    version='1.6',
     description='An easy-to-use library that quickly performs chemistry calculations.',
     long_description_content_type="text/markdown",
     long_description=README,
