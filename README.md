@@ -8,3 +8,5 @@ An easy-to-use library that quickly performs chemistry calculations.
 ```
 pip install chemlib
 ```
+
+## Features
