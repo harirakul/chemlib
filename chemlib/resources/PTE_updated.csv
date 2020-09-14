@@ -1,119 +1,119 @@
-,AtomicNumber,Element,Symbol,AtomicMass,Neutrons,Protons,Electrons,Period,Group,Phase,Radioactive,Natural,Metal,Nonmetal,Metalloid,Type,AtomicRadius,Electronegativity,FirstIonization,Density,MeltingPoint,BoilingPoint,Discoverer,Year,SpecificHeat,Shells,Valence,Config,MassNumber
-0,1,Hydrogen,H,1.0070000000000001,0,1,1,1,1.0,gas,False,True,False,True,False,Nonmetal,0.79,2.2,13.5984,8.99e-05,14.175,20.28,Cavendish,1766.0,14.304,1,1.0,1s1,1
-1,2,Helium,He,4.002,2,2,2,1,18.0,gas,False,True,False,True,False,Noble Gas,0.49,,24.5874,0.00017900000000000001,Unknown,4.22,Janssen,1868.0,5.193,1,0.0,1s2,4
-2,3,Lithium,Li,6.941,4,3,3,2,1.0,solid,False,True,True,False,False,Alkali Metal,2.1,0.98,5.3917,0.534,453.85,1615.0,Arfvedson,1817.0,3.582,2,1.0,[He] 2s1,7
-3,4,Beryllium,Be,9.012,5,4,4,2,2.0,solid,False,True,True,False,False,Alkaline Earth Metal,1.4,1.57,9.3227,1.85,1560.15,2742.0,Vaulquelin,1798.0,1.825,2,2.0,[He] 2s2,9
-4,5,Boron,B,10.811,6,5,5,2,13.0,solid,False,True,False,False,True,Metalloid,1.2,2.04,8.298,2.34,2573.15,4200.0,Gay-Lussac,1808.0,1.026,2,3.0,[He] 2s2 2p1,11
-5,6,Carbon,C,12.011,6,6,6,2,14.0,solid,False,True,False,True,False,Nonmetal,0.91,2.55,11.2603,2.27,3948.15,4300.0,Prehistoric,Unknown,0.7090000000000001,2,4.0,[He] 2s2 2p2,12
-6,7,Nitrogen,N,14.007,7,7,7,2,15.0,gas,False,True,False,True,False,Nonmetal,0.75,3.04,14.5341,0.00125,63.29,77.36,Rutherford,1772.0,1.04,2,5.0,[He] 2s2 2p3,14
-7,8,Oxygen,O,15.999,8,8,8,2,16.0,gas,False,True,False,True,False,Nonmetal,0.65,3.44,13.6181,0.00143,50.5,90.2,Priestley/Scheele,1774.0,0.9179999999999999,2,6.0,[He] 2s2 2p4,16
-8,9,Fluorine,F,18.998,10,9,9,2,17.0,gas,False,True,False,True,False,Halogen,0.57,3.98,17.4228,0.0017,53.63,85.03,Moissan,1886.0,0.8240000000000001,2,7.0,[He] 2s2 2p5,19
-9,10,Neon,Ne,20.18,10,10,10,2,18.0,gas,False,True,False,True,False,Noble Gas,0.51,,21.5645,0.0009,24.703000000000003,27.07,Ramsay and Travers,1898.0,1.03,2,8.0,[He] 2s2 2p6,20
-10,11,Sodium,Na,22.99,12,11,11,3,1.0,solid,False,True,True,False,False,Alkali Metal,2.2,0.93,5.1391,0.971,371.15,1156.0,Davy,1807.0,1.228,3,1.0,[Ne] 3s1,23
-11,12,Magnesium,Mg,24.305,12,12,12,3,2.0,solid,False,True,True,False,False,Alkaline Earth Metal,1.7,1.31,7.6462,1.74,923.15,1363.0,Black,1755.0,1.023,3,2.0,[Ne] 3s2,24
-12,13,Aluminum,Al,26.982,14,13,13,3,13.0,solid,False,True,True,False,False,Metal,1.8,1.61,5.9858,2.7,933.4,2792.0,Wshler,1827.0,0.897,3,3.0,[Ne] 3s2 3p1,27
-13,14,Silicon,Si,28.086,14,14,14,3,14.0,solid,False,True,False,False,True,Metalloid,1.5,1.9,8.1517,2.33,1683.15,3538.0,Berzelius,1824.0,0.705,3,4.0,[Ne] 3s2 3p2,28
-14,15,Phosphorus,P,30.974,16,15,15,3,15.0,solid,False,True,False,True,False,Nonmetal,1.2,2.19,10.4867,1.82,317.25,553.0,BranBrand,1669.0,0.769,3,5.0,[Ne] 3s2 3p3,31
-15,16,Sulfur,S,32.065,16,16,16,3,16.0,solid,False,True,False,True,False,Nonmetal,1.1,2.58,10.36,2.07,388.51,717.8,Prehistoric,Unknown,0.71,3,6.0,[Ne] 3s2 3p4,32
-16,17,Chlorine,Cl,35.453,18,17,17,3,17.0,gas,False,True,False,True,False,Halogen,0.97,3.16,12.9676,0.00321,172.31,239.11,Scheele,1774.0,0.479,3,7.0,[Ne] 3s2 3p5,35
-17,18,Argon,Ar,39.948,22,18,18,3,18.0,gas,False,True,False,True,False,Noble Gas,0.88,,15.7596,0.0017800000000000001,83.96,87.3,Rayleigh and Ramsay,1894.0,0.52,3,8.0,[Ne] 3s2 3p6,40
-18,19,Potassium,K,39.098,20,19,19,4,1.0,solid,False,True,True,False,False,Alkali Metal,2.8,0.82,4.3407,0.862,336.5,1032.0,Davy,1807.0,0.757,4,1.0,[Ar] 4s1,39
-19,20,Calcium,Ca,40.078,20,20,20,4,2.0,solid,False,True,True,False,False,Alkaline Earth Metal,2.2,1.0,6.1132,1.54,1112.15,1757.0,Davy,1808.0,0.647,4,2.0,[Ar] 4s2,40
-20,21,Scandium,Sc,44.956,24,21,21,4,3.0,solid,False,True,True,False,False,Transition Metal,2.1,1.36,6.5615,2.99,1812.15,3109.0,Nilson,1878.0,0.568,4,0.0,[Ar] 3d1 4s2,45
-21,22,Titanium,Ti,47.867,26,22,22,4,4.0,solid,False,True,True,False,False,Transition Metal,2.0,1.54,6.8281,4.54,1933.15,3560.0,Gregor,1791.0,0.523,4,0.0,[Ar] 3d2 4s2,48
-22,23,Vanadium,V,50.942,28,23,23,4,5.0,solid,False,True,True,False,False,Transition Metal,1.9,1.63,6.7462,6.11,2175.15,3680.0,   del Rio,1801.0,0.489,4,0.0,[Ar] 3d3 4s2,51
-23,24,Chromium,Cr,51.996,28,24,24,4,6.0,solid,False,True,True,False,False,Transition Metal,1.9,1.66,6.7665,7.15,2130.15,2944.0,Vauquelin,1797.0,0.449,4,0.0,[Ar] 3d5 4s1,52
-24,25,Manganese,Mn,54.938,30,25,25,4,7.0,solid,False,True,True,False,False,Transition Metal,1.8,1.55,7.434,7.44,1519.15,2334.0,"Gahn, Scheele",1774.0,0.479,4,0.0,[Ar] 3d5 4s2,55
-25,26,Iron,Fe,55.845,30,26,26,4,8.0,solid,False,True,True,False,False,Transition Metal,1.7,1.83,7.9024,7.87,1808.15,3134.0,Prehistoric,Unknown,0.449,4,0.0,[Ar] 3d6 4s2,56
-26,27,Cobalt,Co,58.933,32,27,27,4,9.0,solid,False,True,True,False,False,Transition Metal,1.7,1.88,7.881,8.86,1768.15,3200.0,Brandt,1735.0,0.42100000000000004,4,0.0,[Ar] 3d7 4s2,59
-27,28,Nickel,Ni,58.693000000000005,31,28,28,4,10.0,solid,False,True,True,False,False,Transition Metal,1.6,1.91,7.6398,8.91,1726.15,3186.0,Cronstedt,1751.0,0.444,4,0.0,[Ar] 3d8 4s2,59
-28,29,Copper,Cu,63.54600000000001,35,29,29,4,11.0,solid,False,True,True,False,False,Transition Metal,1.6,1.9,7.7264,8.96,1357.75,2835.0,Prehistoric,Unknown,0.385,4,0.0,[Ar] 3d10 4s1,64
-29,30,Zinc,Zn,65.38,35,30,30,4,12.0,solid,False,True,True,False,False,Transition Metal,1.5,1.65,9.3942,7.13,692.88,1180.0,Prehistoric,Unknown,0.38799999999999996,4,0.0,[Ar] 3d10 4s2,65
-30,31,Gallium,Ga,69.723,39,31,31,4,13.0,solid,False,True,True,False,False,Metal,1.8,1.81,5.9993,5.91,302.91,2477.0,de Boisbaudran,1875.0,0.371,4,3.0,[Ar] 3d10 4s2 4p1,70
-31,32,Germanium,Ge,72.64,41,32,32,4,14.0,solid,False,True,False,False,True,Metalloid,1.5,2.01,7.8994,5.32,1211.45,3106.0,Winkler,1886.0,0.32,4,4.0,[Ar] 3d10 4s2 4p2,73
-32,33,Arsenic,As,74.922,42,33,33,4,15.0,solid,False,True,False,False,True,Metalloid,1.3,2.18,9.7886,5.78,1090.15,887.0,Albertus Magnus,1250.0,0.32899999999999996,4,5.0,[Ar] 3d10 4s2 4p3,75
-33,34,Selenium,Se,78.96,45,34,34,4,16.0,solid,False,True,False,True,False,Nonmetal,1.2,2.55,9.7524,4.81,494.15,958.0,Berzelius,1817.0,0.321,4,6.0,[Ar] 3d10 4s2 4p4,79
-34,35,Bromine,Br,79.904,45,35,35,4,17.0,liq,False,True,False,True,False,Halogen,1.1,2.96,11.8138,3.12,266.05,332.0,Balard,1826.0,0.474,4,7.0,[Ar] 3d10 4s2 4p5,80
-35,36,Krypton,Kr,83.79799999999999,48,36,36,4,18.0,gas,False,True,False,True,False,Noble Gas,1.0,,13.9996,0.00373,115.93,119.93,Ramsay and Travers,1898.0,0.248,4,8.0,[Ar] 3d10 4s2 4p6,84
-36,37,Rubidium,Rb,85.46799999999999,48,37,37,5,1.0,solid,False,True,True,False,False,Alkali Metal,3.0,0.82,4.1771,1.53,312.79,961.0,Bunsen and Kirchoff,1861.0,0.363,5,1.0,[Kr] 5s1,85
-37,38,Strontium,Sr,87.62,50,38,38,5,2.0,solid,False,True,True,False,False,Alkaline Earth Metal,2.5,0.95,5.6949,2.64,1042.15,1655.0,Davy,1808.0,0.301,5,2.0,[Kr] 5s2,88
-38,39,Yttrium,Y,88.906,50,39,39,5,3.0,solid,False,True,True,False,False,Transition Metal,2.3,1.22,6.2173,4.47,1799.15,3609.0,Gadolin,1794.0,0.298,5,0.0,[Kr] 4d1 5s2,89
-39,40,Zirconium,Zr,91.22399999999999,51,40,40,5,4.0,solid,False,True,True,False,False,Transition Metal,2.2,1.33,6.6339,6.51,2125.15,4682.0,Klaproth,1789.0,0.278,5,0.0,[Kr] 4d2 5s2,91
-40,41,Niobium,Nb,92.906,52,41,41,5,5.0,solid,False,True,True,False,False,Transition Metal,2.1,1.6,6.7589,8.57,2741.15,5017.0,Hatchett,1801.0,0.265,5,0.0,[Kr] 4d4 5s1,93
-41,42,Molybdenum,Mo,95.96,54,42,42,5,6.0,solid,False,True,True,False,False,Transition Metal,2.0,2.16,7.0924,10.2,2890.15,4912.0,Scheele,1778.0,0.251,5,0.0,[Kr] 4d5 5s1,96
-42,43,Technetium,Tc,98.0,55,43,43,5,7.0,artificial,True,False,True,False,False,Transition Metal,2.0,1.9,7.28,11.5,2473.15,5150.0,Perrier and Segr�,1937.0,Unknown,5,0.0,[Kr] 4d5 5s2,98
-43,44,Ruthenium,Ru,101.07,57,44,44,5,8.0,solid,False,True,True,False,False,Transition Metal,1.9,2.2,7.3605,12.4,2523.15,4423.0,Klaus,1844.0,0.23800000000000002,5,0.0,[Kr] 4d7 5s1,101
-44,45,Rhodium,Rh,102.906,58,45,45,5,9.0,solid,False,True,True,False,False,Transition Metal,1.8,2.28,7.4589,12.4,2239.15,3968.0,Wollaston,1803.0,0.243,5,0.0,[Kr] 4d8 5s1,103
-45,46,Palladium,Pd,106.42,60,46,46,5,10.0,solid,False,True,True,False,False,Transition Metal,1.8,2.2,8.3369,12.0,1825.15,3236.0,Wollaston,1803.0,0.244,5,0.0,[Kr] 4d10,106
-46,47,Silver,Ag,107.868,61,47,47,5,11.0,solid,False,True,True,False,False,Transition Metal,1.8,1.93,7.5762,10.5,1234.15,2435.0,Prehistoric,Unknown,0.235,5,0.0,[Kr] 4d10 5s1,108
-47,48,Cadmium,Cd,112.411,64,48,48,5,12.0,solid,False,True,True,False,False,Transition Metal,1.7,1.69,8.9938,8.69,594.33,1040.0,Stromeyer,1817.0,0.23199999999999998,5,0.0,[Kr] 4d10 5s2,112
-48,49,Indium,In,114.818,66,49,49,5,13.0,solid,False,True,True,False,False,Metal,2.0,1.78,5.7864,7.31,429.91,2345.0,Reich and Richter,1863.0,0.233,5,3.0,[Kr] 4d10 5s2 5p1,115
-49,50,Tin,Sn,118.71,69,50,50,5,14.0,solid,False,True,True,False,False,Metal,1.7,1.96,7.3439,7.29,505.21,2875.0,Prehistoric,Unknown,0.228,5,4.0,[Kr] 4d10 5s2 5p2,119
-50,51,Antimony,Sb,121.76,71,51,51,5,15.0,solid,False,True,False,False,True,Metalloid,1.5,2.05,8.6084,6.69,904.05,1860.0,Early historic times,Unknown,0.207,5,5.0,[Kr] 4d10 5s2 5p3,122
-51,52,Tellurium,Te,127.6,76,52,52,5,16.0,solid,False,True,False,False,True,Metalloid,1.4,2.1,9.0096,6.23,722.8,1261.0,von Reichenstein,1782.0,0.20199999999999999,5,6.0,[Kr] 4d10 5s2 5p4,128
-52,53,Iodine,I,126.904,74,53,53,5,17.0,solid,False,True,False,True,False,Halogen,1.3,2.66,10.4513,4.93,386.65,457.4,Courtois,1811.0,0.214,5,7.0,[Kr] 4d10 5s2 5p5,127
-53,54,Xenon,Xe,131.293,77,54,54,5,18.0,gas,False,True,False,True,False,Noble Gas,1.2,,12.1298,0.00589,161.45,165.03,Ramsay and Travers,1898.0,0.158,5,8.0,[Kr] 4d10 5s2 5p6,131
-54,55,Cesium,Cs,132.905,78,55,55,6,1.0,solid,False,True,True,False,False,Alkali Metal,3.3,0.79,3.8939,1.87,301.7,944.0,Bunsen and Kirchoff,1860.0,0.242,6,1.0,[Xe] 6s1,133
-55,56,Barium,Ba,137.327,81,56,56,6,2.0,solid,False,True,True,False,False,Alkaline Earth Metal,2.8,0.89,5.2117,3.59,1002.15,2170.0,Davy,1808.0,0.204,6,2.0,[Xe] 6s2,137
-56,57,Lanthanum,La,138.905,82,57,57,6,3.0,solid,False,True,True,False,False,Lanthanide,2.7,1.1,5.5769,6.15,1193.15,3737.0,Mosander,1839.0,0.195,6,0.0,[Xe] 5d1 6s2,139
-57,58,Cerium,Ce,140.116,82,58,58,6,,solid,False,True,True,False,False,Lanthanide,2.7,1.12,5.5387,6.77,1071.15,3716.0,Berzelius,1803.0,0.192,6,0.0,[Xe] 4f1 5d1 6s2,140
-58,59,Praseodymium,Pr,140.908,82,59,59,6,,solid,False,True,True,False,False,Lanthanide,2.7,1.13,5.473,6.77,1204.15,3793.0,von Welsbach,1885.0,0.193,6,0.0,[Xe] 4f3 6s2,141
-59,60,Neodymium,Nd,144.24200000000002,84,60,60,6,,solid,False,True,True,False,False,Lanthanide,2.6,1.14,5.525,7.01,1289.15,3347.0,von Welsbach,1885.0,0.19,6,0.0,[Xe] 4f4 6s2,144
-60,61,Promethium,Pm,145.0,84,61,61,6,,artificial,True,False,True,False,False,Lanthanide,2.6,1.13,5.582000000000001,7.26,1204.15,3273.0,Marinsky et al.,1945.0,Unknown,6,0.0,[Xe] 4f5 6s2,145
-61,62,Samarium,Sm,150.36,88,62,62,6,,solid,False,True,True,False,False,Lanthanide,2.6,1.17,5.6437,7.52,1345.15,2067.0,Boisbaudran,1879.0,0.19699999999999998,6,0.0,[Xe] 4f6 6s2,150
-62,63,Europium,Eu,151.964,89,63,63,6,,solid,False,True,True,False,False,Lanthanide,2.6,1.2,5.6704,5.24,1095.15,1802.0,Demarcay,1901.0,0.182,6,0.0,[Xe] 4f7 6s2,152
-63,64,Gadolinium,Gd,157.25,93,64,64,6,,solid,False,True,True,False,False,Lanthanide,2.5,1.2,6.1501,7.9,1585.15,3546.0,de Marignac,1880.0,0.23600000000000002,6,0.0,[Xe] 4f7 5d1 6s2,157
-64,65,Terbium,Tb,158.925,94,65,65,6,,solid,False,True,True,False,False,Lanthanide,2.5,1.2,5.8638,8.23,1630.15,3503.0,Mosander,1843.0,0.182,6,0.0,[Xe] 4f9 6s2,159
-65,66,Dysprosium,Dy,162.5,97,66,66,6,,solid,False,True,True,False,False,Lanthanide,2.5,1.22,5.9389,8.55,1680.15,2840.0,de Boisbaudran,1886.0,0.17,6,0.0,[Xe] 4f10 6s2,163
-66,67,Holmium,Ho,164.93,98,67,67,6,,solid,False,True,True,False,False,Lanthanide,2.5,1.23,6.0215,8.8,1743.15,2993.0,Delafontaine and Soret,1878.0,0.165,6,0.0,[Xe] 4f11 6s2,165
-67,68,Erbium,Er,167.25900000000001,99,68,68,6,,solid,False,True,True,False,False,Lanthanide,2.5,1.24,6.1077,9.07,1795.15,3503.0,Mosander,1843.0,0.168,6,0.0,[Xe] 4f12 6s2,167
-68,69,Thulium,Tm,168.93400000000003,100,69,69,6,,solid,False,True,True,False,False,Lanthanide,2.4,1.25,6.1843,9.32,1818.15,2223.0,Cleve,1879.0,0.16,6,0.0,[Xe] 4f13 6s2,169
-69,70,Ytterbium,Yb,173.054,103,70,70,6,,solid,False,True,True,False,False,Lanthanide,2.4,1.1,6.2542,6.97,1097.15,1469.0,Marignac,1878.0,0.155,6,0.0,[Xe] 4f14 6s2,173
-70,71,Lutetium,Lu,174.967,104,71,71,6,,solid,False,True,True,False,False,Lanthanide,2.3,1.27,5.4259,9.84,1936.15,3675.0,Urbain/ von Welsbach,1907.0,0.154,6,0.0,[Xe] 4f14 5d1 6s2,175
-71,72,Hafnium,Hf,178.49,106,72,72,6,4.0,solid,False,True,True,False,False,Transition Metal,2.2,1.3,6.8251,13.3,2500.15,4876.0,Coster and von Hevesy,1923.0,0.14400000000000002,6,0.0,[Xe] 4f14 5d2 6s2,178
-72,73,Tantalum,Ta,180.94799999999998,108,73,73,6,5.0,solid,False,True,True,False,False,Transition Metal,2.1,1.5,7.5496,16.7,3269.15,5731.0,Ekeberg,1801.0,0.14,6,0.0,[Xe] 4f14 5d3 6s2,181
-73,74,Wolfram,W,183.84,110,74,74,6,6.0,solid,False,True,True,False,False,Transition Metal,2.0,2.36,7.864,19.3,3680.15,5828.0,J. and F. d'Elhuyar,1783.0,0.132,6,0.0,[Xe] 4f14 5d4 6s2,184
-74,75,Rhenium,Re,186.207,111,75,75,6,7.0,solid,False,True,True,False,False,Transition Metal,2.0,1.9,7.8335,21.0,3453.15,5869.0,"Noddack, Berg, and Tacke",1925.0,0.13699999999999998,6,0.0,[Xe] 4f14 5d5 6s2,186
-75,76,Osmium,Os,190.23,114,76,76,6,8.0,solid,False,True,True,False,False,Transition Metal,1.9,2.2,8.4382,22.6,3300.15,5285.0,Tennant,1803.0,0.13,6,0.0,[Xe] 4f14 5d6 6s2,190
-76,77,Iridium,Ir,192.217,115,77,77,6,9.0,solid,False,True,True,False,False,Transition Metal,1.9,2.2,8.967,22.6,2716.15,4701.0,Tennant,1804.0,0.131,6,0.0,[Xe] 4f14 5d7 6s2,192
-77,78,Platinum,Pt,195.084,117,78,78,6,10.0,solid,False,True,True,False,False,Transition Metal,1.8,2.28,8.9587,21.5,2045.15,4098.0,Ulloa/Wood,1735.0,0.133,6,0.0,[Xe] 4f14 5d9 6s1,195
-78,79,Gold,Au,196.967,118,79,79,6,11.0,solid,False,True,True,False,False,Transition Metal,1.8,2.54,9.2255,19.3,1337.73,3129.0,Prehistoric,Unknown,0.129,6,0.0,[Xe] 4f14 5d10 6s1,197
-79,80,Mercury,Hg,200.59,121,80,80,6,12.0,liq,False,True,True,False,False,Transition Metal,1.8,2.0,10.4375,13.5,234.43,630.0,Prehistoric,Unknown,0.14,6,0.0,[Xe] 4f14 5d10 6s2,201
-80,81,Thallium,Tl,204.38299999999998,123,81,81,6,13.0,solid,False,True,True,False,False,Metal,2.1,2.04,6.1082,11.9,577.15,1746.0,Crookes,1861.0,0.129,6,3.0,[Xe] 4f14 5d10 6s2 6p1,204
-81,82,Lead,Pb,207.2,125,82,82,6,14.0,solid,False,True,True,False,False,Metal,1.8,2.33,7.4167,11.3,600.75,2022.0,Prehistoric,Unknown,0.129,6,4.0,[Xe] 4f14 5d10 6s2 6p2,207
-82,83,Bismuth,Bi,208.98,126,83,83,6,15.0,solid,False,True,True,False,False,Metal,1.6,2.02,7.2856,9.81,544.67,1837.0,Geoffroy the Younger,1753.0,0.122,6,5.0,[Xe] 4f14 5d10 6s2 6p3,209
-83,84,Polonium,Po,210.0,126,84,84,6,16.0,solid,True,True,False,False,True,Metalloid,1.5,2.0,8.417,9.32,527.15,1235.0,Curie,1898.0,Unknown,6,6.0,[Xe] 4f14 5d10 6s2 6p4,210
-84,85,Astatine,At,210.0,125,85,85,6,17.0,solid,True,True,False,True,False,Noble Gas,1.4,2.2,9.3,7.0,575.15,610.0,Corson et al.,1940.0,Unknown,6,7.0,[Xe] 4f14 5d10 6s2 6p5,210
-85,86,Radon,Rn,222.0,136,86,86,6,18.0,gas,True,True,True,False,False,Alkali Metal,1.3,,10.7485,0.009729999999999999,202.15,211.3,Dorn,1900.0,0.094,6,8.0,[Xe] 4f14 5d10 6s2 6p6,222
-86,87,Francium,Fr,223.0,136,87,87,7,1.0,solid,True,True,True,False,False,Alkaline Earth Metal,Unknown,0.7,4.0727,1.87,300.15,950.0,Perey,1939.0,Unknown,7,1.0,[Rn] 7s1,223
-87,88,Radium,Ra,226.0,138,88,88,7,2.0,solid,True,True,True,False,False,Actinide,Unknown,0.9,5.2784,5.5,973.15,2010.0,Pierre and Marie Curie,1898.0,Unknown,7,2.0,[Rn] 7s2,226
-88,89,Actinium,Ac,227.0,138,89,89,7,3.0,solid,True,True,True,False,False,Actinide,Unknown,1.1,5.17,10.1,1323.15,3471.0,Debierne/Giesel,1899.0,0.12,7,0.0,[Rn] 6d1 7s2,227
-89,90,Thorium,Th,232.03799999999998,142,90,90,7,,solid,True,True,True,False,False,Actinide,Unknown,1.3,6.3067,11.7,2028.15,5061.0,Berzelius,1828.0,0.113,7,0.0,[Rn] 6d2 7s2,232
-90,91,Protactinium,Pa,231.03599999999997,140,91,91,7,,solid,True,True,True,False,False,Actinide,Unknown,1.5,5.89,15.4,1873.15,4300.0,Hahn and Meitner,1917.0,Unknown,7,0.0,[Rn] 5f2 6d1 7s2,231
-91,92,Uranium,U,238.02900000000002,146,92,92,7,,solid,True,True,True,False,False,Actinide,Unknown,1.38,6.1941,19.0,1405.15,4404.0,Peligot,1841.0,0.11599999999999999,7,0.0,[Rn] 5f3 6d1 7s2,238
-92,93,Neptunium,Np,237.0,144,93,93,7,,artificial,True,False,True,False,False,Actinide,Unknown,1.36,6.2657,20.5,913.15,4273.0,McMillan and Abelson,1940.0,Unknown,7,0.0,[Rn] 5f4 6d1 7s2,237
-93,94,Plutonium,Pu,244.0,150,94,94,7,,artificial,True,False,True,False,False,Actinide,Unknown,1.28,6.0262,19.8,913.15,3501.0,Seaborg et al.,1940.0,Unknown,7,0.0,[Rn] 5f6 7s2,244
-94,95,Americium,Am,243.0,148,95,95,7,,artificial,True,False,True,False,False,Actinide,Unknown,1.3,5.9738,13.7,1267.15,2880.0,Seaborg et al.,1944.0,Unknown,7,0.0,[Rn] 5f7 7s2,243
-95,96,Curium,Cm,247.0,151,96,96,7,,artificial,True,False,True,False,False,Actinide,Unknown,1.3,5.9915,13.5,1340.15,3383.0,Seaborg et al.,1944.0,Unknown,7,0.0,[Rn] 5f7 6d1 7s2,247
-96,97,Berkelium,Bk,247.0,150,97,97,7,,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.1979,14.8,1259.15,983.0,Seaborg et al.,1949.0,Unknown,7,0.0,[Rn] 5f9 7s2,247
-97,98,Californium,Cf,251.0,153,98,98,7,,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.2817,15.1,1925.15,1173.0,Seaborg et al.,1950.0,Unknown,7,0.0,[Rn] 5f10 7s2,251
-98,99,Einsteinium,Es,252.0,153,99,99,7,,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.42,13.5,1133.15,Unknown,Ghiorso et al.,1952.0,Unknown,7,0.0,[Rn] 5f11 7s2,252
-99,100,Fermium,Fm,257.0,157,100,100,7,,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.5,Unknown,Unknown,Unknown,Ghiorso et al.,1953.0,Unknown,7,0.0,[Rn] 5f12 7s2,257
-100,101,Mendelevium,Md,258.0,157,101,101,7,,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.58,Unknown,Unknown,Unknown,Ghiorso et al.,1955.0,Unknown,7,0.0,[Rn] 5f13 7s2,258
-101,102,Nobelium,No,259.0,157,102,102,7,,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.65,Unknown,Unknown,Unknown,Ghiorso et al.,1958.0,Unknown,7,0.0,[Rn] 5f14 7s2,259
-102,103,Lawrencium,Lr,262.0,159,103,103,7,,artificial,True,False,True,False,False,Actinide,Unknown,,Unknown,Unknown,Unknown,Unknown,Ghiorso et al.,1961.0,Unknown,7,0.0,[Rn] 5f14 7s2 7p1,262
-103,104,Rutherfordium,Rf,261.0,157,104,104,7,4.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,18.1,Unknown,Unknown,Ghiorso et al.,1969.0,Unknown,7,0.0,[Rn] 5f14 6d2 7s2,261
-104,105,Dubnium,Db,262.0,157,105,105,7,5.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,39.0,Unknown,Unknown,Ghiorso et al.,1970.0,Unknown,7,0.0,[Rn] 5f14 6d3 7s2,262
-105,106,Seaborgium,Sg,266.0,160,106,106,7,6.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,35.0,Unknown,Unknown,Ghiorso et al.,1974.0,Unknown,7,0.0,[Rn] 5f14 6d4 7s2,266
-106,107,Bohrium,Bh,264.0,157,107,107,7,7.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,37.0,Unknown,Unknown,Armbruster and M�nzenberg,1981.0,Unknown,7,0.0,[Rn] 5f14 6d5 7s2,264
-107,108,Hassium,Hs,267.0,159,108,108,7,8.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,41.0,Unknown,Unknown,Armbruster and M�nzenberg,1983.0,Unknown,7,0.0,[Rn] 5f14 6d6 7s2,267
-108,109,Meitnerium,Mt,268.0,159,109,109,7,9.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,35.0,Unknown,Unknown,"GSI, Darmstadt, West Germany",1982.0,Unknown,7,0.0,[Rn] 5f14 6d7 7s2,268
-109,110,Darmstadtium,Ds,271.0,161,110,110,7,10.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,Unknown,1994.0,Unknown,7,0.0,[Rn] 5f14 6d9 7s1,271
-110,111,Roentgenium,Rg,272.0,161,111,111,7,11.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,Unknown,1994.0,Unknown,7,0.0,[Rn] 5f14 6d10 7s1,272
-111,112,Copernicium,Cn,285.0,173,112,112,7,12.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,Unknown,1996.0,Unknown,7,0.0,[Rn] 5f14 6d10 7s2,285
-112,113,Nihonium,Nh,284.0,171,113,113,7,13.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,Unknown,2004.0,Unknown,7,3.0,[Rn] 5f14 6d10 7s2 7p1,284
-113,114,Flerovium,Fl,289.0,175,114,114,7,14.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,Unknown,1999.0,Unknown,7,4.0,[Rn] 5f14 6d10 7s2 7p2,289
-114,115,Moscovium,Mc,288.0,173,115,115,7,15.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,Unknown,2010.0,Unknown,7,5.0,[Rn] 5f14 6d10 7s2 7p3,288
-115,116,Livermorium,Lv,292.0,176,116,116,7,16.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,Unknown,2000.0,Unknown,7,6.0,[Rn] 5f14 6d10 7s2 7p4,292
-116,117,Tennessine,Ts,295.0,178,117,117,7,17.0,artificial,True,False,False,True,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,Unknown,2010.0,Unknown,7,7.0,[Rn] 5f14 6d10 7s2 7p5,295
-117,118,Oganesson,Og,294.0,176,118,118,7,18.0,artificial,True,False,False,True,False,Noble Gas,Unknown,,Unknown,Unknown,Unknown,Unknown,Unknown,2006.0,Unknown,7,8.0,[Rn] 5f14 6d10 7s2 7p6,294
+,AtomicNumber,Element,Symbol,AtomicMass,Neutrons,Protons,Electrons,Period,Group,Phase,Radioactive,Natural,Metal,Nonmetal,Metalloid,Type,AtomicRadius,Electronegativity,FirstIonization,Density,MeltingPoint,BoilingPoint,Isotopes,Discoverer,Year,SpecificHeat,Shells,Valence,Config,MassNumber
+0,1.0,Hydrogen,H,1.0070000000000001,0.0,1.0,1.0,1.0,1.0,gas,False,True,False,True,False,Nonmetal,0.79,2.2,13.5984,0.0000899,14.175,20.28,3.0,Cavendish,1766,14.304,1.0,1.0,1s1,1.0
+1,2.0,Helium,He,4.002,2.0,2.0,2.0,1.0,18.0,gas,False,True,False,True,False,Noble Gas,0.49,,24.5874,0.000179,Unknown,4.22,5.0,Janssen,1868,5.193,1.0,0.0,1s2,4.0
+2,3.0,Lithium,Li,6.941,4.0,3.0,3.0,2.0,1.0,solid,False,True,True,False,False,Alkali Metal,2.1,0.98,5.3917,0.534,453.85,1615,5.0,Arfvedson,1817,3.582,2.0,1.0,[He] 2s1,7.0
+3,4.0,Beryllium,Be,9.012,5.0,4.0,4.0,2.0,2.0,solid,False,True,True,False,False,Alkaline Earth Metal,1.4,1.57,9.3227,1.85,1560.15,2742,6.0,Vaulquelin,1798,1.825,2.0,2.0,[He] 2s2,9.0
+4,5.0,Boron,B,10.811,6.0,5.0,5.0,2.0,13.0,solid,False,True,False,False,True,Metalloid,1.2,2.04,8.298,2.34,2573.15,4200,6.0,Gay-Lussac,1808,1.026,2.0,3.0,[He] 2s2 2p1,11.0
+5,6.0,Carbon,C,12.011,6.0,6.0,6.0,2.0,14.0,solid,False,True,False,True,False,Nonmetal,0.91,2.55,11.2603,2.27,3948.15,4300,7.0,Prehistoric,Unknown,0.709,2.0,4.0,[He] 2s2 2p2,12.0
+6,7.0,Nitrogen,N,14.007,7.0,7.0,7.0,2.0,15.0,gas,False,True,False,True,False,Nonmetal,0.75,3.04,14.5341,0.00125,63.29,77.36,8.0,Rutherford,1772,1.04,2.0,5.0,[He] 2s2 2p3,14.0
+7,8.0,Oxygen,O,15.999,8.0,8.0,8.0,2.0,16.0,gas,False,True,False,True,False,Nonmetal,0.65,3.44,13.6181,0.00143,50.5,90.2,8.0,Priestley/Scheele,1774,0.917999999999999,2.0,6.0,[He] 2s2 2p4,16.0
+8,9.0,Fluorine,F,18.998,10.0,9.0,9.0,2.0,17.0,gas,False,True,False,True,False,Halogen,0.57,3.98,17.4228,0.0017,53.63,85.03,6.0,Moissan,1886,0.824,2.0,7.0,[He] 2s2 2p5,19.0
+9,10.0,Neon,Ne,20.18,10.0,10.0,10.0,2.0,18.0,gas,False,True,False,True,False,Noble Gas,0.51,,21.5645,0.0009,24.703,27.07,8.0,Ramsay and Travers,1898,1.03,2.0,8.0,[He] 2s2 2p6,20.0
+10,11.0,Sodium,Na,22.99,12.0,11.0,11.0,3.0,1.0,solid,False,True,True,False,False,Alkali Metal,2.2,0.93,5.1391,0.971,371.15,1156,7.0,Davy,1807,1.228,3.0,1.0,[Ne] 3s1,23.0
+11,12.0,Magnesium,Mg,24.305,12.0,12.0,12.0,3.0,2.0,solid,False,True,True,False,False,Alkaline Earth Metal,1.7,1.31,7.6462,1.74,923.15,1363,8.0,Black,1755,1.023,3.0,2.0,[Ne] 3s2,24.0
+12,13.0,Aluminum,Al,26.982,14.0,13.0,13.0,3.0,13.0,solid,False,True,True,False,False,Metal,1.8,1.61,5.9858,2.7,933.4,2792,8.0,Wshler,1827,0.897,3.0,3.0,[Ne] 3s2 3p1,27.0
+13,14.0,Silicon,Si,28.086,14.0,14.0,14.0,3.0,14.0,solid,False,True,False,False,True,Metalloid,1.5,1.9,8.1517,2.33,1683.15,3538,8.0,Berzelius,1824,0.705,3.0,4.0,[Ne] 3s2 3p2,28.0
+14,15.0,Phosphorus,P,30.974,16.0,15.0,15.0,3.0,15.0,solid,False,True,False,True,False,Nonmetal,1.2,2.19,10.4867,1.82,317.25,553,7.0,BranBrand,1669,0.769,3.0,5.0,[Ne] 3s2 3p3,31.0
+15,16.0,Sulfur,S,32.065,16.0,16.0,16.0,3.0,16.0,solid,False,True,False,True,False,Nonmetal,1.1,2.58,10.36,2.07,388.51,717.8,10.0,Prehistoric,Unknown,0.71,3.0,6.0,[Ne] 3s2 3p4,32.0
+16,17.0,Chlorine,Cl,35.453,18.0,17.0,17.0,3.0,17.0,gas,False,True,False,True,False,Halogen,0.97,3.16,12.9676,0.00321,172.31,239.11,11.0,Scheele,1774,0.479,3.0,7.0,[Ne] 3s2 3p5,35.0
+17,18.0,Argon,Ar,39.948,22.0,18.0,18.0,3.0,18.0,gas,False,True,False,True,False,Noble Gas,0.88,,15.7596,0.00178,83.96,87.3,8.0,Rayleigh and Ramsay,1894,0.52,3.0,8.0,[Ne] 3s2 3p6,40.0
+18,19.0,Potassium,K,39.098,20.0,19.0,19.0,4.0,1.0,solid,False,True,True,False,False,Alkali Metal,2.8,0.82,4.3407,0.862,336.5,1032,10.0,Davy,1807,0.757,4.0,1.0,[Ar] 4s1,39.0
+19,20.0,Calcium,Ca,40.078,20.0,20.0,20.0,4.0,2.0,solid,False,True,True,False,False,Alkaline Earth Metal,2.2,1.0,6.1132,1.54,1112.15,1757,14.0,Davy,1808,0.647,4.0,2.0,[Ar] 4s2,40.0
+20,21.0,Scandium,Sc,44.956,24.0,21.0,21.0,4.0,3.0,solid,False,True,True,False,False,Transition Metal,2.1,1.36,6.5615,2.99,1812.15,3109,15.0,Nilson,1878,0.568,4.0,0.0,[Ar] 3d1 4s2,45.0
+21,22.0,Titanium,Ti,47.867,26.0,22.0,22.0,4.0,4.0,solid,False,True,True,False,False,Transition Metal,2,1.54,6.8281,4.54,1933.15,3560,9.0,Gregor,1791,0.523,4.0,0.0,[Ar] 3d2 4s2,48.0
+22,23.0,Vanadium,V,50.942,28.0,23.0,23.0,4.0,5.0,solid,False,True,True,False,False,Transition Metal,1.9,1.63,6.7462,6.11,2175.15,3680,9.0,   del Rio,1801,0.489,4.0,0.0,[Ar] 3d3 4s2,51.0
+23,24.0,Chromium,Cr,51.996,28.0,24.0,24.0,4.0,6.0,solid,False,True,True,False,False,Transition Metal,1.9,1.66,6.7665,7.15,2130.15,2944,9.0,Vauquelin,1797,0.449,4.0,0.0,[Ar] 3d5 4s1,52.0
+24,25.0,Manganese,Mn,54.938,30.0,25.0,25.0,4.0,7.0,solid,False,True,True,False,False,Transition Metal,1.8,1.55,7.434,7.44,1519.15,2334,11.0,"Gahn, Scheele",1774,0.479,4.0,0.0,[Ar] 3d5 4s2,55.0
+25,26.0,Iron,Fe,55.845,30.0,26.0,26.0,4.0,8.0,solid,False,True,True,False,False,Transition Metal,1.7,1.83,7.9024,7.87,1808.15,3134,10.0,Prehistoric,Unknown,0.449,4.0,0.0,[Ar] 3d6 4s2,56.0
+26,27.0,Cobalt,Co,58.933,32.0,27.0,27.0,4.0,9.0,solid,False,True,True,False,False,Transition Metal,1.7,1.88,7.881,8.86,1768.15,3200,14.0,Brandt,1735,0.421,4.0,0.0,[Ar] 3d7 4s2,59.0
+27,28.0,Nickel,Ni,58.69300000000001,31.0,28.0,28.0,4.0,10.0,solid,False,True,True,False,False,Transition Metal,1.6,1.91,7.6398,8.91,1726.15,3186,11.0,Cronstedt,1751,0.444,4.0,0.0,[Ar] 3d8 4s2,59.0
+28,29.0,Copper,Cu,63.54600000000001,35.0,29.0,29.0,4.0,11.0,solid,False,True,True,False,False,Transition Metal,1.6,1.9,7.7264,8.96,1357.75,2835,11.0,Prehistoric,Unknown,0.385,4.0,0.0,[Ar] 3d10 4s1,64.0
+29,30.0,Zinc,Zn,65.38,35.0,30.0,30.0,4.0,12.0,solid,False,True,True,False,False,Transition Metal,1.5,1.65,9.3942,7.13,692.88,1180,15.0,Prehistoric,Unknown,0.387999999999999,4.0,0.0,[Ar] 3d10 4s2,65.0
+30,31.0,Gallium,Ga,69.723,39.0,31.0,31.0,4.0,13.0,solid,False,True,True,False,False,Metal,1.8,1.81,5.9993,5.91,302.91,2477,14.0,de Boisbaudran,1875,0.371,4.0,3.0,[Ar] 3d10 4s2 4p1,70.0
+31,32.0,Germanium,Ge,72.64,41.0,32.0,32.0,4.0,14.0,solid,False,True,False,False,True,Metalloid,1.5,2.01,7.8994,5.32,1211.45,3106,17.0,Winkler,1886,0.32,4.0,4.0,[Ar] 3d10 4s2 4p2,73.0
+32,33.0,Arsenic,As,74.922,42.0,33.0,33.0,4.0,15.0,solid,False,True,False,False,True,Metalloid,1.3,2.18,9.7886,5.78,1090.15,887,14.0,Albertus Magnus,1250,0.328999999999999,4.0,5.0,[Ar] 3d10 4s2 4p3,75.0
+33,34.0,Selenium,Se,78.96,45.0,34.0,34.0,4.0,16.0,solid,False,True,False,True,False,Nonmetal,1.2,2.55,9.7524,4.81,494.15,958,20.0,Berzelius,1817,0.321,4.0,6.0,[Ar] 3d10 4s2 4p4,79.0
+34,35.0,Bromine,Br,79.904,45.0,35.0,35.0,4.0,17.0,liq,False,True,False,True,False,Halogen,1.1,2.96,11.8138,3.12,266.05,332,19.0,Balard,1826,0.474,4.0,7.0,[Ar] 3d10 4s2 4p5,80.0
+35,36.0,Krypton,Kr,83.7979999999999,48.0,36.0,36.0,4.0,18.0,gas,False,True,False,True,False,Noble Gas,1,,13.9996,0.00373,115.93,119.93,23.0,Ramsay and Travers,1898,0.248,4.0,8.0,[Ar] 3d10 4s2 4p6,84.0
+36,37.0,Rubidium,Rb,85.4679999999999,48.0,37.0,37.0,5.0,1.0,solid,False,True,True,False,False,Alkali Metal,3,0.82,4.1771,1.53,312.79,961,20.0,Bunsen and Kirchoff,1861,0.363,5.0,1.0,[Kr] 5s1,85.0
+37,38.0,Strontium,Sr,87.62,50.0,38.0,38.0,5.0,2.0,solid,False,True,True,False,False,Alkaline Earth Metal,2.5,0.95,5.6949,2.64,1042.15,1655,18.0,Davy,1808,0.301,5.0,2.0,[Kr] 5s2,88.0
+38,39.0,Yttrium,Y,88.906,50.0,39.0,39.0,5.0,3.0,solid,False,True,True,False,False,Transition Metal,2.3,1.22,6.2173,4.47,1799.15,3609,21.0,Gadolin,1794,0.298,5.0,0.0,[Kr] 4d1 5s2,89.0
+39,40.0,Zirconium,Zr,91.2239999999999,51.0,40.0,40.0,5.0,4.0,solid,False,True,True,False,False,Transition Metal,2.2,1.33,6.6339,6.51,2125.15,4682,20.0,Klaproth,1789,0.278,5.0,0.0,[Kr] 4d2 5s2,91.0
+40,41.0,Niobium,Nb,92.906,52.0,41.0,41.0,5.0,5.0,solid,False,True,True,False,False,Transition Metal,2.1,1.6,6.7589,8.57,2741.15,5017,24.0,Hatchett,1801,0.265,5.0,0.0,[Kr] 4d4 5s1,93.0
+41,42.0,Molybdenum,Mo,95.96,54.0,42.0,42.0,5.0,6.0,solid,False,True,True,False,False,Transition Metal,2,2.16,7.0924,10.2,2890.15,4912,20.0,Scheele,1778,0.251,5.0,0.0,[Kr] 4d5 5s1,96.0
+42,43.0,Technetium,Tc,98.0,55.0,43.0,43.0,5.0,7.0,artificial,True,False,True,False,False,Transition Metal,2,1.9,7.28,11.5,2473.15,5150,23.0,Perrier and Segr�,1937,Unknown,5.0,0.0,[Kr] 4d5 5s2,98.0
+43,44.0,Ruthenium,Ru,101.07,57.0,44.0,44.0,5.0,8.0,solid,False,True,True,False,False,Transition Metal,1.9,2.2,7.3605,12.4,2523.15,4423,16.0,Klaus,1844,0.238,5.0,0.0,[Kr] 4d7 5s1,101.0
+44,45.0,Rhodium,Rh,102.906,58.0,45.0,45.0,5.0,9.0,solid,False,True,True,False,False,Transition Metal,1.8,2.28,7.4589,12.4,2239.15,3968,20.0,Wollaston,1803,0.243,5.0,0.0,[Kr] 4d8 5s1,103.0
+45,46.0,Palladium,Pd,106.42,60.0,46.0,46.0,5.0,10.0,solid,False,True,True,False,False,Transition Metal,1.8,2.2,8.3369,12,1825.15,3236,21.0,Wollaston,1803,0.244,5.0,0.0,[Kr] 4d10,106.0
+46,47.0,Silver,Ag,107.868,61.0,47.0,47.0,5.0,11.0,solid,False,True,True,False,False,Transition Metal,1.8,1.93,7.5762,10.5,1234.15,2435,27.0,Prehistoric,Unknown,0.235,5.0,0.0,[Kr] 4d10 5s1,108.0
+47,48.0,Cadmium,Cd,112.411,64.0,48.0,48.0,5.0,12.0,solid,False,True,True,False,False,Transition Metal,1.7,1.69,8.9938,8.69,594.33,1040,22.0,Stromeyer,1817,0.231999999999999,5.0,0.0,[Kr] 4d10 5s2,112.0
+48,49.0,Indium,In,114.818,66.0,49.0,49.0,5.0,13.0,solid,False,True,True,False,False,Metal,2,1.78,5.7864,7.31,429.91,2345,34.0,Reich and Richter,1863,0.233,5.0,3.0,[Kr] 4d10 5s2 5p1,115.0
+49,50.0,Tin,Sn,118.71,69.0,50.0,50.0,5.0,14.0,solid,False,True,True,False,False,Metal,1.7,1.96,7.3439,7.29,505.21,2875,28.0,Prehistoric,Unknown,0.228,5.0,4.0,[Kr] 4d10 5s2 5p2,119.0
+50,51.0,Antimony,Sb,121.76,71.0,51.0,51.0,5.0,15.0,solid,False,True,False,False,True,Metalloid,1.5,2.05,8.6084,6.69,904.05,1860,29.0,Early historic times,Unknown,0.207,5.0,5.0,[Kr] 4d10 5s2 5p3,122.0
+51,52.0,Tellurium,Te,127.6,76.0,52.0,52.0,5.0,16.0,solid,False,True,False,False,True,Metalloid,1.4,2.1,9.0096,6.23,722.8,1261,29.0,von Reichenstein,1782,0.201999999999999,5.0,6.0,[Kr] 4d10 5s2 5p4,128.0
+52,53.0,Iodine,I,126.904,74.0,53.0,53.0,5.0,17.0,solid,False,True,False,True,False,Halogen,1.3,2.66,10.4513,4.93,386.65,457.4,24.0,Courtois,1811,0.214,5.0,7.0,[Kr] 4d10 5s2 5p5,127.0
+53,54.0,Xenon,Xe,131.293,77.0,54.0,54.0,5.0,18.0,gas,False,True,False,True,False,Noble Gas,1.2,,12.1298,0.00589,161.45,165.03,31.0,Ramsay and Travers,1898,0.158,5.0,8.0,[Kr] 4d10 5s2 5p6,131.0
+54,55.0,Cesium,Cs,132.905,78.0,55.0,55.0,6.0,1.0,solid,False,True,True,False,False,Alkali Metal,3.3,0.79,3.8939,1.87,301.7,944,22.0,Bunsen and Kirchoff,1860,0.242,6.0,1.0,[Xe] 6s1,133.0
+55,56.0,Barium,Ba,137.327,81.0,56.0,56.0,6.0,2.0,solid,False,True,True,False,False,Alkaline Earth Metal,2.8,0.89,5.2117,3.59,1002.15,2170,25.0,Davy,1808,0.204,6.0,2.0,[Xe] 6s2,137.0
+56,57.0,Lanthanum,La,138.905,82.0,57.0,57.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.7,1.1,5.5769,6.15,1193.15,3737,19.0,Mosander,1839,0.195,6.0,0.0,[Xe] 5d1 6s2,139.0
+57,58.0,Cerium,Ce,140.116,82.0,58.0,58.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.7,1.12,5.5387,6.77,1071.15,3716,19.0,Berzelius,1803,0.192,6.0,0.0,[Xe] 4f1 5d1 6s2,140.0
+58,59.0,Praseodymium,Pr,140.908,82.0,59.0,59.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.7,1.13,5.473,6.77,1204.15,3793,15.0,von Welsbach,1885,0.193,6.0,0.0,[Xe] 4f3 6s2,141.0
+59,60.0,Neodymium,Nd,144.24200000000005,84.0,60.0,60.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.6,1.14,5.525,7.01,1289.15,3347,16.0,von Welsbach,1885,0.19,6.0,0.0,[Xe] 4f4 6s2,144.0
+60,61.0,Promethium,Pm,145.0,84.0,61.0,61.0,6.0,3.0,artificial,True,False,True,False,False,Lanthanide,2.6,1.13,5.582,7.26,1204.15,3273,14.0,Marinsky et al.,1945,Unknown,6.0,0.0,[Xe] 4f5 6s2,145.0
+61,62.0,Samarium,Sm,150.36,88.0,62.0,62.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.6,1.17,5.6437,7.52,1345.15,2067,17.0,Boisbaudran,1879,0.196999999999999,6.0,0.0,[Xe] 4f6 6s2,150.0
+62,63.0,Europium,Eu,151.964,89.0,63.0,63.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.6,1.2,5.6704,5.24,1095.15,1802,21.0,Demarcay,1901,0.182,6.0,0.0,[Xe] 4f7 6s2,152.0
+63,64.0,Gadolinium,Gd,157.25,93.0,64.0,64.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.5,1.2,6.1501,7.9,1585.15,3546,17.0,de Marignac,1880,0.236,6.0,0.0,[Xe] 4f7 5d1 6s2,157.0
+64,65.0,Terbium,Tb,158.925,94.0,65.0,65.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.5,1.2,5.8638,8.23,1630.15,3503,24.0,Mosander,1843,0.182,6.0,0.0,[Xe] 4f9 6s2,159.0
+65,66.0,Dysprosium,Dy,162.5,97.0,66.0,66.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.5,1.22,5.9389,8.55,1680.15,2840,21.0,de Boisbaudran,1886,0.17,6.0,0.0,[Xe] 4f10 6s2,163.0
+66,67.0,Holmium,Ho,164.93,98.0,67.0,67.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.5,1.23,6.0215,8.8,1743.15,2993,29.0,Delafontaine and Soret,1878,0.165,6.0,0.0,[Xe] 4f11 6s2,165.0
+67,68.0,Erbium,Er,167.25900000000001,99.0,68.0,68.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.5,1.24,6.1077,9.07,1795.15,3503,16.0,Mosander,1843,0.168,6.0,0.0,[Xe] 4f12 6s2,167.0
+68,69.0,Thulium,Tm,168.93400000000003,100.0,69.0,69.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.4,1.25,6.1843,9.32,1818.15,2223,18.0,Cleve,1879,0.16,6.0,0.0,[Xe] 4f13 6s2,169.0
+69,70.0,Ytterbium,Yb,173.054,103.0,70.0,70.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.4,1.1,6.2542,6.97,1097.15,1469,16.0,Marignac,1878,0.155,6.0,0.0,[Xe] 4f14 6s2,173.0
+70,71.0,Lutetium,Lu,174.967,104.0,71.0,71.0,6.0,3.0,solid,False,True,True,False,False,Lanthanide,2.3,1.27,5.4259,9.84,1936.15,3675,22.0,Urbain/ von Welsbach,1907,0.154,6.0,0.0,[Xe] 4f14 5d1 6s2,175.0
+71,72.0,Hafnium,Hf,178.49,106.0,72.0,72.0,6.0,4.0,solid,False,True,True,False,False,Transition Metal,2.2,1.3,6.8251,13.3,2500.15,4876,17.0,Coster and von Hevesy,1923,0.144,6.0,0.0,[Xe] 4f14 5d2 6s2,178.0
+72,73.0,Tantalum,Ta,180.947999999999,108.0,73.0,73.0,6.0,5.0,solid,False,True,True,False,False,Transition Metal,2.1,1.5,7.5496,16.7,3269.15,5731,19.0,Ekeberg,1801,0.14,6.0,0.0,[Xe] 4f14 5d3 6s2,181.0
+73,74.0,Wolfram,W,183.84,110.0,74.0,74.0,6.0,6.0,solid,False,True,True,False,False,Transition Metal,2,2.36,7.864,19.3,3680.15,5828,22.0,J. and F. d'Elhuyar,1783,0.132,6.0,0.0,[Xe] 4f14 5d4 6s2,184.0
+74,75.0,Rhenium,Re,186.207,111.0,75.0,75.0,6.0,7.0,solid,False,True,True,False,False,Transition Metal,2,1.9,7.8335,21,3453.15,5869,21.0,"Noddack, Berg, and Tacke",1925,0.136999999999999,6.0,0.0,[Xe] 4f14 5d5 6s2,186.0
+75,76.0,Osmium,Os,190.23,114.0,76.0,76.0,6.0,8.0,solid,False,True,True,False,False,Transition Metal,1.9,2.2,8.4382,22.6,3300.15,5285,19.0,Tennant,1803,0.13,6.0,0.0,[Xe] 4f14 5d6 6s2,190.0
+76,77.0,Iridium,Ir,192.217,115.0,77.0,77.0,6.0,9.0,solid,False,True,True,False,False,Transition Metal,1.9,2.2,8.967,22.6,2716.15,4701,25.0,Tennant,1804,0.131,6.0,0.0,[Xe] 4f14 5d7 6s2,192.0
+77,78.0,Platinum,Pt,195.084,117.0,78.0,78.0,6.0,10.0,solid,False,True,True,False,False,Transition Metal,1.8,2.28,8.9587,21.5,2045.15,4098,32.0,Ulloa/Wood,1735,0.133,6.0,0.0,[Xe] 4f14 5d9 6s1,195.0
+78,79.0,Gold,Au,196.967,118.0,79.0,79.0,6.0,11.0,solid,False,True,True,False,False,Transition Metal,1.8,2.54,9.2255,19.3,1337.73,3129,21.0,Prehistoric,Unknown,0.129,6.0,0.0,[Xe] 4f14 5d10 6s1,197.0
+79,80.0,Mercury,Hg,200.59,121.0,80.0,80.0,6.0,12.0,liq,False,True,True,False,False,Transition Metal,1.8,2.0,10.4375,13.5,234.43,630,26.0,Prehistoric,Unknown,0.14,6.0,0.0,[Xe] 4f14 5d10 6s2,201.0
+80,81.0,Thallium,Tl,204.38299999999904,123.0,81.0,81.0,6.0,13.0,solid,False,True,True,False,False,Metal,2.1,2.04,6.1082,11.9,577.15,1746,28.0,Crookes,1861,0.129,6.0,3.0,[Xe] 4f14 5d10 6s2 6p1,204.0
+81,82.0,Lead,Pb,207.2,125.0,82.0,82.0,6.0,14.0,solid,False,True,True,False,False,Metal,1.8,2.33,7.4167,11.3,600.75,2022,29.0,Prehistoric,Unknown,0.129,6.0,4.0,[Xe] 4f14 5d10 6s2 6p2,207.0
+82,83.0,Bismuth,Bi,208.98,126.0,83.0,83.0,6.0,15.0,solid,False,True,True,False,False,Metal,1.6,2.02,7.2856,9.81,544.67,1837,19.0,Geoffroy the Younger,1753,0.122,6.0,5.0,[Xe] 4f14 5d10 6s2 6p3,209.0
+83,84.0,Polonium,Po,210.0,126.0,84.0,84.0,6.0,16.0,solid,True,True,False,False,True,Metal,1.5,2.0,8.417,9.32,527.15,1235,34.0,Curie,1898,Unknown,6.0,6.0,[Xe] 4f14 5d10 6s2 6p4,210.0
+84,85.0,Astatine,At,210.0,125.0,85.0,85.0,6.0,17.0,solid,True,True,False,True,False,Metalloid,1.4,2.2,9.3,7,575.15,610,21.0,Corson et al.,1940,Unknown,6.0,7.0,[Xe] 4f14 5d10 6s2 6p5,210.0
+85,86.0,Radon,Rn,222.0,136.0,86.0,86.0,6.0,18.0,gas,True,True,True,False,False,Noble Gas,1.3,,10.7485,0.00972999999999999,202.15,211.3,20.0,Dorn,1900,0.094,6.0,8.0,[Xe] 4f14 5d10 6s2 6p6,222.0
+86,87.0,Francium,Fr,223.0,136.0,87.0,87.0,7.0,1.0,solid,True,True,True,False,False,Alkali Metal,Unknown,0.7,4.0727,1.87,300.15,950,21.0,Perey,1939,Unknown,7.0,1.0,[Rn] 7s1,223.0
+87,88.0,Radium,Ra,226.0,138.0,88.0,88.0,7.0,2.0,solid,True,True,True,False,False,Alkaline Earth Metal,Unknown,0.9,5.2784,5.5,973.15,2010,15.0,Pierre and Marie Curie,1898,Unknown,7.0,2.0,[Rn] 7s2,226.0
+88,89.0,Actinium,Ac,227.0,138.0,89.0,89.0,7.0,3.0,solid,True,True,True,False,False,Actinide,Unknown,1.1,5.17,10.1,1323.15,3471,11.0,Debierne/Giesel,1899,0.12,7.0,0.0,[Rn] 6d1 7s2,227.0
+89,90.0,Thorium,Th,232.03799999999904,142.0,90.0,90.0,7.0,3.0,solid,True,True,True,False,False,Actinide,Unknown,1.3,6.3067,11.7,2028.15,5061,12.0,Berzelius,1828,0.113,7.0,0.0,[Rn] 6d2 7s2,232.0
+90,91.0,Protactinium,Pa,231.035999999999,140.0,91.0,91.0,7.0,3.0,solid,True,True,True,False,False,Actinide,Unknown,1.5,5.89,15.4,1873.15,4300,14.0,Hahn and Meitner,1917,Unknown,7.0,0.0,[Rn] 5f2 6d1 7s2,231.0
+91,92.0,Uranium,U,238.02900000000002,146.0,92.0,92.0,7.0,3.0,solid,True,True,True,False,False,Actinide,Unknown,1.38,6.1941,19,1405.15,4404,15.0,Peligot,1841,0.115999999999999,7.0,0.0,[Rn] 5f3 6d1 7s2,238.0
+92,93.0,Neptunium,Np,237.0,144.0,93.0,93.0,7.0,3.0,artificial,True,False,True,False,False,Actinide,Unknown,1.36,6.2657,20.5,913.15,4273,153.0,McMillan and Abelson,1940,Unknown,7.0,0.0,[Rn] 5f4 6d1 7s2,237.0
+93,94.0,Plutonium,Pu,244.0,150.0,94.0,94.0,7.0,3.0,artificial,True,False,True,False,False,Actinide,Unknown,1.28,6.0262,19.8,913.15,3501,163.0,Seaborg et al.,1940,Unknown,7.0,0.0,[Rn] 5f6 7s2,244.0
+94,95.0,Americium,Am,243.0,148.0,95.0,95.0,7.0,3.0,artificial,True,False,True,False,False,Actinide,Unknown,1.3,5.9738,13.7,1267.15,2880,133.0,Seaborg et al.,1944,Unknown,7.0,0.0,[Rn] 5f7 7s2,243.0
+95,96.0,Curium,Cm,247.0,151.0,96.0,96.0,7.0,3.0,artificial,True,False,True,False,False,Actinide,Unknown,1.3,5.9915,13.5,1340.15,3383,133.0,Seaborg et al.,1944,Unknown,7.0,0.0,[Rn] 5f7 6d1 7s2,247.0
+96,97.0,Berkelium,Bk,247.0,150.0,97.0,97.0,7.0,3.0,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.1979,14.8,1259.15,983,83.0,Seaborg et al.,1949,Unknown,7.0,0.0,[Rn] 5f9 7s2,247.0
+97,98.0,Californium,Cf,251.0,153.0,98.0,98.0,7.0,3.0,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.2817,15.1,1925.15,1173,123.0,Seaborg et al.,1950,Unknown,7.0,0.0,[Rn] 5f10 7s2,251.0
+98,99.0,Einsteinium,Es,252.0,153.0,99.0,99.0,7.0,3.0,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.42,13.5,1133.15,Unknown,123.0,Ghiorso et al.,1952,Unknown,7.0,0.0,[Rn] 5f11 7s2,252.0
+99,100.0,Fermium,Fm,257.0,157.0,100.0,100.0,7.0,3.0,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.5,Unknown,Unknown,Unknown,103.0,Ghiorso et al.,1953,Unknown,7.0,0.0,[Rn] 5f12 7s2,257.0
+100,101.0,Mendelevium,Md,258.0,157.0,101.0,101.0,7.0,3.0,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.58,Unknown,Unknown,Unknown,33.0,Ghiorso et al.,1955,Unknown,7.0,0.0,[Rn] 5f13 7s2,258.0
+101,102.0,Nobelium,No,259.0,157.0,102.0,102.0,7.0,3.0,artificial,True,False,True,False,False,Actinide,Unknown,1.3,6.65,Unknown,Unknown,Unknown,73.0,Ghiorso et al.,1958,Unknown,7.0,0.0,[Rn] 5f14 7s2,259.0
+102,103.0,Lawrencium,Lr,262.0,159.0,103.0,103.0,7.0,3.0,artificial,True,False,True,False,False,Actinide,Unknown,,Unknown,Unknown,Unknown,Unknown,203.0,Ghiorso et al.,1961,Unknown,7.0,0.0,[Rn] 5f14 7s2 7p1,262.0
+103,104.0,Rutherfordium,Rf,261.0,157.0,104.0,104.0,7.0,4.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,18.1,Unknown,Unknown,,Ghiorso et al.,1969,Unknown,7.0,0.0,[Rn] 5f14 6d2 7s2,261.0
+104,105.0,Dubnium,Db,262.0,157.0,105.0,105.0,7.0,5.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,39,Unknown,Unknown,,Ghiorso et al.,1970,Unknown,7.0,0.0,[Rn] 5f14 6d3 7s2,262.0
+105,106.0,Seaborgium,Sg,266.0,160.0,106.0,106.0,7.0,6.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,35,Unknown,Unknown,,Ghiorso et al.,1974,Unknown,7.0,0.0,[Rn] 5f14 6d4 7s2,266.0
+106,107.0,Bohrium,Bh,264.0,157.0,107.0,107.0,7.0,7.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,37,Unknown,Unknown,,Armbruster and M�nzenberg,1981,Unknown,7.0,0.0,[Rn] 5f14 6d5 7s2,264.0
+107,108.0,Hassium,Hs,267.0,159.0,108.0,108.0,7.0,8.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,41,Unknown,Unknown,,Armbruster and M�nzenberg,1983,Unknown,7.0,0.0,[Rn] 5f14 6d6 7s2,267.0
+108,109.0,Meitnerium,Mt,268.0,159.0,109.0,109.0,7.0,9.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,35,Unknown,Unknown,,"GSI, Darmstadt, West Germany",1982,Unknown,7.0,0.0,[Rn] 5f14 6d7 7s2,268.0
+109,110.0,Darmstadtium ,Ds ,271.0,161.0,110.0,110.0,7.0,10.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,,Unknown,1994,Unknown,7.0,0.0,[Rn] 5f14 6d9 7s1,271.0
+110,111.0,Roentgenium ,Rg ,272.0,161.0,111.0,111.0,7.0,11.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,,Unknown,1994,Unknown,7.0,0.0,[Rn] 5f14 6d10 7s1,272.0
+111,112.0,Copernicium ,Cn ,285.0,173.0,112.0,112.0,7.0,12.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,,Unknown,1996,Unknown,7.0,0.0,[Rn] 5f14 6d10 7s2,285.0
+112,113.0,Nihonium,Nh,284.0,171.0,113.0,113.0,7.0,13.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,,Unknown,2004,Unknown,7.0,3.0,[Rn] 5f14 6d10 7s2 7p1,284.0
+113,114.0,Flerovium,Fl,289.0,175.0,114.0,114.0,7.0,14.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,,Unknown,1999,Unknown,7.0,4.0,[Rn] 5f14 6d10 7s2 7p2,289.0
+114,115.0,Moscovium,Mc,288.0,173.0,115.0,115.0,7.0,15.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,,Unknown,2010,Unknown,7.0,5.0,[Rn] 5f14 6d10 7s2 7p3,288.0
+115,116.0,Livermorium,Lv,292.0,176.0,116.0,116.0,7.0,16.0,artificial,True,False,True,False,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,,Unknown,2000,Unknown,7.0,6.0,[Rn] 5f14 6d10 7s2 7p4,292.0
+116,117.0,Tennessine,Ts,295.0,178.0,117.0,117.0,7.0,17.0,artificial,True,False,False,True,False,Transactinide,Unknown,,Unknown,Unknown,Unknown,Unknown,,Unknown,2010,Unknown,7.0,7.0,[Rn] 5f14 6d10 7s2 7p5,295.0
+117,118.0,Oganesson,Og,294.0,176.0,118.0,118.0,7.0,18.0,artificial,True,False,False,True,False,Noble Gas,Unknown,,Unknown,Unknown,Unknown,Unknown,,Unknown,2006,Unknown,7.0,8.0,[Rn] 5f14 6d10 7s2 7p6,294.0
