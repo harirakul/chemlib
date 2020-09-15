@@ -4,7 +4,7 @@ Chemical Compounds
 Making a Compound
 -----------------
 
-Instantiate a ```chemlib.Compound``` object with a list of Element symbols
+Instantiate a ``chemlib.Compound`` object with a list of Element symbols.
 
 .. code:: python
 
