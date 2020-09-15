@@ -36,6 +36,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chemical Compounds" href="compounds.html" />
     <link rel="prev" title="chemlib: a pure Python chemistry library" href="index.html" /> 
 </head>
 
@@ -84,8 +85,13 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Core Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#periodic-table">Periodic Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elements">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-constants">Other Constants</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="compounds.html">Chemical Compounds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reactions.html">Chemical Reactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stoichiometry.html">Stoichiometry</a></li>
 </ul>
 
             
@@ -155,27 +161,37 @@
 <h1>Core Data<a class="headerlink" href="#core-data" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="periodic-table">
 <h2>Periodic Table<a class="headerlink" href="#periodic-table" title="Permalink to this headline">¶</a></h2>
-<p>pandas Dataframe that contains the necessary background data.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">chemlib</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">chemlib</span><span class="o">.</span><span class="n">pte</span>
-<span class="go">     Unnamed: 0  AtomicNumber  ...                  Config MassNumber</span>
-<span class="go">0             0           1.0  ...                     1s1        1.0</span>
-<span class="go">1             1           2.0  ...                     1s2        4.0</span>
-<span class="go">2             2           3.0  ...                [He] 2s1        7.0</span>
-<span class="go">3             3           4.0  ...                [He] 2s2        9.0</span>
-<span class="go">4             4           5.0  ...            [He] 2s2 2p1       11.0</span>
-<span class="go">..          ...           ...  ...                     ...        ...</span>
-<span class="go">113         113         114.0  ...  [Rn] 5f14 6d10 7s2 7p2      289.0</span>
-<span class="go">114         114         115.0  ...  [Rn] 5f14 6d10 7s2 7p3      288.0</span>
-<span class="go">115         115         116.0  ...  [Rn] 5f14 6d10 7s2 7p4      292.0</span>
-<span class="go">116         116         117.0  ...  [Rn] 5f14 6d10 7s2 7p5      295.0</span>
-<span class="go">117         117         118.0  ...  [Rn] 5f14 6d10 7s2 7p6      294.0</span>
-</pre></div>
-</div>
-<p>[118 rows x 31 columns]</p>
+<dl class="py class">
+<dt id="chemlib.chemistry.PeriodicTable">
+<em class="property">class </em><code class="sig-prename descclassname">chemlib.chemistry.</code><code class="sig-name descname">PeriodicTable</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemlib/chemistry.html#PeriodicTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemlib.chemistry.PeriodicTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pandas.Dataframe object that contains periodic table data.</p>
+</dd></dl>
+
 <p>Columns of the Periodic Table (properties of each element)</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">chemlib</span><span class="o">.</span><span class="n">pte</span><span class="p">)</span>   <span class="c1">#Column names</span>
 <span class="go">[&#39;AtomicNumber&#39;, &#39;Element&#39;, &#39;Symbol&#39;, &#39;AtomicMass&#39;, &#39;Neutrons&#39;, &#39;Protons&#39;, &#39;Electrons&#39;, &#39;Period&#39;, &#39;Group&#39;, &#39;Phase&#39;, &#39;Radioactive&#39;, &#39;Natural&#39;, &#39;Metal&#39;, &#39;Nonmetal&#39;, &#39;Metalloid&#39;, &#39;Type&#39;, &#39;AtomicRadius&#39;, &#39;Electronegativity&#39;, &#39;FirstIonization&#39;, &#39;Density&#39;, &#39;MeltingPoint&#39;, &#39;BoilingPoint&#39;, &#39;Isotopes&#39;, &#39;Discoverer&#39;, &#39;Year&#39;, &#39;SpecificHeat&#39;, &#39;Shells&#39;, &#39;Valence&#39;, &#39;Config&#39;, &#39;MassNumber&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="elements">
+<h2>Elements<a class="headerlink" href="#elements" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Element</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xenon</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="s1">&#39;Xe&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xenon</span><span class="o">.</span><span class="n">properties</span>
+<span class="go">{&#39;AtomicNumber&#39;: 54.0, &#39;Element&#39;: &#39;Xenon&#39;, &#39;Symbol&#39;: &#39;Xe&#39;, &#39;AtomicMass&#39;: 131.293, &#39;Neutrons&#39;: 77.0, &#39;Protons&#39;: 54.0, &#39;Electrons&#39;: 54.0, &#39;Period&#39;: 5.0, &#39;Group&#39;: 18.0, &#39;Phase&#39;: &#39;gas&#39;, &#39;Radioactive&#39;: False, &#39;Natural&#39;: True, &#39;Metal&#39;: False, &#39;Nonmetal&#39;: True, &#39;Metalloid&#39;: False, &#39;Type&#39;: &#39;Noble Gas&#39;, &#39;AtomicRadius&#39;: &#39;1.2&#39;, &#39;Electronegativity&#39;: nan, &#39;FirstIonization&#39;: &#39;12.1298&#39;, &#39;Density&#39;: &#39;0.00589&#39;, &#39;MeltingPoint&#39;: &#39;161.45&#39;, &#39;BoilingPoint&#39;: &#39;165.03&#39;, &#39;Isotopes&#39;: 31.0, &#39;Discoverer&#39;: &#39;Ramsay and Travers&#39;, &#39;Year&#39;: &#39;1898&#39;, &#39;SpecificHeat&#39;: &#39;0.158&#39;, &#39;Shells&#39;: 5.0, &#39;Valence&#39;: 8.0, &#39;Config&#39;: &#39;[Kr] 4d10 5s2 5p6&#39;, &#39;MassNumber&#39;: 131.0}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xenon</span><span class="o">.</span><span class="n">AtomicMass</span>
+<span class="go">131.293</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xenon</span><span class="o">.</span><span class="n">FirstIonization</span>
+<span class="go">&#39;12.1298&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-constants">
+<h2>Other Constants<a class="headerlink" href="#other-constants" title="Permalink to this headline">¶</a></h2>
+<p>Avogadro’s Number</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">chemlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chemlib</span><span class="o">.</span><span class="n">AVOGADROS_NUMBER</span>
+<span class="go">6.02e+23</span>
 </pre></div>
 </div>
 </div>
@@ -188,6 +204,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="compounds.html" class="btn btn-neutral float-right" title="Chemical Compounds" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="chemlib: a pure Python chemistry library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

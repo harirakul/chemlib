@@ -1,8 +1,5 @@
 .. include:: ../README.rst
 
-.. automodule:: chemlib.chemistry
-    :members:
-    
 Contents
 --------
 
@@ -10,6 +7,9 @@ Contents
    :maxdepth: 2
 
    core
+   compounds
+   reactions
+   stoichiometry
 
 
 Indices and tables
