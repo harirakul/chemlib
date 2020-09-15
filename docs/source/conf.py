@@ -13,9 +13,9 @@
 import sphinx_rtd_theme
 from recommonmark.parser import CommonMarkParser
 
-# import os
-# import sys
-#  sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('..'))
 
 
 # -- Project information -----------------------------------------------------
@@ -38,6 +38,8 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.viewcode",
     'recommonmark',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.coverage'
 ]
 
 autodoc_member_order = 'bysource'
