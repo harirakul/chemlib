@@ -22,8 +22,6 @@ Indices and tables
 chemlib: a pure Python chemistry library
 ========================================
 
-|license|
-
 An easy-to-use library that quickly performs chemistry calculations.
 
 Installation

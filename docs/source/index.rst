@@ -1,4 +1,4 @@
-.. include:: ../README.md
+.. include:: ../README.rst
 
 Contents
 --------
@@ -10,8 +10,6 @@ Contents
    ...
 
 
-chemlib documentation
-========================================
 Indices and tables
 ==================
 
