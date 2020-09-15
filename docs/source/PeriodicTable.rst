@@ -1,1 +1,2 @@
-Periodic Table
+chemlib.PeriodicTable
+========================================
