@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>chemlib.chemistry &mdash; chemlib v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> chemlib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../core.html">Core Data</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">chemlib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>chemlib.chemistry</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for chemlib.chemistry</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sympy</span>
+<span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">this_dir</span><span class="p">,</span> <span class="n">this_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="n">DATA_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">this_dir</span><span class="p">,</span> <span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="s2">&quot;PTE_updated.csv&quot;</span><span class="p">)</span>
+
+<span class="n">SUB</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;0123456789&quot;</span><span class="p">,</span> <span class="s2">&quot;₀₁₂₃₄₅₆₇₈₉&quot;</span><span class="p">)</span>
+<span class="n">AVOGADROS_NUMBER</span> <span class="o">=</span> <span class="mf">6.02e+23</span>
+
+<div class="viewcode-block" id="PeriodicTable"><a class="viewcode-back" href="../../core.html#chemlib.chemistry.PeriodicTable">[docs]</a><span class="k">class</span> <span class="nc">PeriodicTable</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A pandas.Dataframe object that contains periodic table data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PeriodicTable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATA_PATH</span><span class="p">))</span>
+        
+    <span class="k">def</span> <span class="nf">get_element_properties_from_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Symbol&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">symbol</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]])</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span></div>
+
+<span class="n">pte</span> <span class="o">=</span> <span class="n">PeriodicTable</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Element</span><span class="p">:</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">pte</span><span class="o">.</span><span class="n">get_element_properties_from_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+
+<span class="k">class</span> <span class="nc">Compound</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom_list</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atom_list</span> <span class="o">=</span> <span class="n">atom_list</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">types</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atom_list</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">occurences</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">types</span><span class="p">,</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">atom_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">types</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">formula</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">types</span><span class="p">,</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">atom_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">types</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">formula</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">formula</span><span class="p">],</span> <span class="p">[])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">formula</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">formula</span><span class="p">]))</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">SUB</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">Element</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atom_list</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">molar_mass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">mass</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
+            <span class="n">mass</span> <span class="o">+=</span> <span class="n">element</span><span class="o">.</span><span class="n">AtomicMass</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">percentage_by_mass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(((</span><span class="bp">self</span><span class="o">.</span><span class="n">occurences</span><span class="p">[</span><span class="n">element</span><span class="p">]</span> <span class="o">*</span> <span class="n">Element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span><span class="o">.</span><span class="n">AtomicMass</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">molar_mass</span><span class="p">())</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">get_amounts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="s1">&#39;grams&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">and</span> <span class="s1">&#39;moles&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">and</span> <span class="s1">&#39;molecules&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Expecting one argument: either grams= , moles= , or molecules=&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got {len(kwargs)} arguments when expecting 1. Use either grams= , moles=, or molecules=&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s1">&#39;grams&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="n">grams</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;grams&#39;</span><span class="p">]</span>
+            <span class="n">mols</span> <span class="o">=</span> <span class="n">grams</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">molar_mass</span><span class="p">()</span>
+            <span class="n">molecules</span> <span class="o">=</span> <span class="n">mols</span><span class="o">*</span><span class="n">AVOGADROS_NUMBER</span>
+
+        <span class="k">elif</span> <span class="s1">&#39;moles&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="n">mols</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;moles&#39;</span><span class="p">]</span>
+            <span class="n">grams</span> <span class="o">=</span> <span class="n">mols</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">molar_mass</span><span class="p">()</span>
+            <span class="n">molecules</span> <span class="o">=</span> <span class="n">mols</span><span class="o">*</span><span class="n">AVOGADROS_NUMBER</span>
+        
+        <span class="k">elif</span> <span class="s1">&#39;molecules&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="n">molecules</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;molecules&#39;</span><span class="p">]</span>
+            <span class="n">mols</span> <span class="o">=</span> <span class="n">molecules</span> <span class="o">/</span> <span class="n">AVOGADROS_NUMBER</span>
+            <span class="n">grams</span> <span class="o">=</span> <span class="n">mols</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">molar_mass</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;Compound&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">formula</span><span class="p">,</span>
+            <span class="s1">&#39;Grams&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">grams</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+            <span class="s1">&#39;Moles&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> 
+            <span class="s1">&#39;Molecules&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:0.3e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">molecules</span><span class="p">))</span>
+        <span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Reaction</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reactants</span><span class="p">,</span> <span class="n">products</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactants</span> <span class="o">=</span> <span class="n">reactants</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">products</span> <span class="o">=</span> <span class="n">products</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compounds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactants</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">products</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactant_formulas</span> <span class="o">=</span> <span class="p">[</span><span class="n">reactant</span><span class="o">.</span><span class="n">formula</span> <span class="k">for</span> <span class="n">reactant</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactants</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">product_formulas</span> <span class="o">=</span> <span class="p">[</span><span class="n">product</span><span class="o">.</span><span class="n">formula</span> <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_formula</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactant_occurences</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">product_occurences</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">reactants</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">reactant</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span> 
+                <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">reactant</span><span class="o">.</span><span class="n">occurences</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactants</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactant_occurences</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">reactant_occurences</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">reactant</span><span class="o">.</span><span class="n">occurences</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">reactant_occurences</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="n">reactant</span><span class="o">.</span><span class="n">occurences</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">product_occurences</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">product_occurences</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">reactant</span><span class="o">.</span><span class="n">occurences</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">product_occurences</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="n">reactant</span><span class="o">.</span><span class="n">occurences</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                            
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactant_occurences</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">product_occurences</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_balanced</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_balanced</span> <span class="o">=</span> <span class="kc">False</span>
+        
+    <span class="k">def</span> <span class="nf">update_formula</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">formula</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactants</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">formula</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">formula</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">formula</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; --&gt; &#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">formula</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">formula</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">frequencies</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">formula</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">formula</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constituents</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">formula</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">formula</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constituents</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">formula</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frequencies</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span>
+
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequencies</span><span class="p">[</span><span class="s1">&#39; --&gt; &#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constituents</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39; --&gt; &#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39; + &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">formula</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+ 1 &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;  +&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">balance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_balanced</span><span class="p">:</span>
+            <span class="n">reference_vector</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">seen_formulas</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">reactants</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">]:</span>
+                <span class="k">for</span> <span class="n">compound</span> <span class="ow">in</span> <span class="n">j</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">compound</span><span class="o">.</span><span class="n">elements</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">Symbol</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen_formulas</span><span class="p">:</span>
+                            <span class="n">seen_formulas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">Symbol</span><span class="p">)</span>
+                            <span class="n">reference_vector</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+            <span class="n">compound_formulas</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">compounds</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">compounds</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">j</span><span class="o">.</span><span class="n">formula</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">compound_formulas</span><span class="p">:</span>
+                    <span class="n">compound_formulas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="o">.</span><span class="n">formula</span><span class="p">)</span>
+                    <span class="n">compounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+
+            <span class="n">matrix</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">compound</span> <span class="ow">in</span> <span class="n">compounds</span><span class="p">:</span>
+                <span class="n">col</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">seen_formulas</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">compound</span><span class="o">.</span><span class="n">formula</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">product_formulas</span><span class="p">:</span>
+                            <span class="n">col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">compound</span><span class="o">.</span><span class="n">occurences</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compound</span><span class="o">.</span><span class="n">occurences</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">matrix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+            
+            <span class="n">matrix</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span><span class="o">.</span><span class="n">rref</span><span class="p">()</span> <span class="c1">#Row - echelon form</span>
+            <span class="n">solutions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="n">matrix</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]]))</span>
+            <span class="n">solutions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span> <span class="k">else</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">solutions</span><span class="p">])</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+            <span class="n">solutions</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">solutions</span><span class="p">]</span>
+            <span class="n">denominators</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">denominator</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Fraction</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">limit_denominator</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">solutions</span><span class="p">]]</span>
+            <span class="n">solutions</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="n">denominators</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">solutions</span><span class="p">]</span>
+            <span class="n">solutions</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">denominators</span><span class="p">)</span>
+            <span class="k">while</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">solutions</span><span class="p">:</span>
+                <span class="n">solutions</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="n">final_reactants</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">final_products</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">for</span> <span class="n">sol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">compounds</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">compounds</span><span class="p">[</span><span class="n">sol</span><span class="p">]</span><span class="o">.</span><span class="n">formula</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactant_formulas</span><span class="p">:</span>
+                    <span class="n">final_reactants</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">compounds</span><span class="p">[</span><span class="n">sol</span><span class="p">]]</span><span class="o">*</span><span class="n">solutions</span><span class="p">[</span><span class="n">sol</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="n">compounds</span><span class="p">[</span><span class="n">sol</span><span class="p">]</span><span class="o">.</span><span class="n">formula</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">product_formulas</span><span class="p">:</span>
+                    <span class="n">final_products</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">compounds</span><span class="p">[</span><span class="n">sol</span><span class="p">]]</span><span class="o">*</span><span class="n">solutions</span><span class="p">[</span><span class="n">sol</span><span class="p">])</span>
+            
+            <span class="n">final_reactants</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">final_reactants</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="n">final_products</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">final_products</span><span class="p">,</span> <span class="p">[])</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">reactants</span> <span class="o">=</span> <span class="n">final_reactants</span><span class="p">,</span> <span class="n">products</span> <span class="o">=</span> <span class="n">final_products</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">get_amounts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">compound_number</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_balanced</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">balance</span><span class="p">()</span>
+
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="s1">&#39;grams&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">and</span> <span class="s1">&#39;moles&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">and</span> <span class="s1">&#39;molecules&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Expecting one argument: either grams= , moles= , or molecules=&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got {len(kwargs)} arguments when expecting 1. Use either grams= , moles=, or molecules=&quot;</span><span class="p">)</span>
+
+        <span class="n">seen_formulas</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">compound_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">compound</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">compounds</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">compound</span><span class="o">.</span><span class="n">formula</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen_formulas</span><span class="p">:</span>
+                <span class="n">compound_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compound</span><span class="p">)</span>
+            <span class="n">seen_formulas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compound</span><span class="o">.</span><span class="n">formula</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">compound_number</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">compound_list</span><span class="p">)</span> <span class="ow">or</span> <span class="n">compound_number</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The reaction has {len(compound_list)} compounds. Please use a compound number between 1 and {len(compound_list)}, inclusive.&quot;</span><span class="p">)</span>
+        
+        <span class="n">seen_set</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">formula</span> <span class="ow">in</span> <span class="n">seen_formulas</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">formula</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen_set</span><span class="p">:</span>
+                <span class="n">seen_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span>
+
+        <span class="n">compound_frequency</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="n">seen_formulas</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">seen_set</span><span class="p">}</span>
+        <span class="n">index_compound</span> <span class="o">=</span> <span class="n">compound_list</span><span class="p">[</span><span class="n">compound_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">index_amounts</span> <span class="o">=</span> <span class="n">index_compound</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">index_moles</span> <span class="o">=</span> <span class="n">index_amounts</span><span class="p">[</span><span class="s1">&#39;Moles&#39;</span><span class="p">]</span>
+        <span class="n">index_multiplier</span> <span class="o">=</span> <span class="n">compound_frequency</span><span class="p">[</span><span class="n">index_compound</span><span class="o">.</span><span class="n">formula</span><span class="p">]</span>
+        <span class="n">multipliers</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">compound</span> <span class="ow">in</span> <span class="n">compound_list</span><span class="p">:</span>
+            <span class="n">multiplier</span> <span class="o">=</span> <span class="n">compound_frequency</span><span class="p">[</span><span class="n">compound</span><span class="o">.</span><span class="n">formula</span><span class="p">]</span>
+            <span class="n">multipliers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">multiplier</span><span class="o">/</span><span class="n">index_multiplier</span><span class="p">)</span>
+        
+        <span class="n">amounts</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">compound_list</span><span class="p">)):</span>
+            <span class="n">amounts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compound_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">moles</span> <span class="o">=</span> <span class="n">index_moles</span><span class="o">*</span><span class="n">multipliers</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+        <span class="n">amounts</span><span class="p">[</span><span class="n">compound_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">index_amounts</span>
+        <span class="k">return</span> <span class="n">amounts</span>
+        
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pte</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">properties</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Hari Ambethkar
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
