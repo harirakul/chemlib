@@ -12,6 +12,7 @@
 #
 import sphinx_rtd_theme
 from recommonmark.parser import CommonMarkParser
+import m2r
 # import os
 # import sys
 #  sys.path.insert(0, os.path.abspath('.'))
