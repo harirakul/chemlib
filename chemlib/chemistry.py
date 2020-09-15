@@ -12,6 +12,9 @@ SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 AVOGADROS_NUMBER = 6.02e+23
 
 class PeriodicTable(pd.DataFrame):
+    """
+    A pandas.Dataframe object that contains periodic table data.
+    """
 
     def __init__(self, *args, **kwargs):
         super(PeriodicTable, self).__init__(pd.read_csv(DATA_PATH))
