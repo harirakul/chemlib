@@ -165,6 +165,23 @@
 <dt id="chemlib.chemistry.PeriodicTable">
 <em class="property">class </em><code class="sig-prename descclassname">chemlib.chemistry.</code><code class="sig-name descname">PeriodicTable</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemlib/chemistry.html#PeriodicTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemlib.chemistry.PeriodicTable" title="Permalink to this definition">¶</a></dt>
 <dd><p>A pandas.Dataframe object that contains periodic table data.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">chemlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chemlib</span><span class="o">.</span><span class="n">pte</span>
+<span class="go">     Unnamed: 0  AtomicNumber  ...                  Config MassNumber</span>
+<span class="go">0             0           1.0  ...                     1s1        1.0</span>
+<span class="go">1             1           2.0  ...                     1s2        4.0</span>
+<span class="go">2             2           3.0  ...                [He] 2s1        7.0</span>
+<span class="go">3             3           4.0  ...                [He] 2s2        9.0</span>
+<span class="go">4             4           5.0  ...            [He] 2s2 2p1       11.0</span>
+<span class="go">..          ...           ...  ...                     ...        ...</span>
+<span class="go">113         113         114.0  ...  [Rn] 5f14 6d10 7s2 7p2      289.0</span>
+<span class="go">114         114         115.0  ...  [Rn] 5f14 6d10 7s2 7p3      288.0</span>
+<span class="go">115         115         116.0  ...  [Rn] 5f14 6d10 7s2 7p4      292.0</span>
+<span class="go">116         116         117.0  ...  [Rn] 5f14 6d10 7s2 7p5      295.0</span>
+<span class="go">117         117         118.0  ...  [Rn] 5f14 6d10 7s2 7p6      294.0</span>
+<span class="go">[118 rows x 31 columns]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <p>Columns of the Periodic Table (properties of each element)</p>
