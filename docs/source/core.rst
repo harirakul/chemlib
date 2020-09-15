@@ -30,3 +30,14 @@ Columns of the Periodic Table (properties of each element)
 .. code:: python
 >>> list(chemlib.pte)   #Column names
 ['AtomicNumber', 'Element', 'Symbol', 'AtomicMass', 'Neutrons', 'Protons', 'Electrons', 'Period', 'Group', 'Phase', 'Radioactive', 'Natural', 'Metal', 'Nonmetal', 'Metalloid', 'Type', 'AtomicRadius', 'Electronegativity', 'FirstIonization', 'Density', 'MeltingPoint', 'BoilingPoint', 'Isotopes', 'Discoverer', 'Year', 'SpecificHeat', 'Shells', 'Valence', 'Config', 'MassNumber']
+
+Other Constants
+---------------
+
+Avogadro's Number
+
+.. code:: python
+
+>>> import chemlib
+>>> chemlib.AVOGADROS_NUMBER
+6.02e+23
