@@ -193,6 +193,52 @@ class Reaction:
         else:
             return True
 
+    def get_amounts(self, compound_number, **kwargs):
+        if not self.is_balanced:
+            self.balance()
+
+        keys = kwargs.keys()
+
+        if 'grams' not in keys and 'moles' not in keys and 'molecules' not in keys:
+            raise TypeError('Expecting one argument: either grams= , moles= , or molecules=')
+
+        if len(kwargs) > 1:
+            raise TypeError(f"Got {len(kwargs)} arguments when expecting 1. Use either grams= , moles=, or molecules=")
+
+        seen_formulas = []
+        compound_list = []
+        for compound in self.compounds:
+            if compound.formula not in seen_formulas:
+                compound_list.append(compound)
+            seen_formulas.append(compound.formula)
+        
+        if compound_number > len(compound_list) or compound_number < 1:
+            raise ValueError(f"The reaction has {len(compound_list)} compounds. Please use a compound number between 1 and {len(compound_list)}, inclusive.")
+        
+        seen_set = []
+        for formula in seen_formulas:
+            if formula not in seen_set:
+                seen_set.append(formula)
+
+        compound_frequency = {i:seen_formulas.count(i) for i in seen_set}
+        index_compound = compound_list[compound_number - 1]
+        index_amounts = index_compound.get_amounts(**kwargs)
+        index_moles = index_amounts['Moles']
+        index_multiplier = compound_frequency[index_compound.formula]
+        multipliers = []
+
+        for compound in compound_list:
+            multiplier = compound_frequency[compound.formula]
+            multipliers.append(multiplier/index_multiplier)
+        
+        amounts = []
+
+        for i in range(len(compound_list)):
+            amounts.append(compound_list[i].get_amounts(moles = index_moles*multipliers[i]))
+
+        amounts[compound_number - 1] = index_amounts
+        return amounts
+        
 if __name__ == '__main__':
     print(pte)
     b = Element('B')
