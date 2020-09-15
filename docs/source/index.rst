@@ -7,6 +7,8 @@
    :maxdepth: 2
    :caption: Contents:
 
+   PeriodicTable
+
 
 chemlib documentation
 ========================================
