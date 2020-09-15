@@ -31,6 +31,24 @@ Columns of the Periodic Table (properties of each element)
 >>> list(chemlib.pte)   #Column names
 ['AtomicNumber', 'Element', 'Symbol', 'AtomicMass', 'Neutrons', 'Protons', 'Electrons', 'Period', 'Group', 'Phase', 'Radioactive', 'Natural', 'Metal', 'Nonmetal', 'Metalloid', 'Type', 'AtomicRadius', 'Electronegativity', 'FirstIonization', 'Density', 'MeltingPoint', 'BoilingPoint', 'Isotopes', 'Discoverer', 'Year', 'SpecificHeat', 'Shells', 'Valence', 'Config', 'MassNumber']
 
+Elements
+--------
+
+.. code:: python
+
+>>> from chemlib import Element
+
+>>> xenon = Element('Xe')
+
+>>> xenon.properties
+{'AtomicNumber': 54.0, 'Element': 'Xenon', 'Symbol': 'Xe', 'AtomicMass': 131.293, 'Neutrons': 77.0, 'Protons': 54.0, 'Electrons': 54.0, 'Period': 5.0, 'Group': 18.0, 'Phase': 'gas', 'Radioactive': False, 'Natural': True, 'Metal': False, 'Nonmetal': True, 'Metalloid': False, 'Type': 'Noble Gas', 'AtomicRadius': '1.2', 'Electronegativity': nan, 'FirstIonization': '12.1298', 'Density': '0.00589', 'MeltingPoint': '161.45', 'BoilingPoint': '165.03', 'Isotopes': 31.0, 'Discoverer': 'Ramsay and Travers', 'Year': '1898', 'SpecificHeat': '0.158', 'Shells': 5.0, 'Valence': 8.0, 'Config': '[Kr] 4d10 5s2 5p6', 'MassNumber': 131.0}
+
+>>> xenon.AtomicMass
+131.293
+
+>>> xenon.FirstIonization
+'12.1298'
+
 Other Constants
 ---------------
 
