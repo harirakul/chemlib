@@ -28,7 +28,7 @@ Get the percentage composition by mass of a certain element of the compound.
 
 .. code:: python
 
->>> water.percentage_by_mass('H')
+>>> water.percentage_by_mass('H') #Percent of Hydrogen in Compound
 11.183
->>> water.percentage_by_mass('O')
+>>> water.percentage_by_mass('O') #Percent of Oxygen in Compound
 88.834
