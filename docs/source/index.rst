@@ -1,5 +1,8 @@
 .. include:: ../README.rst
 
+.. automodule:: chemlib.chemistry
+   :members:
+
 Contents
 --------
 
