@@ -25,5 +25,8 @@ pandas Dataframe that contains the necessary background data.
 
 [118 rows x 31 columns]
 
+Columns of the Periodic Table (properties of each element)
+
+.. code:: python
 >>> list(chemlib.pte)   #Column names
 ['AtomicNumber', 'Element', 'Symbol', 'AtomicMass', 'Neutrons', 'Protons', 'Electrons', 'Period', 'Group', 'Phase', 'Radioactive', 'Natural', 'Metal', 'Nonmetal', 'Metalloid', 'Type', 'AtomicRadius', 'Electronegativity', 'FirstIonization', 'Density', 'MeltingPoint', 'BoilingPoint', 'Isotopes', 'Discoverer', 'Year', 'SpecificHeat', 'Shells', 'Valence', 'Config', 'MassNumber']
