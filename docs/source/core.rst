@@ -46,7 +46,7 @@ The attributes are all those in the column names of the PeriodicTable.
 
 Other Constants
 ---------------
-.. py:data:: chemlib.AVOGADROS_NUMBER
+.. py:data:: chemlib.chemistry.AVOGADROS_NUMBER
      :type: float
      :value: 6.02e+23
 
