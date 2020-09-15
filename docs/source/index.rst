@@ -8,6 +8,7 @@ Contents
 
    core
    compounds
+   reactions
    stoichiometry
 
 

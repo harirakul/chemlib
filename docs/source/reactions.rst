@@ -1,5 +1,5 @@
-Chemical Compounds
+Chemical Reactions
 ========================================
 
-Making a Compound
+Making a Reaction
 -----------------
