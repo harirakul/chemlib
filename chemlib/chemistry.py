@@ -16,7 +16,7 @@ class PeriodicTable(pd.DataFrame):
     A pandas.Dataframe object that contains periodic table data:
     
         >>> import chemlib
-        >>> chemlib.pte
+        >>> chemlib.PeriodicTable()
             Unnamed: 0  AtomicNumber  ...                  Config MassNumber
         0             0           1.0  ...                     1s1        1.0
         1             1           2.0  ...                     1s2        4.0
@@ -44,7 +44,7 @@ pte = PeriodicTable()
 
 class Element:
     """
-    A class containing all the properties of an element.
+    A class containing all the properties of an element:
     """
     
     def __init__(self, symbol): 

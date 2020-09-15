@@ -177,12 +177,12 @@
 
 <span class="n">pte</span> <span class="o">=</span> <span class="n">PeriodicTable</span><span class="p">()</span>
 
-<span class="k">class</span> <span class="nc">Element</span><span class="p">:</span>
+<div class="viewcode-block" id="Element"><a class="viewcode-back" href="../../core.html#chemlib.chemistry.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">:</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">pte</span><span class="o">.</span><span class="n">get_element_properties_from_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">])</span></div>
 
 <span class="k">class</span> <span class="nc">Compound</span><span class="p">:</span>
 
