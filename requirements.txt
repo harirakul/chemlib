@@ -1,0 +1,4 @@
+chemlib
+numpy
+sympy
+pandas
