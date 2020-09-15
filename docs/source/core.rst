@@ -22,7 +22,6 @@ pandas Dataframe that contains the necessary background data.
 115         115         116.0  ...  [Rn] 5f14 6d10 7s2 7p4      292.0
 116         116         117.0  ...  [Rn] 5f14 6d10 7s2 7p5      295.0
 117         117         118.0  ...  [Rn] 5f14 6d10 7s2 7p6      294.0
-
 [118 rows x 31 columns]
 
 Columns of the Periodic Table (properties of each element)
