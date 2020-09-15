@@ -8,9 +8,8 @@
    :caption: Contents:
 
 
-chemlib: a pure Python chemistry library
+chemlib Documentation
 ========================================
-
 Indices and tables
 ==================
 
