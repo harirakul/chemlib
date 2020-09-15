@@ -6,6 +6,9 @@ Periodic Table
 
 pandas Dataframe that contains the necessary background data.
 
+.. py:data:: chemlib.PeriodicTable()
+    :type: pandas.Dataframe
+
 .. code:: python
 
 >>> import chemlib
