@@ -1,2 +1,0 @@
-Indices and tables
-==================
