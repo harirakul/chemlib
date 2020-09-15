@@ -11,6 +11,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import sphinx_rtd_theme
+from recommonmark.parser import CommonMarkParser
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
@@ -34,11 +35,13 @@ release = 'v1.0'
 extensions = [
     "sphinx_rtd_theme",
     "sphinx.ext.autodoc",
-    "sphinx.ext.viewcode"
+    "sphinx.ext.viewcode",
+    'recommonmark',
+    'm2r'
 ]
 
 autodoc_member_order = 'bysource'
-source_suffix = ".rst"
+source_suffix = ['.rst', '.md']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

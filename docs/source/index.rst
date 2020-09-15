@@ -1,4 +1,4 @@
-.. include:: ../README.rst
+.. mdinclude:: ../README.md
 
 Contents
 --------
