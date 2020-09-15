@@ -12,7 +12,6 @@
 #
 import sphinx_rtd_theme
 from recommonmark.parser import CommonMarkParser
-import m2r
 
 # import os
 # import sys
