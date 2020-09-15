@@ -38,7 +38,6 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.viewcode",
     'recommonmark',
-    'm2r'
 ]
 
 autodoc_member_order = 'bysource'
