@@ -27,6 +27,9 @@ class PeriodicTable(pd.DataFrame):
 pte = PeriodicTable()
 
 class Element:
+    """
+    A class containing all the properties of an element.
+    """
     
     def __init__(self, symbol): 
         self.properties = pte.get_element_properties_from_symbol(symbol)
@@ -238,7 +241,7 @@ class Reaction:
 
         amounts[compound_number - 1] = index_amounts
         return amounts
-        
+
 if __name__ == '__main__':
     print(pte)
     b = Element('B')
