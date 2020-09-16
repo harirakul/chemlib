@@ -163,8 +163,10 @@
 <dl class="py class">
 <dt id="chemlib.chemistry.PeriodicTable">
 <em class="property">class </em><code class="sig-prename descclassname">chemlib.chemistry.</code><code class="sig-name descname">PeriodicTable</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemlib/chemistry.html#PeriodicTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemlib.chemistry.PeriodicTable" title="Permalink to this definition">¶</a></dt>
-<dd><p>A pandas.Dataframe object that contains periodic table data.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">chemlib</span>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.frame.DataFrame</span></code></p>
+<p>A pandas.Dataframe object that contains periodic table data.</p>
+<blockquote>
+<div><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">chemlib</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">chemlib</span><span class="o">.</span><span class="n">PeriodicTable</span><span class="p">()</span>
 <span class="go">     Unnamed: 0  AtomicNumber  ...                  Config MassNumber</span>
 <span class="go">0             0           1.0  ...                     1s1        1.0</span>
@@ -186,6 +188,7 @@
 <span class="go">[&#39;AtomicNumber&#39;, &#39;Element&#39;, &#39;Symbol&#39;, &#39;AtomicMass&#39;, &#39;Neutrons&#39;, &#39;Protons&#39;, &#39;Electrons&#39;, &#39;Period&#39;, &#39;Group&#39;, &#39;Phase&#39;, &#39;Radioactive&#39;, &#39;Natural&#39;, &#39;Metal&#39;, &#39;Nonmetal&#39;, &#39;Metalloid&#39;, &#39;Type&#39;, &#39;AtomicRadius&#39;, &#39;Electronegativity&#39;, &#39;FirstIonization&#39;, &#39;Density&#39;, &#39;MeltingPoint&#39;, &#39;BoilingPoint&#39;, &#39;Isotopes&#39;, &#39;Discoverer&#39;, &#39;Year&#39;, &#39;SpecificHeat&#39;, &#39;Shells&#39;, &#39;Valence&#39;, &#39;Config&#39;, &#39;MassNumber&#39;]</span>
 </pre></div>
 </div>
+</div></blockquote>
 </dd></dl>
 
 </div>
@@ -207,19 +210,6 @@
 <span class="go">&#39;12.1298&#39;</span>
 </pre></div>
 </div>
-<p>{‘AtomicNumber’: 54.0, ‘Element’: ‘Xenon’,
-‘Symbol’: ‘Xe’, ‘AtomicMass’: 131.293, ‘Neutrons’: 77.0,
-‘Protons’: 54.0, ‘Electrons’: 54.0, ‘Period’: 5.0,
-‘Group’: 18.0, ‘Phase’: ‘gas’, ‘Radioactive’: False,
-‘Natural’: True, ‘Metal’: False, ‘Nonmetal’: True,
-‘Metalloid’: False, ‘Type’: ‘Noble Gas’,
-‘AtomicRadius’: ‘1.2’, ‘Electronegativity’: nan,
-‘FirstIonization’: ‘12.1298’, ‘Density’: ‘0.00589’,
-‘MeltingPoint’: ‘161.45’, ‘BoilingPoint’: ‘165.03’,
-‘Isotopes’: 31.0, ‘Discoverer’: ‘Ramsay and Travers’,
-‘Year’: ‘1898’, ‘SpecificHeat’: ‘0.158’, ‘Shells’: 5.0,
-‘Valence’: 8.0, ‘Config’: ‘[Kr] 4d10 5s2 5p6’,
-‘MassNumber’: 131.0}</p>
 <blockquote>
 <div><dl class="py data">
 <dt id="chemlib.chemistry.Element.AtomicNumber">
