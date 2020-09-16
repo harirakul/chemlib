@@ -235,10 +235,10 @@ class Reaction:
         keys = kwargs.keys()
 
         if 'grams' not in keys and 'moles' not in keys and 'molecules' not in keys:
-            raise TypeError('Expecting one argument: either grams= , moles= , or molecules=')
+            raise ValueError('Expecting one argument: either grams= , moles= , or molecules=')
 
         if len(kwargs) > 1:
-            raise TypeError(f"Got {len(kwargs)} arguments when expecting 1. Use either grams= , moles=, or molecules=")
+            raise ValueError(f"Got {len(kwargs)} arguments when expecting 1. Use either grams= , moles=, or molecules=")
 
         seen_formulas = []
         compound_list = []

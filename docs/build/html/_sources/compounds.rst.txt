@@ -14,6 +14,13 @@ Instantiate a ``chemlib.Compound`` object with a list of Element symbols.
 >>> water.formula
 'H₂O₁'
 
+    .. data:: chemlib.chemistry.Compound.occurences
+        :type: dict
+    A dictionary containing the frequencies of the constituent elements in the compound.
+
+    >>> water.occurences
+    {'H': 2, 'O': 1}
+
 Molar Mass
 ----------
 .. autofunction:: chemlib.chemistry.Compound.molar_mass

@@ -25,6 +25,18 @@ Instantiate a ``chemlib.Reaction`` object with a list of reactant Compounds and 
     >>> r.is_balanced
     False
 
+    .. data:: chemlib.chemistry.Reaction.reactant_formulas
+        :type: list
+    
+    >>> r.reactant_formulas
+    ['N₂O₅', 'H₂O₁']
+
+    .. data:: chemlib.chemistry.Reaction.product_formulas
+        :type: list
+    
+    >>> r.product_formulas
+    ['N₂O₅', 'H₂O₁']
+
 Balancing the Equation
 ----------------------
 .. autofunction:: chemlib.chemistry.Reaction.balance
@@ -36,3 +48,32 @@ Balances the chemical equation using linear algebra. See `Applications of Linear
     '1N₂O₅ + 1H₂O₁ --> 2H₁N₁O₃'
     >>> r.is_balanced
     True
+
+Stoichiometry
+-------------
+
+.. py:function:: chemlib.chemistry.get_amounts(self, compound_number, **kwargs)
+
+   Get stoichiometric amounts of ALL compounds in the reaction given the amount of one compound.
+
+   :param int compound_number: The chosen compound in the reaction by order of appearance.
+   :param kwargs: The amount of the chosen compound (grams=, moles=, or molecules=)
+   :return: the amounts of each compound in the reaction
+   :rtype: list of dicts
+   :raises ValueError: if the compound_number is less than 1 or greater than the number of compounds in the reaction
+   :raises ValueError: if more than one argument is given under kwargs
+
+Best demonstrated by example:
+
+>>> r.formula
+'1N₂O₅ + 1H₂O₁ --> 2H₁N₁O₃'
+
+Get the amounts of ALL compounds in the above reaction given 5 grams of N₂O₅. It is the first compound in the reaction by order of appearance (left to right).
+
+>>> r.get_amounts(1, grams=5)
+[{'Compound': 'N₂O₅', 'Grams': 5, 'Moles': 0.0463, 'Molecules': 2.787e+22}, {'Compound': 'H₂O₁', 'Grams': 0.834, 'Moles': 0.0463, 'Molecules': 2.787e+22}, {'Compound': 'H₁N₁O₃', 'Grams': 5.835, 'Moles': 0.0926, 'Molecules': 5.575e+22}]
+
+Get the amounts of ALL compounds in the above reaction given 3.5 moles of HNO₃. It is the third compound in the reaction by order of appearance (left to right).
+
+>>> r.get_amounts(3, moles=3.5)
+[{'Compound': 'N₂O₅', 'Grams': 189.018, 'Moles': 1.75, 'Molecules': 1.054e+24}, {'Compound': 'H₂O₁', 'Grams': 31.518, 'Moles': 1.75, 'Molecules': 1.054e+24}, {'Compound': 'H₁N₁O₃', 'Grams': 220.535, 'Moles': 3.5, 'Molecules': 2.107e+24}]
