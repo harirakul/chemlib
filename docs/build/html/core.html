@@ -91,7 +91,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="compounds.html">Chemical Compounds</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reactions.html">Chemical Reactions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stoichiometry.html">Stoichiometry</a></li>
 </ul>
 
             
@@ -208,7 +207,141 @@
 <span class="go">&#39;12.1298&#39;</span>
 </pre></div>
 </div>
-<p>The attributes are all those in the column names of the PeriodicTable.</p>
+<p>{‘AtomicNumber’: 54.0, ‘Element’: ‘Xenon’,
+‘Symbol’: ‘Xe’, ‘AtomicMass’: 131.293, ‘Neutrons’: 77.0,
+‘Protons’: 54.0, ‘Electrons’: 54.0, ‘Period’: 5.0,
+‘Group’: 18.0, ‘Phase’: ‘gas’, ‘Radioactive’: False,
+‘Natural’: True, ‘Metal’: False, ‘Nonmetal’: True,
+‘Metalloid’: False, ‘Type’: ‘Noble Gas’,
+‘AtomicRadius’: ‘1.2’, ‘Electronegativity’: nan,
+‘FirstIonization’: ‘12.1298’, ‘Density’: ‘0.00589’,
+‘MeltingPoint’: ‘161.45’, ‘BoilingPoint’: ‘165.03’,
+‘Isotopes’: 31.0, ‘Discoverer’: ‘Ramsay and Travers’,
+‘Year’: ‘1898’, ‘SpecificHeat’: ‘0.158’, ‘Shells’: 5.0,
+‘Valence’: 8.0, ‘Config’: ‘[Kr] 4d10 5s2 5p6’,
+‘MassNumber’: 131.0}</p>
+<blockquote>
+<div><dl class="py data">
+<dt id="chemlib.chemistry.Element.AtomicNumber">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">AtomicNumber</code><em class="property">: float</em><a class="headerlink" href="#chemlib.chemistry.Element.AtomicNumber" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Element">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Element</code><em class="property">: str</em><em class="property"> = The name of the element</em><a class="headerlink" href="#chemlib.chemistry.Element.Element" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Symbol">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Symbol</code><em class="property">: str</em><em class="property"> = The symbol of the element</em><a class="headerlink" href="#chemlib.chemistry.Element.Symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.AtomicMass">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">AtomicMass</code><em class="property">: float</em><a class="headerlink" href="#chemlib.chemistry.Element.AtomicMass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Neutrons">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Neutrons</code><em class="property">: float</em><a class="headerlink" href="#chemlib.chemistry.Element.Neutrons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Protons">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Protons</code><em class="property">: float</em><a class="headerlink" href="#chemlib.chemistry.Element.Protons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Electrons">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Electrons</code><em class="property">: float</em><a class="headerlink" href="#chemlib.chemistry.Element.Electrons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Period">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Period</code><em class="property">: float</em><a class="headerlink" href="#chemlib.chemistry.Element.Period" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Group">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Group</code><em class="property">: float</em><a class="headerlink" href="#chemlib.chemistry.Element.Group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Phase">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Phase</code><em class="property">: str</em><em class="property"> = The state of matter of the element at room temperature.</em><a class="headerlink" href="#chemlib.chemistry.Element.Phase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Radioactive">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Radioactive</code><em class="property">: boolean</em><a class="headerlink" href="#chemlib.chemistry.Element.Radioactive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Natural">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Natural</code><em class="property">: boolean</em><a class="headerlink" href="#chemlib.chemistry.Element.Natural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Metal">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Metal</code><em class="property">: boolean</em><a class="headerlink" href="#chemlib.chemistry.Element.Metal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Nonmetal">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Nonmetal</code><em class="property">: boolean</em><a class="headerlink" href="#chemlib.chemistry.Element.Nonmetal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Metalloid">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Metalloid</code><em class="property">: boolean</em><a class="headerlink" href="#chemlib.chemistry.Element.Metalloid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Type">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Type</code><em class="property">: str</em><a class="headerlink" href="#chemlib.chemistry.Element.Type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.AtomicRadius">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">AtomicRadius</code><em class="property">: str</em><a class="headerlink" href="#chemlib.chemistry.Element.AtomicRadius" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Electronegativity">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Electronegativity</code><em class="property">: str or NaN</em><a class="headerlink" href="#chemlib.chemistry.Element.Electronegativity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.FirstIonization">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">FirstIonization</code><em class="property">: str or NaN</em><a class="headerlink" href="#chemlib.chemistry.Element.FirstIonization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Density">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Density</code><em class="property">: float</em><a class="headerlink" href="#chemlib.chemistry.Element.Density" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.MeltingPoint">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">MeltingPoint</code><em class="property">: float</em><a class="headerlink" href="#chemlib.chemistry.Element.MeltingPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.BoilingPoint">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">BoilingPoint</code><em class="property">: float</em><a class="headerlink" href="#chemlib.chemistry.Element.BoilingPoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Isotopes">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Isotopes</code><em class="property">: float</em><a class="headerlink" href="#chemlib.chemistry.Element.Isotopes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.chemistry.Element.Discoverer">
+<code class="sig-prename descclassname">chemlib.chemistry.Element.</code><code class="sig-name descname">Discoverer</code><em class="property">: str</em><a class="headerlink" href="#chemlib.chemistry.Element.Discoverer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
 </div>
 <div class="section" id="other-constants">
 <h2>Other Constants<a class="headerlink" href="#other-constants" title="Permalink to this headline">¶</a></h2>

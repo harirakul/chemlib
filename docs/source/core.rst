@@ -42,7 +42,71 @@ Contains all the properties of the respective element:
 >>> xenon.FirstIonization
 '12.1298'
 
-The attributes are all those in the column names of the PeriodicTable.
+{'AtomicNumber': 54.0, 'Element': 'Xenon', 
+'Symbol': 'Xe', 'AtomicMass': 131.293, 'Neutrons': 77.0, 
+'Protons': 54.0, 'Electrons': 54.0, 'Period': 5.0, 
+'Group': 18.0, 'Phase': 'gas', 'Radioactive': False, 
+'Natural': True, 'Metal': False, 'Nonmetal': True, 
+'Metalloid': False, 'Type': 'Noble Gas', 
+'AtomicRadius': '1.2', 'Electronegativity': nan, 
+'FirstIonization': '12.1298', 'Density': '0.00589', 
+'MeltingPoint': '161.45', 'BoilingPoint': '165.03', 
+'Isotopes': 31.0, 'Discoverer': 'Ramsay and Travers', 
+'Year': '1898', 'SpecificHeat': '0.158', 'Shells': 5.0, 
+'Valence': 8.0, 'Config': '[Kr] 4d10 5s2 5p6', 
+'MassNumber': 131.0}
+
+    .. data:: chemlib.chemistry.Element.AtomicNumber
+        :type: float
+    .. data:: chemlib.chemistry.Element.Element
+        :type: str
+        :value: The name of the element
+    .. data:: chemlib.chemistry.Element.Symbol
+        :type: str
+        :value: The symbol of the element
+    .. data:: chemlib.chemistry.Element.AtomicMass
+        :type: float
+    .. data:: chemlib.chemistry.Element.Neutrons
+        :type: float
+    .. data:: chemlib.chemistry.Element.Protons
+        :type: float
+    .. data:: chemlib.chemistry.Element.Electrons
+        :type: float
+    .. data:: chemlib.chemistry.Element.Period
+        :type: float
+    .. data:: chemlib.chemistry.Element.Group
+        :type: float
+    .. data:: chemlib.chemistry.Element.Phase
+        :type: str
+        :value: The state of matter of the element at room temperature.
+    .. data:: chemlib.chemistry.Element.Radioactive
+        :type: boolean
+    .. data:: chemlib.chemistry.Element.Natural
+        :type: boolean
+    .. data:: chemlib.chemistry.Element.Metal
+        :type: boolean
+    .. data:: chemlib.chemistry.Element.Nonmetal
+        :type: boolean
+    .. data:: chemlib.chemistry.Element.Metalloid
+        :type: boolean
+    .. data:: chemlib.chemistry.Element.Type
+        :type: str
+    .. data:: chemlib.chemistry.Element.AtomicRadius
+        :type: str
+    .. data:: chemlib.chemistry.Element.Electronegativity
+        :type: str or NaN
+    .. data:: chemlib.chemistry.Element.FirstIonization
+        :type: str or NaN
+    .. data:: chemlib.chemistry.Element.Density
+        :type: float
+    .. data:: chemlib.chemistry.Element.MeltingPoint
+        :type: float
+    .. data:: chemlib.chemistry.Element.BoilingPoint
+        :type: float
+    .. data:: chemlib.chemistry.Element.Isotopes
+        :type: float
+    .. data:: chemlib.chemistry.Element.Discoverer
+        :type: str
 
 Other Constants
 ---------------
