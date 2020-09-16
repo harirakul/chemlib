@@ -44,56 +44,56 @@ Contains all the properties of the respective element:
 >>> xenon.FirstIonization
 '12.1298'
 
-    .. data:: chemlib.chemistry.Element.AtomicNumber
+    .. py:data:: chemlib.chemistry.Element.AtomicNumber
         :type: float
-    .. data:: chemlib.chemistry.Element.Element
+    .. py:data:: chemlib.chemistry.Element.Element
         :type: str
         :value: The name of the element
-    .. data:: chemlib.chemistry.Element.Symbol
+    .. py:data:: chemlib.chemistry.Element.Symbol
         :type: str
         :value: The symbol of the element
-    .. data:: chemlib.chemistry.Element.AtomicMass
+    .. py:data:: chemlib.chemistry.Element.AtomicMass
         :type: float
-    .. data:: chemlib.chemistry.Element.Neutrons
+    .. py:data:: chemlib.chemistry.Element.Neutrons
         :type: float
-    .. data:: chemlib.chemistry.Element.Protons
+    .. py:data:: chemlib.chemistry.Element.Protons
         :type: float
-    .. data:: chemlib.chemistry.Element.Electrons
+    .. py:data:: chemlib.chemistry.Element.Electrons
         :type: float
-    .. data:: chemlib.chemistry.Element.Period
+    .. py:data:: chemlib.chemistry.Element.Period
         :type: float
-    .. data:: chemlib.chemistry.Element.Group
+    .. py:data:: chemlib.chemistry.Element.Group
         :type: float
-    .. data:: chemlib.chemistry.Element.Phase
+    .. py:data:: chemlib.chemistry.Element.Phase
         :type: str
         :value: The state of matter of the element at room temperature.
-    .. data:: chemlib.chemistry.Element.Radioactive
+    .. py:data:: chemlib.chemistry.Element.Radioactive
         :type: boolean
-    .. data:: chemlib.chemistry.Element.Natural
+    .. py:data:: chemlib.chemistry.Element.Natural
         :type: boolean
-    .. data:: chemlib.chemistry.Element.Metal
+    .. py:data:: chemlib.chemistry.Element.Metal
         :type: boolean
-    .. data:: chemlib.chemistry.Element.Nonmetal
+    .. py:data:: chemlib.chemistry.Element.Nonmetal
         :type: boolean
-    .. data:: chemlib.chemistry.Element.Metalloid
+    .. py:data:: chemlib.chemistry.Element.Metalloid
         :type: boolean
-    .. data:: chemlib.chemistry.Element.Type
+    .. py:data:: chemlib.chemistry.Element.Type
         :type: str
-    .. data:: chemlib.chemistry.Element.AtomicRadius
+    .. py:data:: chemlib.chemistry.Element.AtomicRadius
         :type: str
-    .. data:: chemlib.chemistry.Element.Electronegativity
+    .. py:data:: chemlib.chemistry.Element.Electronegativity
         :type: str or NaN
-    .. data:: chemlib.chemistry.Element.FirstIonization
+    .. py:data:: chemlib.chemistry.Element.FirstIonization
         :type: str or NaN
-    .. data:: chemlib.chemistry.Element.Density
+    .. py:data:: chemlib.chemistry.Element.Density
         :type: float
-    .. data:: chemlib.chemistry.Element.MeltingPoint
+    .. py:data:: chemlib.chemistry.Element.MeltingPoint
         :type: float
-    .. data:: chemlib.chemistry.Element.BoilingPoint
+    .. py:data:: chemlib.chemistry.Element.BoilingPoint
         :type: float
-    .. data:: chemlib.chemistry.Element.Isotopes
+    .. py:data:: chemlib.chemistry.Element.Isotopes
         :type: float
-    .. data:: chemlib.chemistry.Element.Discoverer
+    .. py:data:: chemlib.chemistry.Element.Discoverer
         :type: str
 
 Other Constants
