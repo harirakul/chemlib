@@ -35,7 +35,7 @@ Instantiate a ``chemlib.Reaction`` object with a list of reactant Compounds and 
         :type: list
     
     >>> r.product_formulas
-    ['N₂O₅', 'H₂O₁']
+    ['H₁N₁O₃']
 
 Balancing the Equation
 ----------------------
