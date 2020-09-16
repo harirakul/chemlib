@@ -12,10 +12,25 @@
 #
 import sphinx_rtd_theme
 from recommonmark.parser import CommonMarkParser
+import typing
 
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
+
+_get_type_hints = typing.get_type_hints
+
+def get_type_hints(obj, globalns=None, localns=None):
+    if localns is None:
+        localns = {}
+    # localns["Square"] = "chess.Square"
+    # localns["Color"] = "chess.Color"
+    # localns["PieceType"] = "chess.PieceType"
+    # localns["Bitboard"] = "chess.Bitboard"
+    # localns["IntoSquareSet"] = "chess.IntoSquareSet"
+    return _get_type_hints(obj, globalns, localns)
+
+typing.get_type_hints = get_type_hints
 
 
 # -- Project information -----------------------------------------------------
