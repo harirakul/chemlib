@@ -3,3 +3,4 @@ numpy
 sympy
 pandas
 typing
+sphinx==2.4
