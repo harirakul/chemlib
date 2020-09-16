@@ -98,7 +98,11 @@ Contains all the properties of the respective element:
 
 Other Constants
 ---------------
-Avogadro's Number
+.. py:data:: chemlib.AVOGADROS_NUMBER
+    :type: str
+    :value: 6.02e+23
+
+    Contains Avogaadro's Number, which  relates the number of constituent particles in a sample with the amount of substance in that sample.
 
      >>> import chemlib
      >>> chemlib.AVOGADROS_NUMBER
