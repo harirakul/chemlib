@@ -28,3 +28,11 @@ Instantiate a ``chemlib.Reaction`` object with a list of reactant Compounds and 
 Balancing the Equation
 ----------------------
 .. autofunction:: chemlib.chemistry.Reaction.balance
+
+Balances the chemical equation using linear algebra. See `Applications of Linear Algebra in Chemistry <http://www.math.utah.edu/~gustafso/s2017/2270/projects-2016/sanchezDario-chemistry-balancing-chemical-equations.pdf>`_. 
+
+    >>> r.balance()
+    >>> r.formula
+    '1N₂O₅ + 1H₂O₁ --> 2H₁N₁O₃'
+    >>> r.is_balanced
+    True

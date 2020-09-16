@@ -199,6 +199,14 @@
 <code class="sig-prename descclassname">chemlib.chemistry.Reaction.</code><code class="sig-name descname">balance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.Reaction.balance" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<p>Balances the chemical equation using linear algebra. See <a class="reference external" href="http://www.math.utah.edu/~gustafso/s2017/2270/projects-2016/sanchezDario-chemistry-balancing-chemical-equations.pdf">Applications of Linear Algebra in Chemistry</a>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">balance</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">formula</span>
+<span class="go">&#39;1N₂O₅ + 1H₂O₁ --&gt; 2H₁N₁O₃&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">is_balanced</span>
+<span class="go">True</span>
+</pre></div>
+</div>
 </div>
 </div>
 
