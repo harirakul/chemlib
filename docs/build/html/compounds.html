@@ -161,6 +161,11 @@
 <h1>Chemical Compounds<a class="headerlink" href="#chemical-compounds" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="making-a-compound">
 <h2>Making a Compound<a class="headerlink" href="#making-a-compound" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="chemlib.chemistry.Compound">
+<em class="property">class </em><code class="sig-prename descclassname">chemlib.chemistry.</code><code class="sig-name descname">Compound</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">atom_list</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemlib/chemistry.html#Compound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemlib.chemistry.Compound" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <p>Instantiate a <code class="docutils literal notranslate"><span class="pre">chemlib.Compound</span></code> object with a list of Element symbols.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Compound</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">water</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">])</span>
@@ -169,6 +174,11 @@
 </div>
 <div class="section" id="molar-mass">
 <h2>Molar Mass<a class="headerlink" href="#molar-mass" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="chemlib.chemistry.Compound.molar_mass">
+<code class="sig-prename descclassname">chemlib.chemistry.Compound.</code><code class="sig-name descname">molar_mass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.Compound.molar_mass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <p>Get the molar mass (in g/mol) of the compound.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">molar_mass</span><span class="p">()</span>
 <span class="go">18.01</span>
@@ -177,6 +187,11 @@
 </div>
 <div class="section" id="percentage-composition-by-mass">
 <h2>Percentage Composition by Mass<a class="headerlink" href="#percentage-composition-by-mass" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="chemlib.chemistry.Compound.percentage_by_mass">
+<code class="sig-prename descclassname">chemlib.chemistry.Compound.</code><code class="sig-name descname">percentage_by_mass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.Compound.percentage_by_mass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <p>Get the percentage composition by mass of a certain element of the compound.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">percentage_by_mass</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">)</span> <span class="c1">#Percent of Hydrogen in Compound</span>
 <span class="go">11.183</span>

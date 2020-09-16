@@ -13,7 +13,7 @@ AVOGADROS_NUMBER = 6.02e+23
 
 class PeriodicTable(pd.DataFrame):
     """
-    A pandas.Dataframe object that contains periodic table data:
+    A ``pandas.Dataframe`` object that contains periodic table data:
     
         >>> import chemlib
         >>> chemlib.PeriodicTable()
@@ -53,6 +53,9 @@ class Element:
             setattr(self, key, self.properties[key])
 
 class Compound:
+    """
+    Represents a chemical compound.
+    """
 
     def __init__(self, atom_list):
         self.atom_list = atom_list 

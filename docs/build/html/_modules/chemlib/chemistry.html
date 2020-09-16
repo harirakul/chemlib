@@ -184,7 +184,7 @@
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">key</span><span class="p">])</span></div>
 
-<span class="k">class</span> <span class="nc">Compound</span><span class="p">:</span>
+<div class="viewcode-block" id="Compound"><a class="viewcode-back" href="../../compounds.html#chemlib.chemistry.Compound">[docs]</a><span class="k">class</span> <span class="nc">Compound</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom_list</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">atom_list</span> <span class="o">=</span> <span class="n">atom_list</span> 
@@ -233,7 +233,7 @@
             <span class="s1">&#39;Grams&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">grams</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
             <span class="s1">&#39;Moles&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> 
             <span class="s1">&#39;Molecules&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:0.3e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">molecules</span><span class="p">))</span>
-        <span class="p">}</span>
+        <span class="p">}</span></div>
 
 <span class="k">class</span> <span class="nc">Reaction</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reactants</span><span class="p">,</span> <span class="n">products</span><span class="p">):</span>

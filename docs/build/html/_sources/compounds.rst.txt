@@ -3,6 +3,7 @@ Chemical Compounds
 
 Making a Compound
 -----------------
+.. autoclass:: chemlib.chemistry.Compound
 
 Instantiate a ``chemlib.Compound`` object with a list of Element symbols.
 
@@ -13,6 +14,7 @@ Instantiate a ``chemlib.Compound`` object with a list of Element symbols.
 
 Molar Mass
 ----------
+.. autofunction:: chemlib.chemistry.Compound.molar_mass
 
 Get the molar mass (in g/mol) of the compound.
 
@@ -23,6 +25,7 @@ Get the molar mass (in g/mol) of the compound.
 
 Percentage Composition by Mass
 ------------------------------
+.. autofunction:: chemlib.chemistry.Compound.percentage_by_mass
 
 Get the percentage composition by mass of a certain element of the compound.
 
