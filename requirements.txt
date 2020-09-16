@@ -2,3 +2,4 @@ chemlib
 numpy
 sympy
 pandas
+typing
