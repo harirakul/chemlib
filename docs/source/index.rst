@@ -9,7 +9,6 @@ Contents
    core
    compounds
    reactions
-   stoichiometry
 
 
 Indices and tables

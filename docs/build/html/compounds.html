@@ -88,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#making-a-compound">Making a Compound</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#molar-mass">Molar Mass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#percentage-composition-by-mass">Percentage Composition by Mass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stoichiometry">Stoichiometry</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reactions.html">Chemical Reactions</a></li>
@@ -169,6 +170,8 @@
 <p>Instantiate a <code class="docutils literal notranslate"><span class="pre">chemlib.Compound</span></code> object with a list of Element symbols.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Compound</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">water</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">formula</span>
+<span class="go">&#39;H₂O₁&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -197,6 +200,24 @@
 <span class="go">11.183</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">percentage_by_mass</span><span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">)</span> <span class="c1">#Percent of Oxygen in Compound</span>
 <span class="go">88.834</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stoichiometry">
+<h2>Stoichiometry<a class="headerlink" href="#stoichiometry" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="chemlib.chemistry.Compound.get_amounts">
+<code class="sig-prename descclassname">chemlib.chemistry.Compound.</code><code class="sig-name descname">get_amounts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.Compound.get_amounts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Accepting one argument. Use either <code class="docutils literal notranslate"><span class="pre">grams=&lt;float&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">moles=&lt;float&gt;</span></code>, or <code class="docutils literal notranslate"><span class="pre">molecules=&lt;float&gt;</span></code>.
+Returns a dictionary with corresponding mole, gram, and molecule values.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">grams</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">{&#39;Compound&#39;: &#39;H₂O₁&#39;, &#39;Grams&#39;: 2, &#39;Moles&#39;: 0.111, &#39;Molecules&#39;: 6.685e+22}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">moles</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">{&#39;Compound&#39;: &#39;H₂O₁&#39;, &#39;Grams&#39;: 36.02, &#39;Moles&#39;: 2, &#39;Molecules&#39;: 1.204e+24}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">molecules</span> <span class="o">=</span> <span class="mf">2e+24</span><span class="p">)</span>
+<span class="go">{&#39;Compound&#39;: &#39;H₂O₁&#39;, &#39;Grams&#39;: 59.834, &#39;Moles&#39;: 3.3223, &#39;Molecules&#39;: 2e+24}</span>
 </pre></div>
 </div>
 </div>

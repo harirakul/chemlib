@@ -36,7 +36,6 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Stoichiometry" href="stoichiometry.html" />
     <link rel="prev" title="Chemical Compounds" href="compounds.html" /> 
 </head>
 
@@ -87,9 +86,9 @@
 <li class="toctree-l1"><a class="reference internal" href="compounds.html">Chemical Compounds</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Chemical Reactions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#making-a-reaction">Making a Reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#balancing-the-equation">Balancing the Equation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="stoichiometry.html">Stoichiometry</a></li>
 </ul>
 
             
@@ -159,6 +158,47 @@
 <h1>Chemical Reactions<a class="headerlink" href="#chemical-reactions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="making-a-reaction">
 <h2>Making a Reaction<a class="headerlink" href="#making-a-reaction" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="chemlib.chemistry.Reaction">
+<em class="property">class </em><code class="sig-prename descclassname">chemlib.chemistry.</code><code class="sig-name descname">Reaction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reactants</span></em>, <em class="sig-param"><span class="n">products</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemlib/chemistry.html#Reaction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemlib.chemistry.Reaction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Instantiate a <code class="docutils literal notranslate"><span class="pre">chemlib.Reaction</span></code> object with a list of reactant Compounds and product Compounds.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Compound</span><span class="p">,</span> <span class="n">Reaction</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">N2O5</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;N&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H2O</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">HNO3</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">Reaction</span><span class="p">([</span><span class="n">N2O5</span><span class="p">,</span> <span class="n">H2O</span><span class="p">],</span> <span class="p">[</span><span class="n">HNO3</span><span class="p">])</span>
+</pre></div>
+</div>
+<blockquote>
+<div><dl class="py data">
+<dt id="chemlib.chemistry.Reaction.formula">
+<code class="sig-prename descclassname">chemlib.chemistry.Reaction.</code><code class="sig-name descname">formula</code><em class="property">: str</em><a class="headerlink" href="#chemlib.chemistry.Reaction.formula" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">formula</span>
+<span class="go">&#39;1N₂O₅ + 1H₂O₁ --&gt; 1H₁N₁O₃&#39;</span>
+</pre></div>
+</div>
+<dl class="py data">
+<dt id="chemlib.chemistry.Reaction.is_balanced">
+<code class="sig-prename descclassname">chemlib.chemistry.Reaction.</code><code class="sig-name descname">is_balanced</code><em class="property">: bool</em><a class="headerlink" href="#chemlib.chemistry.Reaction.is_balanced" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">is_balanced</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="balancing-the-equation">
+<h2>Balancing the Equation<a class="headerlink" href="#balancing-the-equation" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="chemlib.chemistry.Reaction.balance">
+<code class="sig-prename descclassname">chemlib.chemistry.Reaction.</code><code class="sig-name descname">balance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.Reaction.balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 </div>
 
@@ -169,8 +209,6 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="stoichiometry.html" class="btn btn-neutral float-right" title="Stoichiometry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="compounds.html" class="btn btn-neutral float-left" title="Chemical Compounds" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
