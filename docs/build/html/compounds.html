@@ -204,9 +204,20 @@
 <dl class="py function">
 <dt id="chemlib.chemistry.Compound.percentage_by_mass">
 <code class="sig-prename descclassname">chemlib.chemistry.Compound.</code><code class="sig-name descname">percentage_by_mass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">element</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.Compound.percentage_by_mass" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Get the percentage composition by mass of a certain element of the compound.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>element</strong> (<em>str</em>) – The constituent element of which the user wants to get percentage composition.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The percentage composition by mass of the element in the compound.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
 
-<p>Get the percentage composition by mass of a certain element of the compound.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">percentage_by_mass</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">)</span> <span class="c1">#Percent of Hydrogen in Compound</span>
 <span class="go">11.183</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">percentage_by_mass</span><span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">)</span> <span class="c1">#Percent of Oxygen in Compound</span>
@@ -219,15 +230,41 @@
 <dl class="py function">
 <dt id="chemlib.chemistry.Compound.get_amounts">
 <code class="sig-prename descclassname">chemlib.chemistry.Compound.</code><code class="sig-name descname">get_amounts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.Compound.get_amounts" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Get stoichiometric amounts of the compound given one measurement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>compound_number</strong> (<em>int</em>) – The chosen compound in the reaction by order of appearance.</p></li>
+<li><p><strong>kwargs</strong> – The amount of the chosen compound (grams=, moles=, or molecules=)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The gram, mole, and molecule amounts of the compound.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the kwargs argument isn’t either grams, moles, or molecules</p></li>
+<li><p><strong>ValueError</strong> – if more than one argument is given under kwargs</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
-<p>Accepting one argument. Use either <code class="docutils literal notranslate"><span class="pre">grams=&lt;float&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">moles=&lt;float&gt;</span></code>, or <code class="docutils literal notranslate"><span class="pre">molecules=&lt;float&gt;</span></code>.
-Returns a dictionary with corresponding mole, gram, and molecule values.</p>
+<p>Get the amount of moles and molecules of water given 2 grams of water.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">grams</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 <span class="go">{&#39;Compound&#39;: &#39;H₂O₁&#39;, &#39;Grams&#39;: 2, &#39;Moles&#39;: 0.111, &#39;Molecules&#39;: 6.685e+22}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">moles</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Get the amount of grams and molecules of water given 2 moles of water.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">moles</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 <span class="go">{&#39;Compound&#39;: &#39;H₂O₁&#39;, &#39;Grams&#39;: 36.02, &#39;Moles&#39;: 2, &#39;Molecules&#39;: 1.204e+24}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">molecules</span> <span class="o">=</span> <span class="mf">2e+24</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Get the amount of moles and grams of water given 2e+24 molecules of water.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">molecules</span> <span class="o">=</span> <span class="mf">2e+24</span><span class="p">)</span>
 <span class="go">{&#39;Compound&#39;: &#39;H₂O₁&#39;, &#39;Grams&#39;: 59.834, &#39;Moles&#39;: 3.3223, &#39;Molecules&#39;: 2e+24}</span>
 </pre></div>
 </div>

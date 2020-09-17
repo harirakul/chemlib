@@ -52,7 +52,7 @@ Balances the chemical equation using linear algebra. See `Applications of Linear
 Stoichiometry
 -------------
 
-.. py:function:: chemlib.chemistry.get_amounts(self, compound_number, **kwargs)
+.. py:function:: chemlib.chemistry.Reaction.get_amounts(self, compound_number, **kwargs)
 
    Get stoichiometric amounts of ALL compounds in the reaction given the amount of one compound.
 
