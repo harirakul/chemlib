@@ -108,6 +108,9 @@ class Compound:
 
 class Reaction:
     def __init__(self, reactants, products):
+        self.reinit(reactants, products)
+    
+    def reinit(self, reactants, products):
         self.reactants = reactants
         self.products = products
         self.compounds = self.reactants + self.products
@@ -158,7 +161,6 @@ class Reaction:
 
     def balance(self):
         """Balances the Chemical Reaction
-
         :return: None
         :rtype: void
         """
@@ -214,15 +216,14 @@ class Reaction:
             
             final_reactants = sum(final_reactants, [])
             final_products = sum(final_products, [])
-            
-            self.__init__(reactants = final_reactants, products = final_products)
+
+            self.reinit(final_reactants, final_products)
 
         else:
             return True
 
     def get_amounts(self, compound_number, **kwargs):
         """Gets Stoichiometric equivalents for all compounds in reaction from inputted grams, moles, or molecules.
-
         :param compound_number: The number of compound by order of appearance in the reaction.
         :type compound_number: int
         :raises TypeError: Expecting one argument: either grams= , moles= , or molecules=
@@ -273,6 +274,12 @@ class Reaction:
 
         amounts[compound_number - 1] = index_amounts
         return amounts
+
+class Combustion(Reaction):
+
+    def __init__(self, compound):
+        super(Combustion, self).__init__(reactants = [compound, Compound(['O']*2)], products = [Compound(['H']*2 + ['O']), Compound(['C'] + ['O']*2)])
+        self.balance()
 
 if __name__ == '__main__':
     print(pte)
