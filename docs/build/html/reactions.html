@@ -86,6 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="compounds.html">Chemical Compounds</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Chemical Reactions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#making-a-reaction">Making a Reaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#combustion-reactions">Combustion Reactions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#balancing-the-equation">Balancing the Equation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stoichiometry">Stoichiometry</a></li>
 </ul>
@@ -184,7 +185,7 @@
 </div>
 <dl class="py data">
 <dt id="chemlib.chemistry.Reaction.is_balanced">
-<code class="sig-prename descclassname">chemlib.chemistry.Reaction.</code><code class="sig-name descname">is_balanced</code><em class="property">: bool</em><a class="headerlink" href="#chemlib.chemistry.Reaction.is_balanced" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">chemlib.chemistry.Reaction.</code><code class="sig-name descname">is_balanced</code><em class="property">: boolean</em><a class="headerlink" href="#chemlib.chemistry.Reaction.is_balanced" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">is_balanced</span>
@@ -210,6 +211,25 @@
 </pre></div>
 </div>
 </div></blockquote>
+</div>
+<div class="section" id="combustion-reactions">
+<h2>Combustion Reactions<a class="headerlink" href="#combustion-reactions" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="chemlib.chemistry.Combustion">
+<em class="property">class </em><code class="sig-prename descclassname">chemlib.chemistry.</code><code class="sig-name descname">Combustion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">compound</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.Combustion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Inherits from <code class="docutils literal notranslate"><span class="pre">chemlib.chemistry.Reaction</span></code></p>
+<p>Makes a chemical reaction involving the combustion of one compound. Formula will be balanced.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Compound</span><span class="p">,</span> <span class="n">Combustion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">methane</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;C&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">Combustion</span><span class="p">(</span><span class="n">methane</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">formula</span>
+<span class="go">&#39;1C₁H₄ + 2O₂ --&gt; 2H₂O₁ + 1C₁O₂&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">is_balanced</span>
+<span class="go">True</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="balancing-the-equation">
 <h2>Balancing the Equation<a class="headerlink" href="#balancing-the-equation" title="Permalink to this headline">¶</a></h2>

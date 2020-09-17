@@ -20,7 +20,7 @@ Instantiate a ``chemlib.Reaction`` object with a list of reactant Compounds and 
     '1N₂O₅ + 1H₂O₁ --> 1H₁N₁O₃'
 
     .. data:: chemlib.chemistry.Reaction.is_balanced
-        :type: bool
+        :type: boolean
 
     >>> r.is_balanced
     False
@@ -36,6 +36,21 @@ Instantiate a ``chemlib.Reaction`` object with a list of reactant Compounds and 
     
     >>> r.product_formulas
     ['H₁N₁O₃']
+
+Combustion Reactions
+--------------------
+.. py:class:: chemlib.chemistry.Combustion(compound)
+Inherits from ``chemlib.chemistry.Reaction``
+
+Makes a chemical reaction involving the combustion of one compound. Formula will be balanced.
+
+>>> from chemlib import Compound, Combustion
+>>> methane = Compound(['C'] + ['H']*4)
+>>> c = Combustion(methane)
+>>> c.formula
+'1C₁H₄ + 2O₂ --> 2H₂O₁ + 1C₁O₂'
+>>> c.is_balanced
+True
 
 Balancing the Equation
 ----------------------
