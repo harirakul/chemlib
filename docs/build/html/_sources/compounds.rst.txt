@@ -23,9 +23,12 @@ Instantiate a ``chemlib.Compound`` object with a list of Element symbols.
 
 Molar Mass
 ----------
-.. autofunction:: chemlib.chemistry.Compound.molar_mass
+.. py:function:: chemlib.chemistry.Compound.molar_mass(self)
 
-Get the molar mass (in g/mol) of the compound.
+    Gets the molar mass (in g/mol) of the compound.
+
+    :return: The molar mass in (g/mol) of the compound
+    :rtype: float
 
 .. code:: python
 

@@ -39,7 +39,7 @@ Instantiate a ``chemlib.Reaction`` object with a list of reactant Compounds and 
 
 Balancing the Equation
 ----------------------
-.. autofunction:: chemlib.chemistry.Reaction.balance
+.. py:function:: chemlib.chemistry.Reaction.balance(self) -> None
 
 Balances the chemical equation using linear algebra. See `Applications of Linear Algebra in Chemistry <http://www.math.utah.edu/~gustafso/s2017/2270/projects-2016/sanchezDario-chemistry-balancing-chemical-equations.pdf>`_. 
 
