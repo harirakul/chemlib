@@ -25,8 +25,6 @@ Molar Mass
 ----------
 .. py:function:: chemlib.chemistry.Compound.molar_mass(self)
 
-    Gets the molar mass (in g/mol) of the compound.
-
     :return: The molar mass in (g/mol) of the compound
     :rtype: float
 
