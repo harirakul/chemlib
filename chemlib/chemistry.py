@@ -277,7 +277,7 @@ class Reaction:
 
     def limiting_reagent(self, *args, mode = 'grams'):
         if mode not in ['grams', 'molecules', 'moles']:
-            raise TypeError("mode must be either grams, moles, or molecules. Default is grams")
+            raise ValueError("mode must be either grams, moles, or molecules. Default is grams")
 
         if not self.is_balanced: self.balance()
 
