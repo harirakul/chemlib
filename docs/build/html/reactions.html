@@ -89,6 +89,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#combustion-reactions">Combustion Reactions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#balancing-the-equation">Balancing the Equation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stoichiometry">Stoichiometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#limiting-reagent">Limiting Reagent</a></li>
 </ul>
 </li>
 </ul>
@@ -290,6 +291,47 @@
 <span class="go">[{&#39;Compound&#39;: &#39;N₂O₅&#39;, &#39;Grams&#39;: 189.018, &#39;Moles&#39;: 1.75, &#39;Molecules&#39;: 1.054e+24}, {&#39;Compound&#39;: &#39;H₂O₁&#39;, &#39;Grams&#39;: 31.518, &#39;Moles&#39;: 1.75, &#39;Molecules&#39;: 1.054e+24}, {&#39;Compound&#39;: &#39;H₁N₁O₃&#39;, &#39;Grams&#39;: 220.535, &#39;Moles&#39;: 3.5, &#39;Molecules&#39;: 2.107e+24}]</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="limiting-reagent">
+<h2>Limiting Reagent<a class="headerlink" href="#limiting-reagent" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="chemlib.chemistry.Reaction.limiting_reagent">
+<code class="sig-prename descclassname">chemlib.chemistry.Reaction.</code><code class="sig-name descname">limiting_reagent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'grams'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.Reaction.limiting_reagent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the limiting reagent (limiting reactant) in the chemical reaction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> – The amounts of each reactant to use in the chemical reaction.</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – The units of each amount in args. Default is grams, can also be moles or molecules.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The limiting reagent of the reaction.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="compounds.html#chemlib.chemistry.Compound" title="chemlib.chemistry.Compound">chemlib.chemistry.Compound</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If the number of args doesn’t match the number of reactants in the reaction.</p></li>
+<li><p><strong>ValueError</strong> – If the mode is not grams, moles, or molecules.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Find the limiting reagent of the reaction when using 50 grams of the first reactant (N₂O₅) and 80 grams of the second reactant (H₂O):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lr</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">limiting_reagent</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lr</span><span class="o">.</span><span class="n">formula</span>
+<span class="go">&#39;N₂O₅&#39;</span>
+</pre></div>
+</div>
+<p>Find the limiting reagent of the reaction when using 3 moles of the first reactant (N₂O₅) and 1 mole of the second reactant (H₂O):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lr</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">limiting_reagent</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;moles&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lr</span><span class="o">.</span><span class="n">formula</span>
+<span class="go">&#39;H₂O₁&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 </div>
 

@@ -92,3 +92,28 @@ Get the amounts of ALL compounds in the above reaction given 3.5 moles of HNO₃
 
 >>> r.get_amounts(3, moles=3.5)
 [{'Compound': 'N₂O₅', 'Grams': 189.018, 'Moles': 1.75, 'Molecules': 1.054e+24}, {'Compound': 'H₂O₁', 'Grams': 31.518, 'Moles': 1.75, 'Molecules': 1.054e+24}, {'Compound': 'H₁N₁O₃', 'Grams': 220.535, 'Moles': 3.5, 'Molecules': 2.107e+24}]
+
+Limiting Reagent
+----------------
+.. py:function:: chemlib.chemistry.Reaction.limiting_reagent(self, *args, mode = 'grams')
+
+   Get the limiting reagent (limiting reactant) in the chemical reaction.
+
+   :param args: The amounts of each reactant to use in the chemical reaction. 
+   :param str mode: The units of each amount in args. Default is grams, can also be moles or molecules.
+   :return: The limiting reagent of the reaction.
+   :rtype: chemlib.chemistry.Compound
+   :raises TypeError: If the number of args doesn't match the number of reactants in the reaction.
+   :raises ValueError: If the mode is not grams, moles, or molecules.
+
+   Find the limiting reagent of the reaction when using 50 grams of the first reactant (N₂O₅) and 80 grams of the second reactant (H₂O):
+
+    >>> lr = r.limiting_reagent(50, 50)
+    >>> lr.formula
+    'N₂O₅'
+
+   Find the limiting reagent of the reaction when using 3 moles of the first reactant (N₂O₅) and 1 mole of the second reactant (H₂O):
+
+    >>> lr = r.limiting_reagent(3, 1, mode = 'moles')
+    >>> lr.formula
+    'H₂O₁'
