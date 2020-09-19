@@ -275,6 +275,30 @@ class Reaction:
         amounts[compound_number - 1] = index_amounts
         return amounts
 
+    def limiting_reagent(self, *args, mode = 'grams'):
+        if mode not in ['grams', 'molecules', 'moles']:
+            raise TypeError("mode must be either grams, moles, or molecules. Default is grams")
+
+        if not self.is_balanced: self.balance()
+
+        reactants = []
+        rformulas = []
+        for i in self.reactants:
+            if i.formula not in rformulas:
+                rformulas.append(i.formula)
+                reactants.append(i)
+
+        if len(args) != len(reactants):
+            raise TypeError(f"Expected {len(reactants)} arguments. The number of arguments should be equal to the number of reactants.")
+
+        amounts = [reactants[i].get_amounts(**{mode: args[i]}) for i in range(len(args))]
+        moles = [i['Moles'] for i in amounts]
+        chosen_product = self.products[-1]
+        eq_amounts = [self.get_amounts(i + 1, moles = moles[i]) for i in range(len(args))]
+        data = [a[-1][mode.capitalize()] for a in eq_amounts]
+
+        return (reactants[np.argmin(data)])
+
 class Combustion(Reaction):
 
     def __init__(self, compound):
