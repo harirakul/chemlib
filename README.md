@@ -54,7 +54,7 @@ pip install chemlib
 ```python
 >>> from chemlib import Compound
 
->>> nitric_acid = Compound(['H', 'N'] + ['O']*3)
+>>> nitric_acid = Compound("HNO3")
 
 >>> nitric_acid.occurences
 {'H': 1, 'N': 1, 'O': 3}
@@ -73,16 +73,19 @@ Accepted inputs: grams, moles, and molecules
 ```python
 >>> from chemlib import Compound
 
->>> water = Compound(['H'] + ['O']*2)
+>>> water = Compound('H2O')
+
+>>> water.formula
+'H₂O₁'
 
 >>> water.get_amounts(grams = 2)
-{'Compound': 'H₁O₂', 'Grams': 2, 'Moles': 0.0606, 'Molecules': 3.647e+22}
+{'Compound': 'H₂O₁', 'Grams': 2, 'Moles': 0.111, 'Molecules': 6.685e+22}
 
 >>> water.get_amounts(moles = 1)
-{'Compound': 'H₁O₂', 'Grams': 33.01, 'Moles': 1, 'Molecules': 6.02e+23}
+{'Compound': 'H₂O₁', 'Grams': 18.01, 'Moles': 1, 'Molecules': 6.02e+23}
 
 >>> water.get_amounts(molecules = 1.0e+24)
-{'Compound': 'H₁O₂', 'Grams': 54.834, 'Moles': 1.6611, 'Molecules': 1e+24}
+{'Compound': 'H₂O₁', 'Grams': 29.917, 'Moles': 1.6611, 'Molecules': 1e+24}
 
 ```
 
@@ -92,14 +95,13 @@ Accepted inputs: grams, moles, and molecules
 
 >>> from chemlib import Compound, Reaction
 
->>> H2 = Compound(['H']*2)
->>> O2 = Compound(['O']*2)
->>> H2O = Compound(['H'] + ['O']*2)
-
+>>> H2 = Compound('H2')
+>>> O2 = Compound('O2')
+>>> H2O = Compound('H2O')
 >>> r = Reaction(reactants = [H2, O2], products = [H2O])
 
 >>> r.formula
-'1H₂ + 1O₂ --> 1H₁O₂'
+'1H₂ + 1O₂ --> 1H₂O₁'
 
 >>> r.is_balanced
 False
@@ -107,7 +109,7 @@ False
 >>> r.balance()
 
 >>> r.formula
-'1H₂ + 2O₂ --> 2H₁O₂'
+'2H₂ + 1O₂ --> 2H₂O₁'
 
 >>> r.is_balanced
 True
