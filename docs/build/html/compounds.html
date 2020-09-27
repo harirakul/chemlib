@@ -163,13 +163,13 @@
 <h2>Making a Compound<a class="headerlink" href="#making-a-compound" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="chemlib.chemistry.Compound">
-<em class="property">class </em><code class="sig-prename descclassname">chemlib.chemistry.</code><code class="sig-name descname">Compound</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">atom_list</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemlib/chemistry.html#Compound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemlib.chemistry.Compound" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">chemlib.chemistry.</code><code class="sig-name descname">Compound</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">formula</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemlib/chemistry.html#Compound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chemlib.chemistry.Compound" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents a chemical compound.</p>
 </dd></dl>
 
-<p>Instantiate a <code class="docutils literal notranslate"><span class="pre">chemlib.Compound</span></code> object with a list of Element symbols.</p>
+<p>Instantiate a <code class="docutils literal notranslate"><span class="pre">chemlib.Compound</span></code> object with the formula of the compound.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Compound</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">water</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">water</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;H2O&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">formula</span>
 <span class="go">&#39;H₂O₁&#39;</span>
 </pre></div>

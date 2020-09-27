@@ -8,9 +8,9 @@ Making a Reaction
 Instantiate a ``chemlib.Reaction`` object with a list of reactant Compounds and product Compounds.
 
 >>> from chemlib import Compound, Reaction
->>> N2O5 = Compound(['N']*2 + ['O']*5)
->>> H2O = Compound(['H']*2 + ['O'])
->>> HNO3 = Compound(['H', 'N'] + ['O']*3)
+>>> N2O5 = Compound("N2O5")
+>>> H2O = Compound("H2O")
+>>> HNO3 = Compound("HNO3")
 >>> r = Reaction([N2O5, H2O], [HNO3])
 
     .. data:: chemlib.chemistry.Reaction.formula

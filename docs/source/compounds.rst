@@ -5,12 +5,12 @@ Making a Compound
 -----------------
 .. autoclass:: chemlib.chemistry.Compound
 
-Instantiate a ``chemlib.Compound`` object with a list of Element symbols.
+Instantiate a ``chemlib.Compound`` object with the formula of the compound.
 
 .. code:: python
 
 >>> from chemlib import Compound
->>> water = Compound(['H']*2 + ['O'])
+>>> water = Compound("H2O")
 >>> water.formula
 'H₂O₁'
 
