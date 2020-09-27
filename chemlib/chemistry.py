@@ -11,6 +11,41 @@ DATA_PATH = os.path.join(this_dir, "resources", "PTE_updated.csv")
 SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 AVOGADROS_NUMBER = 6.02e+23
 
+def hasNumbers(inputString):
+    return any(char.isdigit() for char in inputString)
+
+def formula_to_list(formula):
+    newlist = []
+    for i in [j for j in formula]:
+        if i.isupper(): 
+            newlist.append(' '); newlist.append(i)
+        else: 
+            newlist.append(i)
+    flist = []
+    for i in range(len(newlist)):
+        if newlist[i].isalpha() and newlist[i].isupper() and i < len(newlist) - 1:
+            if newlist[i + 1].isalpha():
+                flist.append(newlist[i] + newlist[i + 1])
+            else:
+                if newlist[i].isupper():
+                    flist.append(newlist[i])
+        else:
+            if not newlist[i].isalpha():
+                flist.append(newlist[i])
+
+    s = "".join(newlist).split(" "); s.pop(0)
+    for i in range(len(s)):
+        if not hasNumbers(s[i]):
+            s[i] += '1'
+
+    flist = []
+    for i in s:
+        a = [i[:-1], i[-1]]
+        for q in range(int(a[-1])):
+            flist.append(a[0])
+
+    return flist
+
 class PeriodicTable(pd.DataFrame):
     """
     A ``pandas.Dataframe`` object that contains periodic table data:
@@ -57,7 +92,8 @@ class Compound:
     Represents a chemical compound.
     """
 
-    def __init__(self, atom_list):
+    def __init__(self, formula):
+        atom_list = formula_to_list(formula)
         self.atom_list = atom_list 
         self.types = list(dict.fromkeys(self.atom_list))
         self.occurences = dict(zip(self.types, [self.atom_list.count(i) for i in self.types]))
