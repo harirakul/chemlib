@@ -108,7 +108,7 @@ Limiting Reagent
 
    Find the limiting reagent of the reaction when using 50 grams of the first reactant (N₂O₅) and 80 grams of the second reactant (H₂O):
 
-    >>> lr = r.limiting_reagent(50, 50)
+    >>> lr = r.limiting_reagent(50, 80)
     >>> lr.formula
     'N₂O₅'
 
