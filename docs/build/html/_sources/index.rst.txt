@@ -9,6 +9,7 @@ Contents
    core
    compounds
    reactions
+   quantum
 
 
 Indices and tables

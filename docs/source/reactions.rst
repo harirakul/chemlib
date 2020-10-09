@@ -45,7 +45,7 @@ Inherits from ``chemlib.chemistry.Reaction``
 Makes a chemical reaction involving the combustion of one compound. Formula will be balanced.
 
 >>> from chemlib import Compound, Combustion
->>> methane = Compound(['C'] + ['H']*4)
+>>> methane = Compound('CH4')
 >>> c = Combustion(methane)
 >>> c.formula
 '1C₁H₄ + 2O₂ --> 2H₂O₁ + 1C₁O₂'

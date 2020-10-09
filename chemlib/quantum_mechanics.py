@@ -19,9 +19,9 @@ class Wave:
             self.frequency = c/self.wavelength
         
         else:
+            self.frequency = kwargs[mode]/h
             self.wavelength = h*c/self.frequency
-            self.frequency = c/self.wavelength
-
+            
         self.energy = h*self.frequency
 
         self.properties = {
