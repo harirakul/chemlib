@@ -116,7 +116,7 @@ The speed of light.
 
 .. py:data:: chemlib.h
     :type: float
-    :value: 6.626-34
+    :value: 6.626e-34
 
 Planck's constant.
 
