@@ -182,6 +182,13 @@
 <span class="go">{&#39;wavelength&#39;: 3e-09, &#39;frequency&#39;: 9.993e+16, &#39;energy&#39;: 6.622e-17}</span>
 </pre></div>
 </div>
+<p>Determine the wavelength, frequency, and energy of a wave with energy 3e-15 Joules per particle:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Wave</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">Wave</span><span class="p">(</span><span class="n">energy</span><span class="o">=</span><span class="mf">3e-15</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">properties</span>
+<span class="go">{&#39;wavelength&#39;: 4.387e-44, &#39;frequency&#39;: 4.528e+18, &#39;energy&#39;: 3e-15}</span>
+</pre></div>
+</div>
 </div>
 </div>
 

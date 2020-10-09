@@ -20,3 +20,10 @@ Determine the wavelength, frequency, and energy of a wave with wavelength 3e-9 m
 >>> w = Wave(wavelength=3e-9)
 >>> w.properties
 {'wavelength': 3e-09, 'frequency': 9.993e+16, 'energy': 6.622e-17}
+
+Determine the wavelength, frequency, and energy of a wave with energy 3e-15 Joules per particle:
+
+>>> from chemlib import Wave
+>>> w = Wave(energy=3e-15)
+>>> w.properties
+{'wavelength': 4.387e-44, 'frequency': 4.528e+18, 'energy': 3e-15}

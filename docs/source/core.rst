@@ -107,3 +107,21 @@ Other Constants
      >>> import chemlib
      >>> chemlib.AVOGADROS_NUMBER
      6.02e+23
+
+.. py:data:: chemlib.c
+    :type: float
+    :value: 2.998e+8
+
+The speed of light.
+
+.. py:data:: chemlib.h
+    :type: float
+    :value: 6.626-34
+
+Planck's constant.
+
+.. py:data:: chemlib.R
+    :type: float
+    :value: 1.0974e+7
+
+Rydberg constant.
