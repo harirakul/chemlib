@@ -1,42 +1,38 @@
-# chemlib: a pure Python chemistry library
+# chemlib
 
-[![PyPI version](https://badge.fury.io/py/chemlib.svg)](https://badge.fury.io/py/chemlib)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/harirakul/chemlib/blob/master/LICENSE.txt)
-[![Documentation Status](https://readthedocs.org/projects/chemlib/badge/?version=latest)](https://chemlib.readthedocs.io/en/latest/?badge=latest)
+[![PyPI version](https://badge.fury.io/py/chemlib.svg)](https://badge.fury.io/py/chemlib) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/harirakul/chemlib/blob/master/LICENSE.txt) [![Documentation Status](https://readthedocs.org/projects/chemlib/badge/?version=latest)](https://chemlib.readthedocs.io/en/latest/?badge=latest)
 
-An easy-to-use library that quickly performs chemistry calculations.
+Chemlib is a pure Python library that supports a variety of functions pertaining to the vast field of chemistry. It is under active development and continually improved to include more and more features.
+
+Necessary data that provides properties of all the elements in the Periodic Table is found in [this csv file](https://github.com/harirakul/chemlib/blob/master/chemlib/resources/PTE_updated.csv).
 
 ## Installation
-```
-pip install chemlib
+Use the Python Package Installer (PyPI):
+
+```sh
+$ pip install -U chemlib
 ```
 
 ## Features
 
-#### Periodic table as a ```pandas.Dataframe``` object
+- Properties of all Elements
+- Compounds
+   * Formula
+   * Molar Mass
+   * Percentage Composition by Mass
+   * Stoichiometric Amounts
+- Chemical Reactions
+   * Formula
+   * Balancing the Equation
+   * Combustion Reactions
+   * Stoichiometric Amounts
+   * Limiting Reagent
+- Quantum Mechanics
+   * Electromagnetic Waves
+      * Frequency, Wavelength, Energy per photon
+   * Energy in nth Hydrogen Orbital
 
-```python
->>> import chemlib
-
->>> chemlib.pte
-     Unnamed: 0  AtomicNumber  ...                  Config MassNumber
-0             0           1.0  ...                     1s1        1.0
-1             1           2.0  ...                     1s2        4.0
-2             2           3.0  ...                [He] 2s1        7.0
-3             3           4.0  ...                [He] 2s2        9.0
-4             4           5.0  ...            [He] 2s2 2p1       11.0
-..          ...           ...  ...                     ...        ...
-113         113         114.0  ...  [Rn] 5f14 6d10 7s2 7p2      289.0
-114         114         115.0  ...  [Rn] 5f14 6d10 7s2 7p3      288.0
-115         115         116.0  ...  [Rn] 5f14 6d10 7s2 7p4      292.0
-116         116         117.0  ...  [Rn] 5f14 6d10 7s2 7p5      295.0
-117         117         118.0  ...  [Rn] 5f14 6d10 7s2 7p6      294.0
-
-[118 rows x 31 columns]
-```
-
-#### ```chemlib.Element``` class with easily accessible properties
-
+```chemlib.Element``` class with easily accessible properties
 ```python
 >>> from chemlib import Element
 
@@ -49,7 +45,7 @@ pip install chemlib
 10.811
 ```
 
-#### ```chemlib.Compound``` 
+#### ```chemlib.Compound```
 
 ```python
 >>> from chemlib import Compound
@@ -114,4 +110,3 @@ False
 >>> r.is_balanced
 True
 ```
-
