@@ -32,7 +32,7 @@ $ pip install -U chemlib
       * Frequency, Wavelength, Energy per photon
    * Energy in nth Hydrogen Orbital
 
-```chemlib.Element``` class with easily accessible properties
+#### Elements
 ```python
 >>> from chemlib import Element
 
@@ -45,7 +45,7 @@ $ pip install -U chemlib
 10.811
 ```
 
-#### ```chemlib.Compound```
+#### Compounds
 
 ```python
 >>> from chemlib import Compound
