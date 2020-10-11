@@ -110,3 +110,12 @@ False
 >>> r.is_balanced
 True
 ```
+
+### To-Do
+
+- [ ] Building Empirical Formulas
+- [ ] Combustion Analysis
+- [ ] Hydrates
+- [ ] Percent Yield
+- [ ] Molarity and pH
+- [ ] Thermochemistry
