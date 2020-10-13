@@ -87,6 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="reactions.html">Chemical Reactions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Quantum Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#electromagnetic-waves">Electromagnetic Waves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#electrons-and-orbitals">Electrons and Orbitals</a></li>
 </ul>
 </li>
 </ul>
@@ -187,6 +188,42 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">Wave</span><span class="p">(</span><span class="n">energy</span><span class="o">=</span><span class="mf">3e-15</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">properties</span>
 <span class="go">{&#39;wavelength&#39;: 4.387e-44, &#39;frequency&#39;: 4.528e+18, &#39;energy&#39;: 3e-15}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><dl class="py data">
+<dt id="chemlib.quantum_mechanics.Wave.properties">
+<code class="sig-prename descclassname">chemlib.quantum_mechanics.Wave.</code><code class="sig-name descname">properties</code><em class="property">: dict</em><a class="headerlink" href="#chemlib.quantum_mechanics.Wave.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.quantum_mechanics.Wave.wavelength">
+<code class="sig-prename descclassname">chemlib.quantum_mechanics.Wave.</code><code class="sig-name descname">wavelength</code><em class="property">: float</em><a class="headerlink" href="#chemlib.quantum_mechanics.Wave.wavelength" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.quantum_mechanics.Wave.frequency">
+<code class="sig-prename descclassname">chemlib.quantum_mechanics.Wave.</code><code class="sig-name descname">frequency</code><em class="property">: float</em><a class="headerlink" href="#chemlib.quantum_mechanics.Wave.frequency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt id="chemlib.quantum_mechanics.Wave.energy">
+<code class="sig-prename descclassname">chemlib.quantum_mechanics.Wave.</code><code class="sig-name descname">energy</code><em class="property">: float</em><a class="headerlink" href="#chemlib.quantum_mechanics.Wave.energy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="electrons-and-orbitals">
+<h2>Electrons and Orbitals<a class="headerlink" href="#electrons-and-orbitals" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="chemlib.quantum_mechanics.energy_of_hydrogen_orbital">
+<code class="sig-prename descclassname">chemlib.quantum_mechanics.</code><code class="sig-name descname">energy_of_hydrogen_orbital</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#chemlib.quantum_mechanics.energy_of_hydrogen_orbital" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Gets the energy of an electron in the nth orbital of the Hydrogen atom in Joules.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">energy_of_hydrogen_orbital</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">energy_of_hydrogen_orbital</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">-2.4221749394666667e-19</span>
 </pre></div>
 </div>
 </div>
