@@ -33,6 +33,12 @@ class Wave:
 def energy_of_hydrogen_orbital(n):
     return((-h*R*c)*(1 / (n*n)))
 
+def rydberg(element, n1, n2):
+    Z = element.AtomicNumber
+    if not (n2 > n1):
+        raise ValueError("In the Rydberg Equation, n2 is always greater than n1.")
+    return ((R*Z*Z)*((1/(n1**2)) - (1/(n2**2))))**-1
+
 if __name__ == "__main__":
     print(energy_of_hydrogen_orbital(3))
     w = Wave(frequency=5.6e16)
