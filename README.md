@@ -21,6 +21,7 @@ $ pip install -U chemlib
    * Molar Mass
    * Percentage Composition by Mass
    * Stoichiometric Amounts
+   * Empirical Formula by Percentage Composition
 - Chemical Reactions
    * Formula
    * Balancing the Equation
