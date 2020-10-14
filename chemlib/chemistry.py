@@ -341,6 +341,27 @@ class Combustion(Reaction):
         super(Combustion, self).__init__(reactants = [compound, Compound(['O']*2)], products = [Compound(['H']*2 + ['O']), Compound(['C'] + ['O']*2)])
         self.balance()
 
+def empirical_formula_by_percent_comp(**kwargs):
+    elems = list(kwargs.keys())
+    percs = list(kwargs.values())
+    if (sum(percs) != 100):
+        raise ValueError("The sums of the percentages of the constituent elements must be equal to 100.")
+    
+    compounds = [Compound(elem) for elem in elems]
+    moles = []
+    for i in range(len(compounds)):
+        moles.append((compounds[i].get_amounts(grams = percs[i]))['Moles'])
+
+    moles = [i/min(moles) for i in moles]
+    denominators = [f.denominator for f in [Fraction(x).limit_denominator() for x in moles]]
+    if max(denominators) < 10:
+        moles = [moles[i]*max(denominators) for i in range(len(moles))]
+
+    moles = [round(i) for i in moles]
+    final = [elems[i] + str(moles[i]) for i in range(len(moles))]
+    
+    return ("".join(final))
+    
 if __name__ == '__main__':
     print(pte)
     b = Element('B')
