@@ -113,7 +113,7 @@ True
 
 ### To-Do
 
-- [ ] Building Empirical Formulas
+- [x] Building Empirical Formulas
 - [ ] Combustion Analysis
 - [ ] Hydrates
 - [ ] Percent Yield
