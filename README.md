@@ -32,6 +32,7 @@ $ pip install -U chemlib
    * Electromagnetic Waves
       * Frequency, Wavelength, Energy per photon
    * Energy in nth Hydrogen Orbital
+   * Rydberg Equation
 
 ### Elements
 ```python
