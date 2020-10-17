@@ -16,20 +16,20 @@ $ pip install -U chemlib
 ## Features
 
 - [Properties of all Elements](https://chemlib.readthedocs.io/en/latest/#chemlib-element-class-with-easily-accessible-properties)
-- Compounds
+- [Compounds](https://chemlib.readthedocs.io/en/latest/compounds.html)
    * Formula
    * Molar Mass
    * Percentage Composition by Mass
    * Stoichiometric Amounts
    * Empirical Formula by Percentage Composition
    * Combustion Analysis of Hydrocarbons
-- Chemical Reactions
+- [Chemical Reactions](https://chemlib.readthedocs.io/en/latest/reactions.html)
    * Formula
    * Balancing the Equation
    * Combustion Reactions
    * Stoichiometric Amounts
    * Limiting Reagent
-- Quantum Mechanics
+- [Quantum Mechanics](https://chemlib.readthedocs.io/en/latest/quantum.html)
    * Electromagnetic Waves
       * Frequency, Wavelength, Energy per photon
    * Energy in nth Hydrogen Orbital
