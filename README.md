@@ -22,6 +22,7 @@ $ pip install -U chemlib
    * Percentage Composition by Mass
    * Stoichiometric Amounts
    * Empirical Formula by Percentage Composition
+   * Combustion Analysis of Hydrocarbons
 - Chemical Reactions
    * Formula
    * Balancing the Equation
@@ -116,7 +117,7 @@ True
 ### To-Do
 
 - [x] Building Empirical Formulas
-- [ ] Combustion Analysis
+- [x] Combustion Analysis
 - [ ] Hydrates
 - [ ] Percent Yield
 - [ ] Molarity and pH
