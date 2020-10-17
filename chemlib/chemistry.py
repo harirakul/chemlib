@@ -341,6 +341,14 @@ class Combustion(Reaction):
         super(Combustion, self).__init__(reactants = [compound, Compound(['O']*2)], products = [Compound(['H']*2 + ['O']), Compound(['C'] + ['O']*2)])
         self.balance()
 
+def reduce_list(L):
+    a = L
+    denominators = [f.denominator for f in [Fraction(x).limit_denominator() for x in L]]
+    a = [a[i]*max(denominators) for i in range(len(a))]
+    a = [a[i]/min(a) for i in range(len(a))]
+    a = [round(i) for i in a]
+    return a
+
 def empirical_formula_by_percent_comp(**kwargs):
     elems = list(kwargs.keys())
     percs = list(kwargs.values())
@@ -353,14 +361,17 @@ def empirical_formula_by_percent_comp(**kwargs):
         moles.append((compounds[i].get_amounts(grams = percs[i]))['Moles'])
 
     moles = [i/min(moles) for i in moles]
-    denominators = [f.denominator for f in [Fraction(x).limit_denominator() for x in moles]]
-    if max(denominators) < 10:
-        moles = [moles[i]*max(denominators) for i in range(len(moles))]
-
-    moles = [round(i) for i in moles]
+    moles = reduce_list(moles)
     final = [elems[i] + str(moles[i]) for i in range(len(moles))]
     
     return ("".join(final))
+    
+def combustion_analysis(CO2, H2O):
+    molesC = Compound("CO2").get_amounts(grams = CO2)["Moles"]
+    molesH = (Compound("H2O").get_amounts(grams = H2O)['Moles'])*2
+    moles = reduce_list([molesC, molesH])
+    moles = ["" if x == 1 else x for x in moles] #Remove all 1's
+    return (f"C{moles[0]}H{moles[1]}")
     
 if __name__ == '__main__':
     print(pte)
