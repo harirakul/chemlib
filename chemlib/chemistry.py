@@ -341,6 +341,40 @@ class Combustion(Reaction):
         super(Combustion, self).__init__(reactants = [compound, Compound(['O']*2)], products = [Compound(['H']*2 + ['O']), Compound(['C'] + ['O']*2)])
         self.balance()
 
+class Solution:
+    def __init__(self, solute: Compound, molarity: float):
+        if type(solute) is Compound: self.solute = solute
+        elif type(solute) is str: self.solute = Compound(solute)
+        else: raise TypeError("solute must be either a string or a chemlib.chemistry.Compound object")
+        self.molarity = molarity
+    
+    @classmethod
+    def by_grams_per_liters(cls, solute: Compound, grams: float, liters: float):
+        if type(solute) is Compound: cmpd = solute
+        else: cmpd = Compound(solute)
+        molarity = cmpd.get_amounts(grams = grams)["Moles"] / liters
+        return cls(solute, molarity)
+    
+    def get_amounts(self, **kwargs) -> dict:
+        keys = kwargs.keys()
+
+        if 'moles' not in keys and 'liters' not in keys and 'grams' not in keys:
+            raise ValueError('Expecting one argument: either moles= , grams=, or liters=')
+
+        if len(kwargs) != 1:
+            raise ValueError(f"Got {len(kwargs)} arguments when expecting 1. Use either either moles= , grams=, or liters=")
+            
+        if "grams" in keys: moles = self.solute.get_amounts(grams = kwargs["grams"])["Moles"]
+        elif "liters" in keys: moles = self.molarity*kwargs["liters"]
+        else: moles = kwargs["moles"]
+
+        return {
+            "Solute": self.solute.formula,
+            "Moles": moles,
+            "Liters": moles/self.molarity,
+            "Grams": self.solute.get_amounts(moles = moles)["Grams"]
+        }
+        
 def reduce_list(L):
     a = L
     denominators = [f.denominator for f in [Fraction(x).limit_denominator() for x in L]]
