@@ -27,6 +27,7 @@ $ pip install -U chemlib
    * Solute
    * Molarity (mol/L)
    * Stoichiometric Amounts
+   * Dilutions
 - [Chemical Reactions](https://chemlib.readthedocs.io/en/latest/reactions.html)
    * Formula
    * Balancing the Equation
