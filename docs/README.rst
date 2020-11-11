@@ -1,43 +1,60 @@
-chemlib: a pure Python chemistry library
-========================================
+chemlib
+=======
 
-An easy-to-use library that quickly performs chemistry calculations.
+|PyPI version| |license| |Documentation Status|
+
+Chemlib is a pure Python library that supports a variety of functions
+pertaining to the vast field of chemistry. It is under active
+development and continually improved to include more and more features.
+
+Necessary data that provides properties of all the elements in the
+Periodic Table is found in `this csv
+file <https://github.com/harirakul/chemlib/blob/master/chemlib/resources/PTE_updated.csv>`__.
 
 Installation
 ------------
 
-::
+Use the Python Package Installer (PyPI):
 
-    pip install chemlib
+.. code:: sh
+
+    $ pip install -U chemlib
 
 Features
 --------
 
-Periodic table as a ``pandas.Dataframe`` object
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-  `Properties of all
+   Elements <https://chemlib.readthedocs.io/en/latest/#chemlib-element-class-with-easily-accessible-properties>`__
+-  `Compounds <https://chemlib.readthedocs.io/en/latest/compounds.html>`__
+-  Formula
+-  Molar Mass
+-  Percentage Composition by Mass
+-  Stoichiometric Amounts
+-  Empirical Formula by Percentage Composition
+-  Combustion Analysis of Hydrocarbons
+-  Aqueous Solutions
+-  Solute
+-  Molarity (mol/L)
+-  Stoichiometric Amounts
+-  Dilutions
+-  `Chemical
+   Reactions <https://chemlib.readthedocs.io/en/latest/reactions.html>`__
+-  Formula
+-  Balancing the Equation
+-  Combustion Reactions
+-  Stoichiometric Amounts
+-  Limiting Reagent
+-  `Quantum
+   Mechanics <https://chemlib.readthedocs.io/en/latest/quantum.html>`__
+-  Electromagnetic Waves
 
-.. code:: python
+   -  Frequency, Wavelength, Energy per photon
 
-    >>> import chemlib
+-  Energy in nth Hydrogen Orbital
+-  Rydberg Equation
 
-    >>> chemlib.pte
-         Unnamed: 0  AtomicNumber  ...                  Config MassNumber
-    0             0           1.0  ...                     1s1        1.0
-    1             1           2.0  ...                     1s2        4.0
-    2             2           3.0  ...                [He] 2s1        7.0
-    3             3           4.0  ...                [He] 2s2        9.0
-    4             4           5.0  ...            [He] 2s2 2p1       11.0
-    ..          ...           ...  ...                     ...        ...
-    113         113         114.0  ...  [Rn] 5f14 6d10 7s2 7p2      289.0
-    114         114         115.0  ...  [Rn] 5f14 6d10 7s2 7p3      288.0
-    115         115         116.0  ...  [Rn] 5f14 6d10 7s2 7p4      292.0
-    116         116         117.0  ...  [Rn] 5f14 6d10 7s2 7p5      295.0
-    117         117         118.0  ...  [Rn] 5f14 6d10 7s2 7p6      294.0
-
-    [118 rows x 31 columns]
-
-``chemlib.Element`` class with easily accessible properties
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Elements
+~~~~~~~~
 
 .. code:: python
 
@@ -51,14 +68,14 @@ Periodic table as a ``pandas.Dataframe`` object
     >>> boron.AtomicMass
     10.811
 
-``chemlib.Compound``
-^^^^^^^^^^^^^^^^^^^^
+Compounds
+~~~~~~~~~
 
 .. code:: python
 
     >>> from chemlib import Compound
 
-    >>> nitric_acid = Compound(['H', 'N'] + ['O']*3)
+    >>> nitric_acid = Compound("HNO3")
 
     >>> nitric_acid.occurences
     {'H': 1, 'N': 1, 'O': 3}
@@ -78,16 +95,19 @@ Accepted inputs: grams, moles, and molecules
 
     >>> from chemlib import Compound
 
-    >>> water = Compound(['H'] + ['O']*2)
+    >>> water = Compound('H2O')
+
+    >>> water.formula
+    'H₂O₁'
 
     >>> water.get_amounts(grams = 2)
-    {'Compound': 'H₁O₂', 'Grams': 2, 'Moles': 0.0606, 'Molecules': 3.647e+22}
+    {'Compound': 'H₂O₁', 'Grams': 2, 'Moles': 0.111, 'Molecules': 6.685e+22}
 
     >>> water.get_amounts(moles = 1)
-    {'Compound': 'H₁O₂', 'Grams': 33.01, 'Moles': 1, 'Molecules': 6.02e+23}
+    {'Compound': 'H₂O₁', 'Grams': 18.01, 'Moles': 1, 'Molecules': 6.02e+23}
 
     >>> water.get_amounts(molecules = 1.0e+24)
-    {'Compound': 'H₁O₂', 'Grams': 54.834, 'Moles': 1.6611, 'Molecules': 1e+24}
+    {'Compound': 'H₂O₁', 'Grams': 29.917, 'Moles': 1.6611, 'Molecules': 1e+24}
 
 Balancing Chemical Reactions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -97,14 +117,13 @@ Balancing Chemical Reactions
 
     >>> from chemlib import Compound, Reaction
 
-    >>> H2 = Compound(['H']*2)
-    >>> O2 = Compound(['O']*2)
-    >>> H2O = Compound(['H'] + ['O']*2)
-
+    >>> H2 = Compound('H2')
+    >>> O2 = Compound('O2')
+    >>> H2O = Compound('H2O')
     >>> r = Reaction(reactants = [H2, O2], products = [H2O])
 
     >>> r.formula
-    '1H₂ + 1O₂ --> 1H₁O₂'
+    '1H₂ + 1O₂ --> 1H₂O₁'
 
     >>> r.is_balanced
     False
@@ -112,11 +131,24 @@ Balancing Chemical Reactions
     >>> r.balance()
 
     >>> r.formula
-    '1H₂ + 2O₂ --> 2H₁O₂'
+    '2H₂ + 1O₂ --> 2H₂O₁'
 
     >>> r.is_balanced
     True
 
+To-Do
+~~~~~
+
+-  [x] Building Empirical Formulas
+-  [x] Combustion Analysis
+-  [ ] Hydrates
+-  [ ] Percent Yield
+-  [ ] Molarity and pH
+-  [ ] Thermochemistry
+
+.. |PyPI version| image:: https://badge.fury.io/py/chemlib.svg
+   :target: https://badge.fury.io/py/chemlib
 .. |license| image:: https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000
    :target: https://github.com/harirakul/chemlib/blob/master/LICENSE.txt
-
+.. |Documentation Status| image:: https://readthedocs.org/projects/chemlib/badge/?version=latest
+   :target: https://chemlib.readthedocs.io/en/latest/?badge=latest
