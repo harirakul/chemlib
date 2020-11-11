@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>chemlib: a pure Python chemistry library &mdash; chemlib v1.0 documentation</title>
+  <title>chemlib &mdash; chemlib v1.0 documentation</title>
   
 
   
@@ -133,7 +133,7 @@
     
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>chemlib: a pure Python chemistry library</li>
+      <li>chemlib</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -152,41 +152,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="chemlib-a-pure-python-chemistry-library">
-<h1>chemlib: a pure Python chemistry library<a class="headerlink" href="#chemlib-a-pure-python-chemistry-library" title="Permalink to this headline">¶</a></h1>
-<p>An easy-to-use library that quickly performs chemistry calculations.</p>
+  <div class="section" id="chemlib">
+<h1>chemlib<a class="headerlink" href="#chemlib" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://badge.fury.io/py/chemlib"><img alt="PyPI version" src="https://badge.fury.io/py/chemlib.svg" /></a> <a class="reference external" href="https://github.com/harirakul/chemlib/blob/master/LICENSE.txt"><img alt="license" src="https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000" /></a> <a class="reference external" href="https://chemlib.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/chemlib/badge/?version=latest" /></a></p>
+<p>Chemlib is a pure Python library that supports a variety of functions
+pertaining to the vast field of chemistry. It is under active
+development and continually improved to include more and more features.</p>
+<p>Necessary data that provides properties of all the elements in the
+Periodic Table is found in <a class="reference external" href="https://github.com/harirakul/chemlib/blob/master/chemlib/resources/PTE_updated.csv">this csv
+file</a>.</p>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">chemlib</span>
+<p>Use the Python Package Installer (PyPI):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ pip install -U chemlib
 </pre></div>
 </div>
 </div>
 <div class="section" id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="periodic-table-as-a-pandas-dataframe-object">
-<h3>Periodic table as a <code class="docutils literal notranslate"><span class="pre">pandas.Dataframe</span></code> object<a class="headerlink" href="#periodic-table-as-a-pandas-dataframe-object" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">chemlib</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">chemlib</span><span class="o">.</span><span class="n">pte</span>
-<span class="go">     Unnamed: 0  AtomicNumber  ...                  Config MassNumber</span>
-<span class="go">0             0           1.0  ...                     1s1        1.0</span>
-<span class="go">1             1           2.0  ...                     1s2        4.0</span>
-<span class="go">2             2           3.0  ...                [He] 2s1        7.0</span>
-<span class="go">3             3           4.0  ...                [He] 2s2        9.0</span>
-<span class="go">4             4           5.0  ...            [He] 2s2 2p1       11.0</span>
-<span class="go">..          ...           ...  ...                     ...        ...</span>
-<span class="go">113         113         114.0  ...  [Rn] 5f14 6d10 7s2 7p2      289.0</span>
-<span class="go">114         114         115.0  ...  [Rn] 5f14 6d10 7s2 7p3      288.0</span>
-<span class="go">115         115         116.0  ...  [Rn] 5f14 6d10 7s2 7p4      292.0</span>
-<span class="go">116         116         117.0  ...  [Rn] 5f14 6d10 7s2 7p5      295.0</span>
-<span class="go">117         117         118.0  ...  [Rn] 5f14 6d10 7s2 7p6      294.0</span>
-
-<span class="go">[118 rows x 31 columns]</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="chemlib-element-class-with-easily-accessible-properties">
-<h3><code class="docutils literal notranslate"><span class="pre">chemlib.Element</span></code> class with easily accessible properties<a class="headerlink" href="#chemlib-element-class-with-easily-accessible-properties" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://chemlib.readthedocs.io/en/latest/#chemlib-element-class-with-easily-accessible-properties">Properties of all
+Elements</a></p></li>
+<li><p><a class="reference external" href="https://chemlib.readthedocs.io/en/latest/compounds.html">Compounds</a></p></li>
+<li><p>Formula</p></li>
+<li><p>Molar Mass</p></li>
+<li><p>Percentage Composition by Mass</p></li>
+<li><p>Stoichiometric Amounts</p></li>
+<li><p>Empirical Formula by Percentage Composition</p></li>
+<li><p>Combustion Analysis of Hydrocarbons</p></li>
+<li><p>Aqueous Solutions</p></li>
+<li><p>Solute</p></li>
+<li><p>Molarity (mol/L)</p></li>
+<li><p>Stoichiometric Amounts</p></li>
+<li><p>Dilutions</p></li>
+<li><p><a class="reference external" href="https://chemlib.readthedocs.io/en/latest/reactions.html">Chemical
+Reactions</a></p></li>
+<li><p>Formula</p></li>
+<li><p>Balancing the Equation</p></li>
+<li><p>Combustion Reactions</p></li>
+<li><p>Stoichiometric Amounts</p></li>
+<li><p>Limiting Reagent</p></li>
+<li><p><a class="reference external" href="https://chemlib.readthedocs.io/en/latest/quantum.html">Quantum
+Mechanics</a></p></li>
+<li><p>Electromagnetic Waves</p>
+<ul>
+<li><p>Frequency, Wavelength, Energy per photon</p></li>
+</ul>
+</li>
+<li><p>Energy in nth Hydrogen Orbital</p></li>
+<li><p>Rydberg Equation</p></li>
+</ul>
+<div class="section" id="elements">
+<h3>Elements<a class="headerlink" href="#elements" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Element</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">boron</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>   <span class="c1">#Declare Element from its symbol</span>
@@ -199,11 +216,11 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="chemlib-compound">
-<h3><code class="docutils literal notranslate"><span class="pre">chemlib.Compound</span></code><a class="headerlink" href="#chemlib-compound" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="compounds">
+<h3>Compounds<a class="headerlink" href="#compounds" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Compound</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nitric_acid</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nitric_acid</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;HNO3&quot;</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nitric_acid</span><span class="o">.</span><span class="n">occurences</span>
 <span class="go">{&#39;H&#39;: 1, &#39;N&#39;: 1, &#39;O&#39;: 3}</span>
@@ -215,36 +232,39 @@
 <span class="go">76.174</span>
 </pre></div>
 </div>
+</div>
 <div class="section" id="stoichiometric-conversions-with-compounds">
-<h4>Stoichiometric conversions with compounds<a class="headerlink" href="#stoichiometric-conversions-with-compounds" title="Permalink to this headline">¶</a></h4>
+<h3>Stoichiometric conversions with compounds<a class="headerlink" href="#stoichiometric-conversions-with-compounds" title="Permalink to this headline">¶</a></h3>
 <p>Accepted inputs: grams, moles, and molecules</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Compound</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">water</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">water</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s1">&#39;H2O&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">formula</span>
+<span class="go">&#39;H₂O₁&#39;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">grams</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="go">{&#39;Compound&#39;: &#39;H₁O₂&#39;, &#39;Grams&#39;: 2, &#39;Moles&#39;: 0.0606, &#39;Molecules&#39;: 3.647e+22}</span>
+<span class="go">{&#39;Compound&#39;: &#39;H₂O₁&#39;, &#39;Grams&#39;: 2, &#39;Moles&#39;: 0.111, &#39;Molecules&#39;: 6.685e+22}</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">moles</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="go">{&#39;Compound&#39;: &#39;H₁O₂&#39;, &#39;Grams&#39;: 33.01, &#39;Moles&#39;: 1, &#39;Molecules&#39;: 6.02e+23}</span>
+<span class="go">{&#39;Compound&#39;: &#39;H₂O₁&#39;, &#39;Grams&#39;: 18.01, &#39;Moles&#39;: 1, &#39;Molecules&#39;: 6.02e+23}</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">water</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">molecules</span> <span class="o">=</span> <span class="mf">1.0e+24</span><span class="p">)</span>
-<span class="go">{&#39;Compound&#39;: &#39;H₁O₂&#39;, &#39;Grams&#39;: 54.834, &#39;Moles&#39;: 1.6611, &#39;Molecules&#39;: 1e+24}</span>
+<span class="go">{&#39;Compound&#39;: &#39;H₂O₁&#39;, &#39;Grams&#39;: 29.917, &#39;Moles&#39;: 1.6611, &#39;Molecules&#39;: 1e+24}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="balancing-chemical-reactions">
-<h4>Balancing Chemical Reactions<a class="headerlink" href="#balancing-chemical-reactions" title="Permalink to this headline">¶</a></h4>
+<h3>Balancing Chemical Reactions<a class="headerlink" href="#balancing-chemical-reactions" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Compound</span><span class="p">,</span> <span class="n">Reaction</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">H2</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">O2</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;O&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">H2O</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">([</span><span class="s1">&#39;H&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;O&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
-
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H2</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s1">&#39;H2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">O2</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s1">&#39;O2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H2O</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s1">&#39;H2O&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">Reaction</span><span class="p">(</span><span class="n">reactants</span> <span class="o">=</span> <span class="p">[</span><span class="n">H2</span><span class="p">,</span> <span class="n">O2</span><span class="p">],</span> <span class="n">products</span> <span class="o">=</span> <span class="p">[</span><span class="n">H2O</span><span class="p">])</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">formula</span>
-<span class="go">&#39;1H₂ + 1O₂ --&gt; 1H₁O₂&#39;</span>
+<span class="go">&#39;1H₂ + 1O₂ --&gt; 1H₂O₁&#39;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">is_balanced</span>
 <span class="go">False</span>
@@ -252,13 +272,23 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">balance</span><span class="p">()</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">formula</span>
-<span class="go">&#39;1H₂ + 2O₂ --&gt; 2H₁O₂&#39;</span>
+<span class="go">&#39;2H₂ + 1O₂ --&gt; 2H₂O₁&#39;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">is_balanced</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="to-do">
+<h3>To-Do<a class="headerlink" href="#to-do" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>[x] Building Empirical Formulas</p></li>
+<li><p>[x] Combustion Analysis</p></li>
+<li><p>[ ] Hydrates</p></li>
+<li><p>[ ] Percent Yield</p></li>
+<li><p>[ ] Molarity and pH</p></li>
+<li><p>[ ] Thermochemistry</p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="contents">
