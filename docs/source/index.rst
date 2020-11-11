@@ -9,6 +9,7 @@ Contents
    core
    compounds
    reactions
+   solution
    quantum
 
 

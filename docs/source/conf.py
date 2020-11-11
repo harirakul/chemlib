@@ -23,11 +23,6 @@ _get_type_hints = typing.get_type_hints
 def get_type_hints(obj, globalns=None, localns=None):
     if localns is None:
         localns = {}
-    # localns["Square"] = "chess.Square"
-    # localns["Color"] = "chess.Color"
-    # localns["PieceType"] = "chess.PieceType"
-    # localns["Bitboard"] = "chess.Bitboard"
-    # localns["IntoSquareSet"] = "chess.IntoSquareSet"
     return _get_type_hints(obj, globalns, localns)
 
 typing.get_type_hints = get_type_hints
@@ -75,7 +70,7 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-html_logo = "chememelogo2.png"
+#html_logo = "chememelogo2.png"
 pygments_style = 'sphinx'
 
 # Add any paths that contain custom static files (such as style sheets) here,
