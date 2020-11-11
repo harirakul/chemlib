@@ -374,7 +374,26 @@ class Solution:
             "Liters": moles/self.molarity,
             "Grams": self.solute.get_amounts(moles = moles)["Grams"]
         }
-        
+
+    def dilute(self, V1 = None, M2 = None, V2 = None, inplace = False) -> dict:
+        if V1 == None:
+            raise TypeError("You need to specify a starting volume of Solution in liters.")
+        if V2 != None and M2 != None:
+            raise TypeError("You can only specify one or the other, M2 or V2.")
+            
+        M1 = self.molarity #using function M1*V1 = M2*V2
+
+        if M2 != None: V2 = M1*V1/M2
+        elif V2 != None: M2 = M1*V1/V2
+
+        if inplace == True: self.molarity = M2
+
+        return {
+            "Solute": self.solute.formula,
+            "Molarity": round(M2, 4),
+            "Volume": round(V2, 4)
+        }
+             
 def reduce_list(L):
     a = L
     denominators = [f.denominator for f in [Fraction(x).limit_denominator() for x in L]]
