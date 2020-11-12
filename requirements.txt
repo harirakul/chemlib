@@ -1,3 +1,4 @@
+chemlib
 numpy
 sympy
 pandas
