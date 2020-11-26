@@ -1,6 +1,7 @@
 # chemlib
 
 [![PyPI version](https://badge.fury.io/py/chemlib.svg)](https://badge.fury.io/py/chemlib) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/harirakul/chemlib/blob/master/LICENSE.txt) [![Documentation Status](https://readthedocs.org/projects/chemlib/badge/?version=latest)](https://chemlib.readthedocs.io/en/latest/?badge=latest)
+[![Downloads](https://pepy.tech/badge/chemlib)](https://pepy.tech/project/chemlib)
 
 Chemlib is a pure Python library that supports a variety of functions pertaining to the vast field of chemistry. It is under active development and continually improved to include more and more features.
 
