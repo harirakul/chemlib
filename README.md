@@ -1,14 +1,16 @@
-<p align="center">
-  <a href="https://github.com/harirakul/chemlib">
-    <img src="docs/build/html/_static/logo.png" alt="Logo" width="200">
-  </a>
+<h1 align="center">chemlib</h1>
 
-  <h3 align="center">Chemistry Library</h3>
+<div align="center">
+  ⚗️🔬👨‍🔬🧪
+</div>
+<div align="center">
+  <strong>Chemistry Library</strong>
+</div>
 
   <p align="center">
-A pure Python package that supports a variety of functions pertaining to the vast field of chemistry. It is under active development and continually improved to include more and more features.
+A pure Python package that supports a variety of functions pertaining to the vast field of chemistry.
   </p>
-</p>
+<br>
 <div align="center">
   <!-- PyPI -->
   <a href="https://badge.fury.io/py/chemlib">
