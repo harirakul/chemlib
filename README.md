@@ -1,10 +1,6 @@
-[![PyPI version](https://badge.fury.io/py/chemlib.svg)](https://badge.fury.io/py/chemlib) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/harirakul/chemlib/blob/master/LICENSE.txt) [![Documentation Status](https://readthedocs.org/projects/chemlib/badge/?version=latest)](https://chemlib.readthedocs.io/en/latest/?badge=latest)
-[![Downloads](https://pepy.tech/badge/chemlib)](https://pepy.tech/project/chemlib)
-
-<br />
 <p align="center">
   <a href="https://github.com/harirakul/chemlib">
-    <img src="docs/build/html/_static/logo.png" alt="Logo" width="300">
+    <img src="docs/build/html/_static/logo.png" alt="Logo" width="200">
   </a>
 
   <h3 align="center">Chemistry Library</h3>
@@ -13,6 +9,25 @@
 A pure Python package that supports a variety of functions pertaining to the vast field of chemistry. It is under active development and continually improved to include more and more features.
   </p>
 </p>
+<div align="center">
+  <!-- PyPI -->
+  <a href="https://badge.fury.io/py/chemlib">
+    <img src="https://badge.fury.io/py/chemlib.svg"/>
+  </a>
+  <!-- License -->
+  <a href="https://github.com/harirakul/chemlib/blob/master/LICENSE.txt">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000" />
+  </a>
+  <!-- Documentation Status -->
+  <a href="https://chemlib.readthedocs.io/en/latest/">
+    <img src="https://readthedocs.org/projects/chemlib/badge/?version=latest"
+ />
+  </a>
+  <!-- Downloads -->
+  <a href="https://pepy.tech/project/chemlib">
+    <img src="https://pepy.tech/badge/chemlib" />
+  </a>
+</div>
 <div align="center">
   <h3>
     <a href="https://chemlib.readthedocs.io/en/latest/">
