@@ -64,7 +64,7 @@ $ pip install -U chemlib
    * Stoichiometric Amounts
    * Empirical Formula by Percentage Composition
    * Combustion Analysis of Hydrocarbons
-- Aqueous Solutions
+- [Aqueous Solutions](https://chemlib.readthedocs.io/en/latest/solution.html)
    * Solute
    * Molarity (mol/L)
    * Stoichiometric Amounts
