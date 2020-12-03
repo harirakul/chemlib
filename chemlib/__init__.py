@@ -6,7 +6,7 @@ AVOGADROS_NUMBER = 6.02e+23
 
 from chemlib.chemistry import Element, Compound, Reaction
 from chemlib.chemistry import Combustion, Solution
-from chemlib.chemistry import empirical_formula_by_percent_comp
+from chemlib.chemistry import empirical_formula_by_percent_comp, combustion_analysis
 
 c = 2.998*10**8    #Speed of light
 h = 6.626*10**-34  #Planck's constant
