@@ -110,8 +110,37 @@ class Compound:
 
     def percentage_by_mass(self, element):
         return round(((self.occurences[element] * Element(element).AtomicMass) / self.molar_mass()) * 100, 3)
+
+    def oxidation_numbers(self) -> dict:
+        if len(self.types) == 1:
+            return 0
+        
+        ox_nums = {}
+        
+        def current() -> int:
+            chrg = 0
+            for sym in ox_nums:
+                chrg += ox_nums[sym]*self.occurences[sym]
+            return chrg
+
+        table = {"F": -1, "O": -2}
+        syms = list(self.occurences.keys())
+        left = [i for i in syms]
+        for sym in syms:
+            if sym in table:
+                ox_nums.update(**{sym: table[sym]})
+                left.remove(sym)
+            if int(Element(sym).Group) < 3:
+                ox_nums.update(**{sym: int(Element(sym).Group)})
+                left.remove(sym)
+        
+        if len(left) > 1:
+            raise NotImplementedError
+        
+        ox_nums[left[0]] = int(-current()/self.occurences[left[0]])
+        return ox_nums
     
-    def get_amounts(self, **kwargs):
+    def get_amounts(self, **kwargs) -> dict:
         keys = kwargs.keys()
 
         if 'grams' not in keys and 'moles' not in keys and 'molecules' not in keys:
