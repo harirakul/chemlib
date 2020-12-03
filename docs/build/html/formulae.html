@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Empirical Formulae &mdash; chemlib v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chemical Reactions" href="reactions.html" />
+    <link rel="prev" title="Chemical Compounds" href="compounds.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> chemlib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compounds.html">Chemical Compounds</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Empirical Formulae</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ef-by-percentage-composition">EF by Percentage Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#combustion-analysis">Combustion Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reactions.html">Chemical Reactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solution.html">Aqueous Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantum.html">Quantum Mechanics</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">chemlib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Empirical Formulae</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/formulae.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="empirical-formulae">
+<h1>Empirical Formulae<a class="headerlink" href="#empirical-formulae" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ef-by-percentage-composition">
+<h2>EF by Percentage Composition<a class="headerlink" href="#ef-by-percentage-composition" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="chemlib.chemistry.empirical_formula_by_percent_comp">
+<code class="sig-prename descclassname">chemlib.chemistry.</code><code class="sig-name descname">empirical_formula_by_percent_comp</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.empirical_formula_by_percent_comp" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Get the empirical formula given the percentage compositions of all elements in the compound.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – The percentage compositions of elements in the compound <code class="docutils literal notranslate"><span class="pre">(&lt;Element</span> <span class="pre">symbol&gt;</span> <span class="pre">=</span> <span class="pre">&lt;Percentage</span> <span class="pre">Composition&gt;</span> <span class="pre">...)</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The empirical formula of the compound.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the sums of the percentages is not equal to 100.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Get the empirical formula of a compound that is composed of 80.6% C, and 19.4% H by mass:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">empirical_formula_by_percent_comp</span> <span class="k">as</span> <span class="n">efbpc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">efbpc</span><span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="mf">80.6</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="mf">19.4</span><span class="p">)</span>
+<span class="go">&#39;C1H3&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="combustion-analysis">
+<h2>Combustion Analysis<a class="headerlink" href="#combustion-analysis" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="chemlib.chemistry.combustion_analysis">
+<code class="sig-prename descclassname">chemlib.chemistry.</code><code class="sig-name descname">combustion_analysis</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">CO2</span></em>, <em class="sig-param"><span class="n">H2O</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.combustion_analysis" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Get the empirical formula of a hydrocarbon given the grams of CO2 and grams of H2O formed from its combustion.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CO2</strong> – The grams of carbon dioxide formed as a result of the combustion of the hydrocarbon.</p></li>
+<li><p><strong>H2O</strong> – The grams of water formed as a result of the combustion of the hydrocarbon.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The empirical formula of the hydrocarbon.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>A hydrocarbon fuel is fully combusted with 18.214 g of oxygen to yield 23.118 g of carbon
+dioxide and 4.729 g of water. Find the empirical formula for the hydrocarbon.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib.chemistry</span> <span class="kn">import</span> <span class="n">combustion_analysis</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">combustion_analysis</span><span class="p">(</span><span class="mf">23.118</span><span class="p">,</span> <span class="mf">4.729</span><span class="p">)</span>
+<span class="go">&#39;CH&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="reactions.html" class="btn btn-neutral float-right" title="Chemical Reactions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="compounds.html" class="btn btn-neutral float-left" title="Chemical Compounds" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Hari Ambethkar
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

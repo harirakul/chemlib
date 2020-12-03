@@ -1,4 +1,4 @@
-.. include:: ../README.rst
+.. include:: ../home.rst
 
 Contents
 --------
@@ -8,6 +8,7 @@ Contents
 
    core
    compounds
+   formulae
    reactions
    solution
    quantum
