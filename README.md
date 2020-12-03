@@ -62,6 +62,8 @@ $ pip install -U chemlib
    * Molar Mass
    * Percentage Composition by Mass
    * Stoichiometric Amounts
+   * Oxidation States/Numbers
+- [Empirical Formulae](https://chemlib.readthedocs.io/en/latest/formulae.html)
    * Empirical Formula by Percentage Composition
    * Combustion Analysis of Hydrocarbons
 - [Aqueous Solutions](https://chemlib.readthedocs.io/en/latest/solution.html)
