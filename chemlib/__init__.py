@@ -15,3 +15,5 @@ R = 1.0974*10**7  #Rydberg constant
 from chemlib.quantum_mechanics import Wave, rydberg
 from chemlib.quantum_mechanics import energy_of_hydrogen_orbital
 
+from chemlib.electrochemistry import electrolysis, F
+
