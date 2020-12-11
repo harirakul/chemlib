@@ -11,6 +11,7 @@ Contents
    formulae
    reactions
    solution
+   electrochemistry
    quantum
 
 

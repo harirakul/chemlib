@@ -86,6 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../formulae.html">Empirical Formulae</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reactions.html">Chemical Reactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../solution.html">Aqueous Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../electrochemistry.html">Electrochemistry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quantum.html">Quantum Mechanics</a></li>
 </ul>
 
@@ -263,8 +264,37 @@
 
     <span class="k">def</span> <span class="nf">percentage_by_mass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">round</span><span class="p">(((</span><span class="bp">self</span><span class="o">.</span><span class="n">occurences</span><span class="p">[</span><span class="n">element</span><span class="p">]</span> <span class="o">*</span> <span class="n">Element</span><span class="p">(</span><span class="n">element</span><span class="p">)</span><span class="o">.</span><span class="n">AtomicMass</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">molar_mass</span><span class="p">())</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">oxidation_numbers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">types</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        
+        <span class="n">ox_nums</span> <span class="o">=</span> <span class="p">{}</span>
+        
+        <span class="k">def</span> <span class="nf">current</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+            <span class="n">chrg</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">sym</span> <span class="ow">in</span> <span class="n">ox_nums</span><span class="p">:</span>
+                <span class="n">chrg</span> <span class="o">+=</span> <span class="n">ox_nums</span><span class="p">[</span><span class="n">sym</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">occurences</span><span class="p">[</span><span class="n">sym</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">chrg</span>
+
+        <span class="n">table</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">}</span>
+        <span class="n">syms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">occurences</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">syms</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">sym</span> <span class="ow">in</span> <span class="n">syms</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sym</span> <span class="ow">in</span> <span class="n">table</span><span class="p">:</span>
+                <span class="n">ox_nums</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">sym</span><span class="p">:</span> <span class="n">table</span><span class="p">[</span><span class="n">sym</span><span class="p">]})</span>
+                <span class="n">left</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">Element</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span><span class="o">.</span><span class="n">Group</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">ox_nums</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">sym</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">Element</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span><span class="o">.</span><span class="n">Group</span><span class="p">)})</span>
+                <span class="n">left</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        
+        <span class="n">ox_nums</span><span class="p">[</span><span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="n">current</span><span class="p">()</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">occurences</span><span class="p">[</span><span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+        <span class="k">return</span> <span class="n">ox_nums</span>
     
-    <span class="k">def</span> <span class="nf">get_amounts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_amounts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="n">keys</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="s1">&#39;grams&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">and</span> <span class="s1">&#39;moles&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keys</span> <span class="ow">and</span> <span class="s1">&#39;molecules&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
