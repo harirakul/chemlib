@@ -77,13 +77,13 @@ $ pip install -U chemlib
    * Combustion Reactions
    * Stoichiometric Amounts
    * Limiting Reagent
+- [Electrochemistry](https://chemlib.readthedocs.io/en/latest/electrochemistry.html)
+   * Electrolysis
 - [Quantum Mechanics](https://chemlib.readthedocs.io/en/latest/quantum.html)
    * Electromagnetic Waves
       * Frequency, Wavelength, Energy per photon
    * Energy in nth Hydrogen Orbital
    * Rydberg Equation
-- [Electrochemistry](https://chemlib.readthedocs.io/en/latest/quantum.html)
-   * Electrolysis
 
 ### Elements
 ```python
