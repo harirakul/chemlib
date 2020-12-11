@@ -187,6 +187,22 @@ Copper metal is purified by electrolysis. How much copper metal (in grams) could
 <span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
+<p><cite>Example:</cite>
+How long would it take to electroplate a flute with 28.3 g of silver at a constant current of 2.0 amps using AgNO3?</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">electrolysis</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">electrolysis</span><span class="p">(</span><span class="s2">&quot;Ag&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">amps</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">grams</span> <span class="o">=</span> <span class="mf">28.3</span><span class="p">)</span>
+<span class="go">{&#39;element&#39;: &#39;Ag&#39;, &#39;n&#39;: 2, &#39;seconds&#39;: 25313.582341380206, &#39;amps&#39;: 2, &#39;grams&#39;: 28.3}</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p><cite>Example:</cite>
+How much current was used to produce 805 grams of Aluminum metal from Al2O3 in 24 hours?</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">electrolysis</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">electrolysis</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">grams</span> <span class="o">=</span> <span class="mi">805</span><span class="p">,</span> <span class="n">seconds</span> <span class="o">=</span> <span class="mi">24</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="go">{&#39;element&#39;: &#39;Al&#39;, &#39;n&#39;: 3, &#39;seconds&#39;: 86400, &#39;amps&#39;: 99.95144010616133, &#39;grams&#39;: 805}</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
 </div>
 </div>
 

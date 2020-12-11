@@ -17,3 +17,19 @@ Copper metal is purified by electrolysis. How much copper metal (in grams) could
 >>> electrolysis('Cu', 2, amps = 10, seconds=12*60*60)
 {'element': 'Cu', 'n': 2, 'seconds': 43200, 'amps': 10, 'grams': 142.25979167746283}
 >>> 
+
+`Example:`
+How long would it take to electroplate a flute with 28.3 g of silver at a constant current of 2.0 amps using AgNO3?
+
+>>> from chemlib import electrolysis
+>>> electrolysis("Ag", 2, amps = 2, grams = 28.3)
+{'element': 'Ag', 'n': 2, 'seconds': 25313.582341380206, 'amps': 2, 'grams': 28.3}
+>>> 
+
+`Example:`
+How much current was used to produce 805 grams of Aluminum metal from Al2O3 in 24 hours?
+
+>>> from chemlib import electrolysis
+>>> electrolysis("Al", 3, grams = 805, seconds = 24*60*60)
+{'element': 'Al', 'n': 3, 'seconds': 86400, 'amps': 99.95144010616133, 'grams': 805}
+>>> 
