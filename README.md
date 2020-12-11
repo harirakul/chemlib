@@ -82,6 +82,8 @@ $ pip install -U chemlib
       * Frequency, Wavelength, Energy per photon
    * Energy in nth Hydrogen Orbital
    * Rydberg Equation
+- [Electrochemistry](https://chemlib.readthedocs.io/en/latest/quantum.html)
+   * Electrolysis
 
 ### Elements
 ```python
