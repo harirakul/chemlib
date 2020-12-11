@@ -56,7 +56,7 @@ $ pip install -U chemlib
 
 ## Features
 
-- [Properties of all Elements](https://chemlib.readthedocs.io/en/latest/core.html#elements)
+- <a href="https://chemlib.readthedocs.io/en/latest/core.html#elements" target="_blank">Properties of all Elements</a>
 - [Compounds](https://chemlib.readthedocs.io/en/latest/compounds.html)
    * Formula
    * Molar Mass
