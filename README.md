@@ -78,6 +78,8 @@ $ pip install -U chemlib
    * Stoichiometric Amounts
    * Limiting Reagent
 - [Electrochemistry](https://chemlib.readthedocs.io/en/latest/electrochemistry.html)
+   * Galvanic (Voltaic) Cells
+      * Anode, Cathode, Cell Potential, Diagram
    * Electrolysis
 - [Quantum Mechanics](https://chemlib.readthedocs.io/en/latest/quantum.html)
    * Electromagnetic Waves
