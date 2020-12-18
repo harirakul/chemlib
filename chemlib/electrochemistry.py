@@ -12,8 +12,10 @@ DIAGRAM_PATH = os.path.join(this_dir, "resources", "gcell_root.png")
 REDUCTION_POTENTIALS = REDPOTS = {
     "Ba": (-2.90, 2),
     "Ca": (-2.87, 2),
+    "Na": (-2.71, 2),
     "Mg": (-2.37, 2),
     "Al": (-1.66, 3),
+    "Mn": (-1.18, 2),
     "Zn": (-0.76, 2),
     "Fe": (-0.44, 2),
     "Cd": (-0.403, 2),
@@ -43,7 +45,7 @@ class Galvanic_Cell():
             self.cathode = (e2, REDPOTS[e2])
         
         self.electrodes = (self.anode, self.cathode)
-        self.cell_potential = self.E0 = self.cathode[1][0] - self.anode[1][0]
+        self.cell_potential = self.E0 = round(self.cathode[1][0] - self.anode[1][0], 3)
         self.line_notation = f"{self.anode[0]} | {self.anode[0]}{self.anode[1][1]}+ || {self.cathode[0]}{self.cathode[1][1]}+ | {self.cathode[0]}".replace("1", '')
         endings = ["2SO4", "SO4", "2(SO4)3"]
         self.anode_soln = f"{self.anode[0]}{endings[self.anode[1][1] - 1]}"
