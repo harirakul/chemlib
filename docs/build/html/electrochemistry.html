@@ -89,6 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="reactions.html">Chemical Reactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="solution.html">Aqueous Solutions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Electrochemistry</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#galvanic-voltaic-cells">Galvanic (Voltaic) Cells</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#electrolysis">Electrolysis</a></li>
 </ul>
 </li>
@@ -160,6 +161,25 @@
             
   <div class="section" id="electrochemistry">
 <h1>Electrochemistry<a class="headerlink" href="#electrochemistry" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="galvanic-voltaic-cells">
+<h2>Galvanic (Voltaic) Cells<a class="headerlink" href="#galvanic-voltaic-cells" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="chemlib.electrochemistry.Galvanic_Cell">
+<em class="property">class </em><code class="sig-prename descclassname">chemlib.electrochemistry.</code><code class="sig-name descname">Galvanic_Cell</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">electrode1</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">electrode2</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.electrochemistry.Galvanic_Cell" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>electrode2</em>) – The elemental composition of one of the electrodes of the galvanic cell.</p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – The elemental composition of the other electrode of the galvanic cell.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – If either of the electrodes is invalid or its reduction potential is unknown.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="electrolysis">
 <h2>Electrolysis<a class="headerlink" href="#electrolysis" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">

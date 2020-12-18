@@ -1,6 +1,14 @@
 Electrochemistry
 ========================================
 
+Galvanic (Voltaic) Cells
+------------------------
+.. py:class:: chemlib.electrochemistry.Galvanic_Cell(self, electrode1: str, electrode2: str)
+
+   :param electrode1 (str): The elemental composition of one of the electrodes of the galvanic cell.
+   :param electrode2 (str): The elemental composition of the other electrode of the galvanic cell.
+   :raises NotImplementedError: If either of the electrodes is invalid or its reduction potential is unknown.
+
 Electrolysis
 ------------
 .. py:function:: chemlib.electrochemistry.electrolysis(element: str, n: int, **kwargs) -> dict:
