@@ -5,7 +5,7 @@ with open('README.md', encoding='utf-8') as readme_file:
 
 setup_args = dict(
     name='chemlib',
-    version='2.1.6',
+    version='2.1.7',
     description='An easy-to-use library that quickly performs chemistry calculations.',
     long_description_content_type="text/markdown",
     long_description=README,
