@@ -9,6 +9,33 @@ Galvanic (Voltaic) Cells
    :param electrode2 (str): The elemental composition of the other electrode of the galvanic cell.
    :raises NotImplementedError: If either of the electrodes is invalid or its reduction potential is unknown.
 
+Make a Galvanic Cell with Lead and Zinc electrodes:
+
+>>> from chemlib import Galvanic_Cell
+>>> g = Galvanic_Cell("Pb", "Zn")
+>>> 
+
+    .. py:data:: chemlib.electrochemistry.Galvanic_Cell.properties
+        :type: dict
+
+A dictionary of the cell's properties:
+
+>>> g.properties
+{'Cell': 'Zn | Zn2+ || Pb2+ | Pb', 'Anode': 'Zn', 'Cathode': 'Pb', 'Cell Potential': 0.63}
+>>> 
+
+    .. py:data:: chemlib.electrochemistry.Galvanic_Cell.cell_potential
+        :type: float
+
+Access the cell potential of the galvanic cell:
+
+>>> g.cell_potential
+0.63
+>>> g.E0
+0.63
+
+
+
 Electrolysis
 ------------
 .. py:function:: chemlib.electrochemistry.electrolysis(element: str, n: int, **kwargs) -> dict:

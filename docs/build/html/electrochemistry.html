@@ -179,6 +179,39 @@
 </dl>
 </dd></dl>
 
+<p>Make a Galvanic Cell with Lead and Zinc electrodes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Galvanic_Cell</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">Galvanic_Cell</span><span class="p">(</span><span class="s2">&quot;Pb&quot;</span><span class="p">,</span> <span class="s2">&quot;Zn&quot;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><dl class="py data">
+<dt id="chemlib.electrochemistry.Galvanic_Cell.properties">
+<code class="sig-prename descclassname">chemlib.electrochemistry.Galvanic_Cell.</code><code class="sig-name descname">properties</code><em class="property">: dict</em><a class="headerlink" href="#chemlib.electrochemistry.Galvanic_Cell.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p>A dictionary of the cell’s properties:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">properties</span>
+<span class="go">{&#39;Cell&#39;: &#39;Zn | Zn2+ || Pb2+ | Pb&#39;, &#39;Anode&#39;: &#39;Zn&#39;, &#39;Cathode&#39;: &#39;Pb&#39;, &#39;Cell Potential&#39;: 0.63}</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><dl class="py data">
+<dt id="chemlib.electrochemistry.Galvanic_Cell.cell_potential">
+<code class="sig-prename descclassname">chemlib.electrochemistry.Galvanic_Cell.</code><code class="sig-name descname">cell_potential</code><em class="property">: float</em><a class="headerlink" href="#chemlib.electrochemistry.Galvanic_Cell.cell_potential" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p>Access the cell potential of the galvanic cell:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">cell_potential</span>
+<span class="go">0.63</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">E0</span>
+<span class="go">0.63</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="electrolysis">
 <h2>Electrolysis<a class="headerlink" href="#electrolysis" title="Permalink to this headline">¶</a></h2>
