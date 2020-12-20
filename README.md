@@ -90,6 +90,12 @@ $ pip install -U chemlib
    * Energy in nth Hydrogen Orbital
    * Rydberg Equation
 
+### Periodic Table GUI
+![PTable](docs\screenshots\PTable.png)
+
+### Galvanic Cell Diagrams
+![Zn-Cu Galvanic Cell](docs\screenshots\GCell.png)
+
 ### Elements
 ```python
 >>> from chemlib import Element
