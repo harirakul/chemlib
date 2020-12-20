@@ -16,3 +16,4 @@ from chemlib.quantum_mechanics import energy_of_hydrogen_orbital
 
 from chemlib.electrochemistry import electrolysis, F, Galvanic_Cell
 
+from chemlib.gui import GUI
