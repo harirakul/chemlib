@@ -182,4 +182,5 @@ class PTEGUI(Tk):
             self.tiles.add(tile)
 
 
-PTEGUI().mainloop()
+def GUI(): 
+    PTEGUI().mainloop()
