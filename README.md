@@ -175,11 +175,11 @@ False
 True
 ```
 
-### Citing
+## Citing
 
 If you use [chemlib](https://chemlib.readthedocs.io/en/latest/index.html) in your scientific work, please consider citing:
 
-|    H. R. Ambethkar, *chemlib* - A Python chemistry library , 2020\-- . Available at:
+|     H. R. Ambethkar, *chemlib* - A Python chemistry library , 2020\-- . Available at:
   <https://github.com/harirakul/chemlib>.
 
 The reference in the [BibLaTeX](https://www.ctan.org/pkg/biblatex?lang=en) format:
