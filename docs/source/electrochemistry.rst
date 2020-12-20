@@ -34,7 +34,22 @@ Access the cell potential of the galvanic cell:
 >>> g.E0
 0.63
 
+    .. py:data:: chemlib.electrochemistry.Galvanic_Cell.diagram
+        :type: PIL.Image
 
+The diagram of the galvanic cell is a ``PIL.Image`` object.
+To view:
+
+>>> g.diagram.show()
+>>> 
+
+.. image:: ../../chemlib/screenshots/GCell.png
+    :alt: GCell
+
+To save (as png file):
+
+>>> g.diagram.save("filename.png")
+>>> 
 
 Electrolysis
 ------------
