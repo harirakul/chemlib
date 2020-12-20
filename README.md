@@ -57,6 +57,9 @@ $ pip install -U chemlib
 ## Features
 
 - [Properties of all Elements](https://chemlib.readthedocs.io/en/latest/core.html#elements)
+- [Periodic Table GUI](https://chemlib.readthedocs.io/en/latest/core.html#elements) - courtesy of <a href="https://github.com/AdiMatam">
+      @AdiMatam
+    </a>
 - [Compounds](https://chemlib.readthedocs.io/en/latest/compounds.html)
    * Formula
    * Molar Mass
