@@ -91,10 +91,10 @@ $ pip install -U chemlib
    * Rydberg Equation
 
 ### Periodic Table GUI
-![PTable](docs\screenshots\PTable.png)
+![PTable](https://github.com/harirakul/chemlib/blob/master/docs/screenshots/PTable.png)
 
 ### Galvanic Cell Diagrams
-![Zn-Cu Galvanic Cell](docs\screenshots\GCell.png)
+![Zn-Cu Galvanic Cell](https://github.com/harirakul/chemlib/blob/master/docs/screenshots/GCell.PNG)
 
 ### Elements
 ```python
