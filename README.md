@@ -57,7 +57,7 @@ $ pip install -U chemlib
 ## Features
 
 - [Properties of all Elements](https://chemlib.readthedocs.io/en/latest/core.html#elements)
-- [Periodic Table GUI](https://chemlib.readthedocs.io/en/latest/core.html#elements) - courtesy of <a href="https://github.com/AdiMatam">
+- [Periodic Table GUI](https://chemlib.readthedocs.io/en/latest/core.html#ptable-gui) - courtesy of <a href="https://github.com/AdiMatam">
       @AdiMatam
     </a>
 - [Compounds](https://chemlib.readthedocs.io/en/latest/compounds.html)
@@ -175,11 +175,20 @@ False
 True
 ```
 
-### To-Do
+### Citing
 
-- [x] Building Empirical Formulas
-- [x] Combustion Analysis
-- [ ] Hydrates
-- [ ] Percent Yield
-- [ ] Molarity and pH
-- [ ] Thermochemistry
+If you use [chemlib](https://chemlib.readthedocs.io/en/latest/index.html) in your scientific work, please consider citing:
+
+|    H. R. Ambethkar, *chemlib* - A Python chemistry library , 2020\-- . Available at:
+  <https://github.com/harirakul/chemlib>.
+
+The reference in the [BibLaTeX](https://www.ctan.org/pkg/biblatex?lang=en) format:
+
+``` {.sourceCode .latex}
+@software{chemlib2020,
+   author = {Ambethkar, Hari},
+   title = {{chemlib} -- A Python chemistry library},
+   url = {https://github.com/harirakul/chemlib},
+   version = {2.1.7+},
+   date = {2020--},
+```
