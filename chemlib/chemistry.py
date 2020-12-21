@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import sympy
 from fractions import Fraction
-from io import StringIO
+import re
 import os
 
 this_dir, this_filename = os.path.split(__file__)
@@ -11,40 +11,40 @@ DATA_PATH = os.path.join(this_dir, "resources", "PTE_updated.csv")
 SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 AVOGADROS_NUMBER = 6.02e+23
 
-def hasNumbers(inputString):
-    return any(char.isdigit() for char in inputString)
+def formula_to_list(formula: str) -> list:
+    is_number = lambda string: all([c.isdigit() for c in string])
 
-def formula_to_list(formula):
-    newlist = []
-    for i in [j for j in formula]:
-        if i.isupper(): 
-            newlist.append(' '); newlist.append(i)
-        else: 
-            newlist.append(i)
-    flist = []
-    for i in range(len(newlist)):
-        if newlist[i].isalpha() and newlist[i].isupper() and i < len(newlist) - 1:
-            if newlist[i + 1].isalpha():
-                flist.append(newlist[i] + newlist[i + 1])
-            else:
-                if newlist[i].isupper():
-                    flist.append(newlist[i])
-        else:
-            if not newlist[i].isalpha():
-                flist.append(newlist[i])
+    def clean(seq: list) -> None: #Remove numbers from list if they occur more than once
+        for i in range(10):
+            if seq.count(i) > 1:
+                seq[:] = [x for x in seq if x != i]
 
-    s = "".join(newlist).split(" "); s.pop(0)
-    for i in range(len(s)):
-        if not hasNumbers(s[i]):
-            s[i] += '1'
+    #Step 1: Insert 1's following all elements occuring only once
+    for pattern in (r'[A-Z][a-z][A-Z]', r'[A-Z][A-Z]'):
+        for loc in [(m.start(0), m.end(0)) for m in re.finditer(pattern, formula)]:
+            formula = formula[:loc[1]-1] + "1" + formula[loc[1]-1:]
+            
+    if re.search(r'[a-z]$|[A-Z]$', formula): formula += "1"
+    
+    #Step 2: Get all locations (indices) of numbers
+    numlocs = sum([[m.start(0), m.end(0)] for m in re.finditer(r'\d', formula)], [])
+    clean(numlocs)
+    numlocs = [0] + numlocs
+    
+    #Step 3: Write to dict
+    occurences = {}
+    for i in range(len(numlocs) - 1):
+        if is_number(formula[numlocs[i]:numlocs[i+1]]):
+            occurences.update({formula[numlocs[i - 1]:numlocs[i]] : formula[numlocs[i]:numlocs[i + 1]]})
+    
+    #Step 4: Convert to List
+    atomlist = []
+    
+    for i in occurences:
+        for j in range(int(occurences[i])):
+            atomlist.append(i)
 
-    flist = []
-    for i in s:
-        a = [i[:-1], i[-1]]
-        for q in range(int(a[-1])):
-            flist.append(a[0])
-
-    return flist
+    return atomlist
 
 class PeriodicTable(pd.DataFrame):
     """
