@@ -94,7 +94,7 @@ $ pip install -U chemlib
 ![PTable](https://github.com/harirakul/chemlib/blob/master/chemlib/screenshots/PTable.png)
 
 ### Galvanic Cell Diagrams
-![Zn-Cu Galvanic Cell](https://github.com/harirakul/chemlib/blob/master/chemlib/screenshots/GCell.PNG)
+![Zn-Cu Galvanic Cell](https://github.com/harirakul/chemlib/blob/master/chemlib/screenshots/GCell.jpg)
 
 ### Elements
 ```python
