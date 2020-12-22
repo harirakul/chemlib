@@ -29,7 +29,6 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -301,7 +300,7 @@
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Expecting one argument: either grams= , moles= , or molecules=&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got {len(kwargs)} arguments when expecting 1. Use either grams= , moles=, or molecules=&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span><span class="si">}</span><span class="s2"> arguments when expecting 1. Use either grams= , moles=, or molecules=&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="s1">&#39;grams&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
             <span class="n">grams</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;grams&#39;</span><span class="p">]</span>
@@ -458,7 +457,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Expecting one argument: either grams= , moles= , or molecules=&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got {len(kwargs)} arguments when expecting 1. Use either grams= , moles=, or molecules=&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span><span class="si">}</span><span class="s2"> arguments when expecting 1. Use either grams= , moles=, or molecules=&quot;</span><span class="p">)</span>
 
         <span class="n">seen_formulas</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">compound_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -468,7 +467,7 @@
             <span class="n">seen_formulas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compound</span><span class="o">.</span><span class="n">formula</span><span class="p">)</span>
         
         <span class="k">if</span> <span class="n">compound_number</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">compound_list</span><span class="p">)</span> <span class="ow">or</span> <span class="n">compound_number</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The reaction has {len(compound_list)} compounds. Please use a compound number between 1 and {len(compound_list)}, inclusive.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The reaction has </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">compound_list</span><span class="p">)</span><span class="si">}</span><span class="s2"> compounds. Please use a compound number between 1 and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">compound_list</span><span class="p">)</span><span class="si">}</span><span class="s2">, inclusive.&quot;</span><span class="p">)</span>
         
         <span class="n">seen_set</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">formula</span> <span class="ow">in</span> <span class="n">seen_formulas</span><span class="p">:</span>
@@ -508,7 +507,7 @@
                 <span class="n">reactants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">reactants</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected {len(reactants)} arguments. The number of arguments should be equal to the number of reactants.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">reactants</span><span class="p">)</span><span class="si">}</span><span class="s2"> arguments. The number of arguments should be equal to the number of reactants.&quot;</span><span class="p">)</span>
 
         <span class="n">amounts</span> <span class="o">=</span> <span class="p">[</span><span class="n">reactants</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">mode</span><span class="p">:</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]})</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">))]</span>
         <span class="n">moles</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;Moles&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">amounts</span><span class="p">]</span>
@@ -545,7 +544,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Expecting one argument: either moles= , grams=, or liters=&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got {len(kwargs)} arguments when expecting 1. Use either either moles= , grams=, or liters=&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span><span class="si">}</span><span class="s2"> arguments when expecting 1. Use either either moles= , grams=, or liters=&quot;</span><span class="p">)</span>
             
         <span class="k">if</span> <span class="s2">&quot;grams&quot;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span> <span class="n">moles</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">solute</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">grams</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;grams&quot;</span><span class="p">])[</span><span class="s2">&quot;Moles&quot;</span><span class="p">]</span>
         <span class="k">elif</span> <span class="s2">&quot;liters&quot;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span> <span class="n">moles</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">molarity</span><span class="o">*</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;liters&quot;</span><span class="p">]</span>
@@ -607,7 +606,7 @@
     <span class="n">molesH</span> <span class="o">=</span> <span class="p">(</span><span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;H2O&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">grams</span> <span class="o">=</span> <span class="n">H2O</span><span class="p">)[</span><span class="s1">&#39;Moles&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">2</span>
     <span class="n">moles</span> <span class="o">=</span> <span class="n">reduce_list</span><span class="p">([</span><span class="n">molesC</span><span class="p">,</span> <span class="n">molesH</span><span class="p">])</span>
     <span class="n">moles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">moles</span><span class="p">]</span> <span class="c1">#Remove all 1&#39;s</span>
-    <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C</span><span class="si">{moles[0]}</span><span class="s2">H</span><span class="si">{moles[1]}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C</span><span class="si">{</span><span class="n">moles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">H</span><span class="si">{</span><span class="n">moles</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">pte</span><span class="p">)</span>
