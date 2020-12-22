@@ -1,4 +1,4 @@
-chemlib
+chemlib==2.1.8
 numpy
 sympy
 pandas
