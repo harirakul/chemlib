@@ -25,6 +25,12 @@ A pure Python package that supports a variety of functions pertaining to the vas
     <img src="https://readthedocs.org/projects/chemlib/badge/?version=latest"
  />
   </a>
+
+  <!-- Build Status -->
+  <a href="https://github.com/harirakul/chemlib/workflows/build/badge.svg">
+    <img src="https://github.com/harirakul/chemlib/workflows/build/badge.svg" />
+  </a>
+
   <!-- Downloads -->
   <a href="https://pepy.tech/project/chemlib">
     <img src="https://pepy.tech/badge/chemlib" />
