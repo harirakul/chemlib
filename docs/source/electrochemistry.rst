@@ -43,7 +43,7 @@ To view:
 >>> g.diagram.show()
 >>> 
 
-.. image:: ../../chemlib/screenshots/GCell.PNG
+.. image:: ../../chemlib/screenshots/GCell.jpg
     :alt: GCell
 
 To save (as png file):
