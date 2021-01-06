@@ -86,6 +86,9 @@ class Element:
         self.properties = pte.get_element_properties_from_symbol(symbol)
         for key in self.properties:
             setattr(self, key, self.properties[key])
+    
+    def __getitem__(self, key: str):
+        return self.properties[key]
 
 class Compound:
     """
@@ -458,4 +461,4 @@ def combustion_analysis(CO2, H2O):
 if __name__ == '__main__':
     print(pte)
     b = Element('B')
-    print(b.properties)
+    print(b["FirstIonization"])
