@@ -11,40 +11,27 @@ DATA_PATH = os.path.join(this_dir, "resources", "PTE_updated.csv")
 SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 AVOGADROS_NUMBER = 6.02e+23
 
-def formula_to_list(formula: str) -> list:
-    is_number = lambda string: all([c.isdigit() for c in string])
+def parse_formula(formula : str) -> dict: # Formula Parsing by Aditya Matam
+    def multiply(formula: dict, mul: int) -> None:
+        for key in formula: formula[key] *= mul
 
-    def clean(seq: list) -> None: #Remove numbers from list if they occur more than once
-        for i in range(10):
-            if seq.count(i) > 1:
-                seq[:] = [x for x in seq if x != i]
+    formDict = {}
+    # PARENS
+    for match in re.finditer(r"\((.*?)\)(\d*)", formula):
+        parens = parse_formula(match.group(1))
+        multiply(parens, int(match.group(2)))
+        formDict.update(parens)
+    # REST
+    for match in re.finditer(r"(\(?)([A-Z][a-z]?)(\d*)(\)?)", formula):
+        left, elem, mul, right = match.groups()
+        if left or right: continue
+        if not mul: mul = 1
+        if elem in formDict:
+            formDict[elem] += int(mul)
+        else:
+            formDict[elem] = int(mul)
 
-    #Step 1: Insert 1's following all elements occuring only once
-    for pattern in (r'[A-Z][a-z][A-Z]', r'[A-Z][A-Z]'):
-        for loc in [(m.start(0), m.end(0)) for m in re.finditer(pattern, formula)]:
-            formula = formula[:loc[1]-1] + "1" + formula[loc[1]-1:]
-            
-    if re.search(r'[a-z]$|[A-Z]$', formula): formula += "1"
-    
-    #Step 2: Get all locations (indices) of numbers
-    numlocs = sum([[m.start(0), m.end(0)] for m in re.finditer(r'\d', formula)], [])
-    clean(numlocs)
-    numlocs = [0] + numlocs
-    
-    #Step 3: Write to dict
-    occurences = {}
-    for i in range(len(numlocs) - 1):
-        if is_number(formula[numlocs[i]:numlocs[i+1]]):
-            occurences.update({formula[numlocs[i - 1]:numlocs[i]] : formula[numlocs[i]:numlocs[i + 1]]})
-    
-    #Step 4: Convert to List
-    atomlist = []
-    
-    for i in occurences:
-        for j in range(int(occurences[i])):
-            atomlist.append(i)
-
-    return atomlist
+    return formDict
 
 class PeriodicTable(pd.DataFrame):
     """
@@ -96,22 +83,27 @@ class Compound:
     """
 
     def __init__(self, formula):
-        atom_list = formula_to_list(formula)
-        self.atom_list = atom_list 
-        self.types = list(dict.fromkeys(self.atom_list))
-        self.occurences = dict(zip(self.types, [self.atom_list.count(i) for i in self.types]))
+        self.occurences = parse_formula(formula)
+        self.atom_list = []
+        for i in self.occurences:
+            for j in range(int(self.occurences[i])): 
+                self.atom_list.append(i)
+        self.types = list(self.occurences.keys())
         self.formula = list(zip(self.types, [self.atom_list.count(i) for i in self.types]))
         self.formula = sum([[i[0], i[1]] for i in self.formula], [])
         self.formula = (''.join([str(i) for i in self.formula])).translate(SUB)
         self.elements = [Element(i) for i in self.atom_list]
+    
+    def __str__(self) -> str:
+        return self.formula
 
-    def molar_mass(self):
+    def molar_mass(self) -> float:
         mass = 0
         for element in self.elements:
             mass += element.AtomicMass
         return round(mass, 2)
 
-    def percentage_by_mass(self, element):
+    def percentage_by_mass(self, element) -> float:
         return round(((self.occurences[element] * Element(element).AtomicMass) / self.molar_mass()) * 100, 3)
 
     def oxidation_numbers(self) -> dict:
@@ -208,7 +200,7 @@ class Reaction:
         else:
             self.is_balanced = False
         
-    def update_formula(self):
+    def update_formula(self) -> None:
         self.formula = []
 
         for i in self.reactants: self.formula.append(i.formula)
