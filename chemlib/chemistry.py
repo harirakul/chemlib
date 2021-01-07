@@ -154,7 +154,7 @@ class Compound:
             grams = mols*self.molar_mass()
             molecules = mols*AVOGADROS_NUMBER
         
-        elif 'molecules' in keys:
+        else:
             molecules = kwargs['molecules']
             mols = molecules / AVOGADROS_NUMBER
             grams = mols*self.molar_mass()
@@ -353,7 +353,6 @@ class Reaction:
 
         amounts = [reactants[i].get_amounts(**{mode: args[i]}) for i in range(len(args))]
         moles = [i['Moles'] for i in amounts]
-        chosen_product = self.products[-1]
         eq_amounts = [self.get_amounts(i + 1, moles = moles[i]) for i in range(len(args))]
         data = [a[-1][mode.capitalize()] for a in eq_amounts]
 
@@ -400,7 +399,7 @@ class Solution:
         }
 
     def dilute(self, V1 = None, M2 = None, V2 = None, inplace = False) -> dict:
-        if V1 == None:
+        if V1 is None:
             raise TypeError("You need to specify a starting volume of Solution in liters.")
         if V2 != None and M2 != None:
             raise TypeError("You can only specify one or the other, M2 or V2.")
