@@ -1,7 +1,0 @@
-chemlib==2.1.8
-numpy
-sympy
-pandas
-typing
-sphinx==2.4
-Pillow

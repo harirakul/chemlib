@@ -27,6 +27,16 @@ def get_type_hints(obj, globalns=None, localns=None):
 
 typing.get_type_hints = get_type_hints
 
+autodoc_mock_imports = [
+    'chemlib',
+    'numpy',
+    'sympy',
+    'pandas',
+    'typing',
+    'sphinx',
+    'Pillow',
+    'sphinx_rtd_theme'
+]
 
 # -- Project information -----------------------------------------------------
 
