@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - Added empirical formulae [`df05b47`](https://github.com/harirakul/chemlib/commit/df05b47877663b7f95753193e6b95e5c4aaed940)
 - Added electrochemistry [`f3b060a`](https://github.com/harirakul/chemlib/commit/f3b060a03af2e442278007f4c20ca249bfa9b9bf)
 
-### [v2.0](https://github.com/harirakul/chemlib/compare/v1.0...v2.0)
+#### [v2.0](https://github.com/harirakul/chemlib/compare/v1.0...v2.0)
 
 > 19 September 2020
 

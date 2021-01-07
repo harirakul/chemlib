@@ -197,4 +197,5 @@ The reference in the [BibLaTeX](https://www.ctan.org/pkg/biblatex?lang=en) forma
    url = {https://github.com/harirakul/chemlib},
    version = {2.1.7+},
    date = {2020--},
+}
 ```
