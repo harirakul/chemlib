@@ -19,11 +19,8 @@ setup_args = dict(
     download_url='https://pypi.org/project/chemlib/'
 )
 
-install_requires = [
-    'pandas',
-    'numpy',
-    'sympy'
-]
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
 
 if __name__ == '__main__':
-    setup(**setup_args, install_requires=install_requires)
+    setup(**setup_args, install_requires=required)
