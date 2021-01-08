@@ -58,9 +58,11 @@ class PeriodicTable(pd.DataFrame):
         super(PeriodicTable, self).__init__(pd.read_csv(DATA_PATH))
         
     def get_element_properties_from_symbol(self, symbol):
-        values = np.array(self.iloc[[self.index[self['Symbol'] == symbol].tolist()[0]]]).ravel()
-        keys = list(self)
-        return dict(zip(keys, values))
+        # values = np.array(self.iloc[[self.index[self['Symbol'] == symbol].tolist()[0]]]).ravel()
+        # keys = list(self)
+        # return dict(zip(keys, values))
+        series = self.loc[self["Symbol"] == symbol].iloc[0]
+        return series.to_dict()
 
 pte = PeriodicTable()
 
@@ -77,23 +79,35 @@ class Element:
     def __getitem__(self, key: str):
         return self.properties[key]
 
+    def __str__(self):
+        return self["Symbol"]
+
 class Compound:
     """
     Represents a chemical compound.
     """
 
     def __init__(self, formula):
+        # self.atom_list = []
+        # for i in self.occurences:
+        #     for j in range(int(self.occurences[i])): 
+        #         self.atom_list.append(i)
+        # self.types = list(self.occurences.keys())
+        # self.formula = list(zip(self.types, [self.atom_list.count(i) for i in self.types]))
+        # self.formula = sum([[i[0], i[1]] for i in self.formula], [])
+        # self.formula = (''.join([str(i) for i in self.formula])).translate(SUB)
+        # self.formula = ""
+        # self.elements = [Element(i) for i in self.atom_list]
         self.occurences = parse_formula(formula)
-        self.atom_list = []
-        for i in self.occurences:
-            for j in range(int(self.occurences[i])): 
-                self.atom_list.append(i)
-        self.types = list(self.occurences.keys())
-        self.formula = list(zip(self.types, [self.atom_list.count(i) for i in self.types]))
-        self.formula = sum([[i[0], i[1]] for i in self.formula], [])
-        self.formula = (''.join([str(i) for i in self.formula])).translate(SUB)
-        self.elements = [Element(i) for i in self.atom_list]
-    
+        self.elements = []
+        self.formula = []
+        for symbol in self.occurences:
+            count = self.occurences[symbol]
+            self.formula.append(f"{symbol}{count}")
+            for _ in range(count):
+                self.elements.append(Element(symbol))
+        self.formula = ''.join(self.formula).translate(SUB)
+
     def __str__(self) -> str:
         return self.formula
 
@@ -255,7 +269,7 @@ class Reaction:
                 matrix.append(col)
             
             matrix = sympy.Matrix(np.array(matrix).transpose()).rref() #Row - echelon form
-            solutions = list(np.array(matrix[0][:, -1].tolist() + [matrix[-1][-1]]))
+            solutions = list(np.array(matrix[0][:, -1].tolist() + [matrix[-1][-1]], dtype=np.object))
             solutions = np.array([[i] if type(i) is int else i for i in solutions]).ravel().astype(np.float)
             solutions = [abs(i) for i in solutions]
             denominators = [f.denominator for f in [Fraction(x).limit_denominator() for x in solutions]]
@@ -357,6 +371,9 @@ class Reaction:
         data = [a[-1][mode.capitalize()] for a in eq_amounts]
 
         return (reactants[np.argmin(data)])
+
+    def __str__(self):
+        return self.formula
 
 class Combustion(Reaction):
 
