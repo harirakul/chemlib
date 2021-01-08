@@ -13,7 +13,8 @@ CMPDS = {
     "MnO4": {"Mn" : 1, "O": 4},
     "Mg(SO4)2": {"Mg": 1, "S":2, "O":8},
     "(Al)3(SO4)2": {"Al": 3, "S":2, "O":8},
-    "MnSMn": {"Mn": 2, "S":1}
+    "MnSMn": {"Mn": 2, "S":1},
+    "C2H5OH": {"C": 2, "H": 6, "O": 1}
 }
 
 class TestFormulae(unittest.TestCase):

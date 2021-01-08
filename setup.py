@@ -5,7 +5,7 @@ with open('README.md', encoding='utf-8') as readme_file:
 
 setup_args = dict(
     name='chemlib',
-    version='2.1.8',
+    version='2.1.9',
     description='An easy-to-use library that quickly performs chemistry calculations.',
     long_description_content_type="text/markdown",
     long_description=README,
@@ -19,8 +19,14 @@ setup_args = dict(
     download_url='https://pypi.org/project/chemlib/'
 )
 
-with open('requirements.txt') as f:
-    required = f.read().splitlines()
+required = [
+    'numpy',
+    'sympy',
+    'pandas',
+    'typing',
+    'sphinx',
+    'Pillow'
+]
 
 if __name__ == '__main__':
     setup(**setup_args, install_requires=required)
