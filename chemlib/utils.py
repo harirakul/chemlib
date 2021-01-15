@@ -2,9 +2,10 @@ import inspect
 from fractions import Fraction
 
 class DimensionalAnalyzer():
-    def __init__(self, **kwargs) -> None:
+    def __init__(self, rounding = 3, **kwargs) -> None:
         self.kwargs = kwargs
         self.dependencies = {}
+        self.rounding = rounding
         for item in self.kwargs:
             arg = tuple(inspect.signature(self.kwargs[item]).parameters)[0]
             self.dependencies.update({item: arg})
@@ -19,17 +20,21 @@ class DimensionalAnalyzer():
         rdict = {}
         for var in params:
             self.validate(var)
-            rdict.update({var: params[var]})
+            rdict.update({var: rround(params[var], self.rounding)})
 
         while len(rdict) != len(self.kwargs):
             for item in self.kwargs:
                 if item not in rdict:
                     try:
-                        rdict.update({item: self.kwargs[item](rdict[self.dependencies[item]])})
+                        rdict.update({item: rround(self.kwargs[item](rdict[self.dependencies[item]]), self.rounding)})
                     except:
                         continue
 
         return rdict
+
+def rround(num: float, places: int) -> float:
+    if 'e' in str(num): return float(f'{num:.{places}e}')
+    else: return round(num, places)
 
 def reduce_list(L):
     a = L
@@ -40,13 +45,14 @@ def reduce_list(L):
     return a
     
 if __name__ == "__main__":
-    molar_mass = 50
-    AVOGADROS_NUMBER = 6.02e+23
+    print(rround(2.32432432423e25, 5))
+    # molar_mass = 50
+    # AVOGADROS_NUMBER = 6.02e+23
 
-    d = DimensionalAnalyzer(
-        grams = lambda mols: mols*molar_mass,
-        mols = lambda molecules: molecules/AVOGADROS_NUMBER,
-        molecules = lambda grams: grams/molar_mass*AVOGADROS_NUMBER
-    )
+    # d = DimensionalAnalyzer(
+    #     grams = lambda mols: mols*molar_mass,
+    #     mols = lambda molecules: molecules/AVOGADROS_NUMBER,
+    #     molecules = lambda grams: grams/molar_mass*AVOGADROS_NUMBER
+    # )
 
-    print(d.plug(mols = 25))
+    # print(d.plug(mols = 25))

@@ -170,6 +170,9 @@ class Reaction:
     def __init__(self, reactants, products):
         self.reinit(reactants, products)
     
+    def __str__(self) -> str:
+        return self.formula
+    
     def reinit(self, reactants, products):
         self.reactants = reactants
         self.products = products
