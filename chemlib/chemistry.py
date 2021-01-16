@@ -5,6 +5,8 @@ from fractions import Fraction
 import re
 import os
 
+from chemlib.utils import DimensionalAnalyzer, reduce_list
+
 this_dir, this_filename = os.path.split(__file__)
 DATA_PATH = os.path.join(this_dir, "resources", "PTE_updated.csv")
 
@@ -159,32 +161,19 @@ class Compound:
 
         if len(kwargs) > 1:
             raise TypeError(f"Got {len(kwargs)} arguments when expecting 1. Use either grams= , moles=, or molecules=")
-
-        if 'grams' in keys:
-            grams = kwargs['grams']
-            mols = grams/self.molar_mass()
-            molecules = mols*AVOGADROS_NUMBER
-
-        elif 'moles' in keys:
-            mols = kwargs['moles']
-            grams = mols*self.molar_mass()
-            molecules = mols*AVOGADROS_NUMBER
         
-        else:
-            molecules = kwargs['molecules']
-            mols = molecules / AVOGADROS_NUMBER
-            grams = mols*self.molar_mass()
-
-        return {
-            'Compound': self.formula,
-            'Grams': round(grams, 3),
-            'Moles': round(mols, 4), 
-            'Molecules': float('{:0.3e}'.format(molecules))
-        }
+        return DimensionalAnalyzer(
+            grams = lambda moles: moles*self.molar_mass(),
+            moles = lambda molecules: molecules/AVOGADROS_NUMBER,
+            molecules = lambda grams: grams/self.molar_mass()*AVOGADROS_NUMBER
+        ).plug(**kwargs)
 
 class Reaction:
     def __init__(self, reactants: list, products: list):
         self.reinit(reactants, products)
+    
+    def __str__(self) -> str:
+        return self.formula
     
     def reinit(self, reactants, products):
         self.reactants = reactants
@@ -335,7 +324,7 @@ class Reaction:
         compound_frequency = {i:seen_formulas.count(i) for i in seen_set}
         index_compound = compound_list[compound_number - 1]
         index_amounts = index_compound.get_amounts(**kwargs)
-        index_moles = index_amounts['Moles']
+        index_moles = index_amounts['moles']
         index_multiplier = compound_frequency[index_compound.formula]
         multipliers = []
 
@@ -368,7 +357,7 @@ class Reaction:
             raise TypeError(f"Expected {len(reactants)} arguments. The number of arguments should be equal to the number of reactants.")
 
         amounts = [reactants[i].get_amounts(**{mode: args[i]}) for i in range(len(args))]
-        moles = [i['Moles'] for i in amounts]
+        moles = [i['moles'] for i in amounts]
         eq_amounts = [self.get_amounts(i + 1, moles = moles[i]) for i in range(len(args))]
         data = [a[-1][mode.capitalize()] for a in eq_amounts]
 
@@ -396,7 +385,7 @@ class Solution:
     def by_grams_per_liters(cls, solute: Compound, grams: float, liters: float):
         if type(solute) is Compound: cmpd = solute
         else: cmpd = Compound(solute)
-        molarity = cmpd.get_amounts(grams = grams)["Moles"] / liters
+        molarity = cmpd.get_amounts(grams = grams)["moles"] / liters
         return cls(solute, molarity)
     
     def get_amounts(self, **kwargs) -> dict:
@@ -407,17 +396,12 @@ class Solution:
 
         if len(kwargs) != 1:
             raise ValueError(f"Got {len(kwargs)} arguments when expecting 1. Use either either moles= , grams=, or liters=")
-            
-        if "grams" in keys: moles = self.solute.get_amounts(grams = kwargs["grams"])["Moles"]
-        elif "liters" in keys: moles = self.molarity*kwargs["liters"]
-        else: moles = kwargs["moles"]
-
-        return {
-            "Solute": self.solute.formula,
-            "Moles": moles,
-            "Liters": moles/self.molarity,
-            "Grams": self.solute.get_amounts(moles = moles)["Grams"]
-        }
+        
+        return DimensionalAnalyzer(
+            moles = lambda liters: liters*self.molarity,
+            liters = lambda grams: grams/self.solute.molar_mass()/self.molarity,
+            grams = lambda moles: moles*self.solute.molar_mass()
+        ).plug(**kwargs)
 
     def dilute(self, V1 = None, M2 = None, V2 = None, inplace = False) -> dict:
         if V1 is None:
@@ -437,14 +421,6 @@ class Solution:
             "Molarity": round(M2, 4),
             "Volume": round(V2, 4)
         }
-             
-def reduce_list(L):
-    a = L
-    denominators = [f.denominator for f in [Fraction(x).limit_denominator() for x in L]]
-    a = [a[i]*max(denominators) for i in range(len(a))]
-    a = [a[i]/min(a) for i in range(len(a))]
-    a = [round(i) for i in a]
-    return a
 
 def empirical_formula_by_percent_comp(**kwargs):
     elems = list(kwargs.keys())
@@ -455,7 +431,7 @@ def empirical_formula_by_percent_comp(**kwargs):
     compounds = [Compound(elem) for elem in elems]
     moles = []
     for i in range(len(compounds)):
-        moles.append((compounds[i].get_amounts(grams = percs[i]))['Moles'])
+        moles.append((compounds[i].get_amounts(grams = percs[i]))['moles'])
 
     moles = [i/min(moles) for i in moles]
     moles = reduce_list(moles)
@@ -464,17 +440,17 @@ def empirical_formula_by_percent_comp(**kwargs):
     return ("".join(final))
     
 def combustion_analysis(CO2, H2O):
-    molesC = Compound("CO2").get_amounts(grams = CO2)["Moles"]
-    molesH = (Compound("H2O").get_amounts(grams = H2O)['Moles'])*2
+    molesC = Compound("CO2").get_amounts(grams = CO2)["moles"]
+    molesH = (Compound("H2O").get_amounts(grams = H2O)['moles'])*2
     moles = reduce_list([molesC, molesH])
     moles = ["" if x == 1 else x for x in moles] #Remove all 1's
     return (f"C{moles[0]}H{moles[1]}")
     
 if __name__ == '__main__':
-    # print(pte)
+    #print(pte)
     # b = Element('B')
     # print(b["FirstIonization"])
-    c = Compound("C2H6")
-    r = Combustion(c)
-    r.balance()
-    print(r.formula)
+    c = Compound("H2O")
+    print(c.get_amounts(grams = 25))
+    s = Solution(Compound("H2SO4"), 0.25)
+    print(s.get_amounts(moles = 5))
