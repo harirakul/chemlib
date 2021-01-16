@@ -21,7 +21,9 @@ def parse_formula(formula : str) -> dict: # Formula Parsing by Aditya Matam
     # PARENS
     for match in re.finditer(r"\((.*?)\)(\d*)", formula):
         parens = parse_formula(match.group(1))
-        multiply(parens, int(match.group(2)))
+        mul = match.group(2)
+        if not mul: mul = 1
+        multiply(parens, int(mul))
         formDict.update(parens)
     # REST
     for match in re.finditer(r"(\(?)([A-Z][a-z]?)(\d*)(\)?)", formula):
@@ -167,7 +169,7 @@ class Compound:
         ).plug(**kwargs)
 
 class Reaction:
-    def __init__(self, reactants, products):
+    def __init__(self, reactants: list, products: list):
         self.reinit(reactants, products)
     
     def __str__(self) -> str:
@@ -374,7 +376,9 @@ class Reaction:
 class Combustion(Reaction):
 
     def __init__(self, compound):
-        super(Combustion, self).__init__(reactants = [compound, Compound(['O']*2)], products = [Compound(['H']*2 + ['O']), Compound(['C'] + ['O']*2)])
+        if type(compound) is str:
+            compound = Compound(compound)
+        super().__init__(reactants=[compound, Compound("O2")], products=[Compound("H2O"), Compound("CO2")])
         self.balance()
 
 class Solution:
