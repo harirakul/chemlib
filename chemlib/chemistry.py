@@ -173,6 +173,13 @@ class Reaction:
     def __str__(self) -> str:
         return self.formula
     
+    @classmethod
+    def by_formula(cls, formula: str):
+        reactants, products = formula.split('>')
+        reactants = [Compound(f) for f in [i.strip(' -') for i in reactants.split('+')]]
+        products = [Compound(f) for f in [i.strip(' -') for i in products.split('+')]]
+        return cls(reactants, products)
+    
     def reinit(self, reactants, products):
         self.reactants = reactants
         self.products = products
@@ -446,7 +453,12 @@ if __name__ == '__main__':
     #print(pte)
     # b = Element('B')
     # print(b["FirstIonization"])
-    c = Compound("H2O")
-    print(c.get_amounts(grams = 25))
-    s = Solution(Compound("H2SO4"), 0.25)
-    print(s.get_amounts(moles = 5))
+    # c = Compound("H2O")
+    # print(c.get_amounts(grams = 25))
+    # s = Solution(Compound("H2SO4"), 0.25)
+    # print(s.get_amounts(moles = 5))
+
+    r = Reaction.by_formula('H2 + O2 --> H2O')
+    print(r)
+    print(r.balance())
+    print(r)
