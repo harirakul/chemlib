@@ -1,6 +1,5 @@
 from chemlib.chemistry import PeriodicTable
 
-pte = PeriodicTable()
 SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 AVOGADROS_NUMBER = 6.02e+23
 
@@ -15,5 +14,3 @@ from chemlib.quantum_mechanics import Wave, rydberg
 from chemlib.quantum_mechanics import energy_of_hydrogen_orbital
 
 from chemlib.electrochemistry import electrolysis, F, Galvanic_Cell
-
-from chemlib.gui import GUI
