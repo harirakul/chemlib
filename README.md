@@ -96,8 +96,8 @@ $ pip install -U chemlib
    * Energy in nth Hydrogen Orbital
    * Rydberg Equation
 
-### Periodic Table GUI
-![PTable](https://github.com/harirakul/chemlib/blob/master/chemlib/screenshots/PTable.png)
+<!-- ### Periodic Table GUI
+![PTable](https://github.com/harirakul/chemlib/blob/master/chemlib/screenshots/PTable.png) -->
 
 ### Galvanic Cell Diagrams
 ![Zn-Cu Galvanic Cell](https://github.com/harirakul/chemlib/blob/master/chemlib/screenshots/GCell.jpg)
@@ -195,7 +195,7 @@ The reference in the [BibLaTeX](https://www.ctan.org/pkg/biblatex?lang=en) forma
    author = {Ambethkar, Hari},
    title = {{chemlib} -- A Python chemistry library},
    url = {https://github.com/harirakul/chemlib},
-   version = {2.1.7+},
+   version = {2.1.9},
    date = {2020--},
 }
 ```
