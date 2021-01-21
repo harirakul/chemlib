@@ -7,7 +7,7 @@ class Wave:
         keys = kwargs.keys()
 
         if ('wavelength' not in keys and 'frequency' not in keys and 'energy' not in keys) or (len(keys) != 1):
-            raise ValueError('Expecting one argument: either grams= , moles= , or molecules=')
+            raise ValueError('Expecting one argument: either wavelength= , frequency= , or energy=')
 
         mode = list(keys)[0]
         if mode == 'frequency':
