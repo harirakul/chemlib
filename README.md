@@ -7,7 +7,7 @@
   <strong>Chemistry Library</strong>
 </div>
 
-  <p align="center">
+<p align="center">
 A pure Python package that supports a variety of functions pertaining to the vast field of chemistry.
   </p>
 <br>
@@ -26,13 +26,15 @@ A pure Python package that supports a variety of functions pertaining to the vas
  />
   </a>
 
-  <!-- Build Status -->
-  <a href="https://github.com/harirakul/chemlib/workflows/build/badge.svg">
+<!-- Build Status -->
+
+<a href="https://github.com/harirakul/chemlib/workflows/build/badge.svg">
     <img src="https://github.com/harirakul/chemlib/workflows/build/badge.svg" />
   </a>
 
-  <!-- Downloads -->
-  <a href="https://pepy.tech/project/chemlib">
+<!-- Downloads -->
+
+<a href="https://pepy.tech/project/chemlib">
     <img src="https://pepy.tech/badge/chemlib" />
   </a>
 </div>
@@ -53,7 +55,11 @@ A pure Python package that supports a variety of functions pertaining to the vas
 </div>
 <br>
 
+
+
+
 ## Installation
+
 Use the Python Package Installer (PyPI):
 
 ```sh
@@ -63,46 +69,45 @@ $ pip install -U chemlib
 ## Features
 
 - [Properties of all Elements](https://chemlib.readthedocs.io/en/latest/core.html#elements)
-- [Periodic Table GUI](https://chemlib.readthedocs.io/en/latest/core.html#ptable-gui) - courtesy of <a href="https://github.com/AdiMatam">
-      @AdiMatam
-    </a>
 - [Compounds](https://chemlib.readthedocs.io/en/latest/compounds.html)
-   * Formula
-   * Molar Mass
-   * Percentage Composition by Mass
-   * Stoichiometric Amounts
-   * Oxidation States/Numbers
+  * Formula
+  * Molar Mass
+  * Percentage Composition by Mass
+  * Stoichiometric Amounts
+  * Oxidation States/Numbers
 - [Empirical Formulae](https://chemlib.readthedocs.io/en/latest/formulae.html)
-   * Empirical Formula by Percentage Composition
-   * Combustion Analysis of Hydrocarbons
+  * Empirical Formula by Percentage Composition
+  * Combustion Analysis of Hydrocarbons
 - [Aqueous Solutions](https://chemlib.readthedocs.io/en/latest/solution.html)
-   * Solute
-   * Molarity (mol/L)
-   * Stoichiometric Amounts
-   * Dilutions
+  * Solute
+  * Molarity (mol/L)
+  * Stoichiometric Amounts
+  * Dilutions
 - [Chemical Reactions](https://chemlib.readthedocs.io/en/latest/reactions.html)
-   * Formula
-   * Balancing the Equation
-   * Combustion Reactions
-   * Stoichiometric Amounts
-   * Limiting Reagent
+  * Formula
+  * Balancing the Equation
+  * Combustion Reactions
+  * Stoichiometric Amounts
+  * Limiting Reagent
 - [Electrochemistry](https://chemlib.readthedocs.io/en/latest/electrochemistry.html)
-   * Galvanic (Voltaic) Cells
-      * Anode, Cathode, Cell Potential, Diagram
-   * Electrolysis
+  * Galvanic (Voltaic) Cells
+    * Anode, Cathode, Cell Potential, Diagram
+  * Electrolysis
 - [Quantum Mechanics](https://chemlib.readthedocs.io/en/latest/quantum.html)
-   * Electromagnetic Waves
-      * Frequency, Wavelength, Energy per photon
-   * Energy in nth Hydrogen Orbital
-   * Rydberg Equation
+  * Electromagnetic Waves
+    * Frequency, Wavelength, Energy per photon
+  * Energy in nth Hydrogen Orbital
+  * Rydberg Equation
 
 <!-- ### Periodic Table GUI
 ![PTable](https://github.com/harirakul/chemlib/blob/master/chemlib/screenshots/PTable.png) -->
 
 ### Galvanic Cell Diagrams
+
 ![Zn-Cu Galvanic Cell](https://github.com/harirakul/chemlib/blob/master/chemlib/screenshots/GCell.jpg)
 
 ### Elements
+
 ```python
 >>> from chemlib import Element
 
@@ -134,6 +139,7 @@ $ pip install -U chemlib
 ```
 
 ### Stoichiometric conversions with compounds
+
 Accepted inputs: grams, moles, and molecules
 
 ```python
@@ -186,11 +192,11 @@ True
 If you use [chemlib](https://chemlib.readthedocs.io/en/latest/index.html) in your scientific work, please consider citing:
 
 |     H. R. Ambethkar, *chemlib* - A Python chemistry library , 2020\-- . Available at:
-  <https://github.com/harirakul/chemlib>.
+[https://github.com/harirakul/chemlib](https://github.com/harirakul/chemlib).
 
 The reference in the [BibLaTeX](https://www.ctan.org/pkg/biblatex?lang=en) format:
 
-``` {.sourceCode .latex}
+```{.sourceCode .latex}
 @software{chemlib2020,
    author = {Ambethkar, Hari},
    title = {{chemlib} -- A Python chemistry library},

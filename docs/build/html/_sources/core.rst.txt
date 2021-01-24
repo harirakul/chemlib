@@ -12,14 +12,6 @@ Column Names
 >>> list(chemlib.pte)   #Column names
 ['AtomicNumber', 'Element', 'Symbol', 'AtomicMass', 'Neutrons', 'Protons', 'Electrons', 'Period', 'Group', 'Phase', 'Radioactive', 'Natural', 'Metal', 'Nonmetal', 'Metalloid', 'Type', 'AtomicRadius', 'Electronegativity', 'FirstIonization', 'Density', 'MeltingPoint', 'BoilingPoint', 'Isotopes', 'Discoverer', 'Year', 'SpecificHeat', 'Shells', 'Valence', 'Config', 'MassNumber']
 
-PTable GUI
-----------
->>> import chemlib
->>> chemlib.GUI()
-
-.. image:: ../../chemlib/screenshots/PTable.png
-    :alt: PTable
-
 Elements
 --------
 .. autoclass:: chemlib.chemistry.Element
