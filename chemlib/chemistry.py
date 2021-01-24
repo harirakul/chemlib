@@ -111,6 +111,7 @@ class Compound:
             for _ in range(count):
                 self.elements.append(Element(symbol))
         self.formula = ''.join(self.formula).translate(SUB)
+        self.coefficient = 1 if not self.formula[0].isdigit() else int(re.match(r'\d+', self.formula))
 
     def __str__(self) -> str:
         return self.formula
@@ -125,7 +126,7 @@ class Compound:
         return round(((self.occurences[element] * Element(element).AtomicMass) / self.molar_mass()) * 100, 3)
 
     def oxidation_numbers(self) -> dict:
-        if len(self.types) == 1:
+        if len(self.occurences.keys()) == 1:
             return 0
         
         ox_nums = {}
