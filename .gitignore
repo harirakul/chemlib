@@ -2,6 +2,7 @@ __pycache__
 dist
 *.egg-info/
 .vscode
+.idea
 .pytest_cache
 docs/build
 run.py
