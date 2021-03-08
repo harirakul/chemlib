@@ -386,13 +386,19 @@ class Reaction:
 
         chosen_cmpd = self.constituents[chosen]
         conc_change = ending_conc[chosen] - starting_conc[chosen]
-
         multiplier = 1 if conc_change > 0 else -1
+        Kc = 1
+
         for i in range(len(ending_conc)):
+            cmpd = self.constituents[i]
+            coefficient = self.coefficients[cmpd]
             if (i != chosen):
-                cmpd = self.constituents[i]
                 m = -1 if cmpd in self.reactant_formulas else 1
-                new_ending[i] = starting_conc[i] + conc_change*(self.coefficients[cmpd]/self.coefficients[chosen_cmpd])*m*multiplier
+                new_ending[i] = starting_conc[i] + conc_change*(coefficient/self.coefficients[chosen_cmpd])*m*multiplier
+
+            if (cmpd in self.reactant_formulas):
+                Kc *= 1/(new_ending[i]**coefficient)
+            else: Kc *= (new_ending[i]**coefficient)
         
         if show_work: # For those AP Chemistry students 😉
             changes = []
@@ -408,7 +414,9 @@ class Reaction:
 
             print(df)
 
-        return dict(zip(self.constituents, new_ending))
+        d = dict(zip(self.constituents, new_ending))
+        d.update({"Kc": Kc})
+        return d
 
 class Combustion(Reaction):
 
@@ -491,12 +499,11 @@ def combustion_analysis(CO2, H2O):
     return (f"C{moles[0]}H{moles[1]}")
 
 if __name__ == '__main__':
-    r = Reaction.by_formula('SO2 + O2 --> SO3')
+    r = Reaction.by_formula('H2 + I2 --> HI')
     r.balance()
-    starting_conc=[2, 2, 0]
-    ending_conc=[None, None, 1]
-
     print(r)
-    # print("Starting Concentration:", starting_conc)
-    # print("Ending Concentrations:", ending_conc)
+
+    starting_conc=[1e-3, 2e-3, 0]
+    ending_conc=[None, None, 1.87e-3]
+
     print(r.equilibrium_concentrations(starting_conc, ending_conc, show_work=True))
