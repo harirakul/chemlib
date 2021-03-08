@@ -220,14 +220,14 @@ class Reaction:
         self.formula.append(' --> ')
         for i in self.products: self.formula.append(i.formula)
 
-        self.frequencies = {i:self.formula.count(i) for i in self.formula}
+        self.coefficients = {i:self.formula.count(i) for i in self.formula}
         self.constituents = list(dict.fromkeys(self.formula))
 
         self.formula = []
         for i in self.constituents:
-            self.formula.append(str(self.frequencies[i]) + i)
+            self.formula.append(str(self.coefficients[i]) + i)
 
-        del self.frequencies[' --> ']
+        del self.coefficients[' --> ']
         self.constituents.remove(' --> ')
 
         self.formula = ' + '.join(self.formula).replace('+ 1 ', '').replace('  +', '')
@@ -370,9 +370,30 @@ class Reaction:
         data = [a[-1][mode.capitalize()] for a in eq_amounts]
 
         return (reactants[np.argmin(data)])
+    
+    def equilibrium_concentrations(self, starting_conc: list, ending_conc: list) -> dict:
+        # Error Handling
+        if not self.is_balanced: self.balance()
+        if (len(starting_conc) != len(ending_conc) != len(self.constituents)): raise ValueError
+        if (any(i == None for i in starting_conc)): raise ValueError("All starting concentrations must be known.")
+        if (all(i == None for i in ending_conc)): raise ValueError("At least one ending concentration must be known.")
 
-    def __str__(self):
-        return self.formula
+        # Calculation
+        for i in range(len(ending_conc)):
+            if ending_conc[i] is not None:
+                chosen = i;
+
+        chosen_cmpd = self.constituents[chosen]
+        conc_change = ending_conc[chosen] - starting_conc[chosen]
+
+        multiplier = 1 if conc_change > 0 else -1
+        for i in range(len(ending_conc)):
+            if (i != chosen):
+                cmpd = self.constituents[i]
+                m = -1 if cmpd in self.reactant_formulas else 1
+                ending_conc[i] = starting_conc[i] + conc_change*(self.coefficients[cmpd]/self.coefficients[chosen_cmpd])*m*multiplier
+        
+        return dict(zip(self.constituents, ending_conc))
 
 class Combustion(Reaction):
 
@@ -455,15 +476,12 @@ def combustion_analysis(CO2, H2O):
     return (f"C{moles[0]}H{moles[1]}")
 
 if __name__ == '__main__':
-    #print(pte)
-    # b = Element('B')
-    # print(b["FirstIonization"])
-    # c = Compound("H2O")
-    # print(c.get_amounts(grams = 25))
-    # s = Solution(Compound("H2SO4"), 0.25)
-    # print(s.get_amounts(moles = 5))
+    r = Reaction.by_formula('SO2 + O2 --> SO3')
+    r.balance()
+    starting_conc=[2, 2, 0]
+    ending_conc=[None, None, 1]
 
-    r = Reaction.by_formula('H2 + O2 --> H2O')
     print(r)
-    print(r.balance())
-    print(r)
+    print("Starting Concentration:", starting_conc)
+    print("Ending Concentrations:", ending_conc)
+    print("Equilibrium Concentrations:", r.equilibrium_concentrations(starting_conc, ending_conc))
