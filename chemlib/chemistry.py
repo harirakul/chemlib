@@ -371,7 +371,7 @@ class Reaction:
 
         return (reactants[np.argmin(data)])
     
-    def equilibrium_concentrations(self, starting_conc: list, ending_conc: list) -> dict:
+    def equilibrium_concentrations(self, starting_conc: list, ending_conc: list, show_work = False) -> dict:
         # Error Handling
         if not self.is_balanced: self.balance()
         if (len(starting_conc) != len(ending_conc) != len(self.constituents)): raise ValueError
@@ -379,6 +379,7 @@ class Reaction:
         if (all(i == None for i in ending_conc)): raise ValueError("At least one ending concentration must be known.")
 
         # Calculation
+        new_ending = [i for i in ending_conc]
         for i in range(len(ending_conc)):
             if ending_conc[i] is not None:
                 chosen = i;
@@ -391,9 +392,23 @@ class Reaction:
             if (i != chosen):
                 cmpd = self.constituents[i]
                 m = -1 if cmpd in self.reactant_formulas else 1
-                ending_conc[i] = starting_conc[i] + conc_change*(self.coefficients[cmpd]/self.coefficients[chosen_cmpd])*m*multiplier
+                new_ending[i] = starting_conc[i] + conc_change*(self.coefficients[cmpd]/self.coefficients[chosen_cmpd])*m*multiplier
         
-        return dict(zip(self.constituents, ending_conc))
+        if show_work: # For those AP Chemistry students 😉
+            changes = []
+            for i in range(len(self.constituents)):
+                cmpd = self.constituents[i]
+                leading = "+" if cmpd in self.product_formulas else "-"
+                changes.append(leading + str(self.coefficients[cmpd]) + "x")
+
+            data = [starting_conc, changes, ending_conc]
+
+            rows = ['Starting Concentrations (M)', "Concentration Changes (M)", "Ending Concentrations (M)"]
+            df = pd.DataFrame(data, columns=self.constituents, index=rows)
+
+            print(df)
+
+        return dict(zip(self.constituents, new_ending))
 
 class Combustion(Reaction):
 
@@ -482,6 +497,6 @@ if __name__ == '__main__':
     ending_conc=[None, None, 1]
 
     print(r)
-    print("Starting Concentration:", starting_conc)
-    print("Ending Concentrations:", ending_conc)
-    print("Equilibrium Concentrations:", r.equilibrium_concentrations(starting_conc, ending_conc))
+    # print("Starting Concentration:", starting_conc)
+    # print("Ending Concentrations:", ending_conc)
+    print(r.equilibrium_concentrations(starting_conc, ending_conc, show_work=True))
