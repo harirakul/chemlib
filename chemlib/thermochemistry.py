@@ -1,7 +1,16 @@
-from chemlib.chemistry import Combustion, Reaction
+from chemlib.chemistry import Combustion, Compound, Reaction
+from chemlib.utils import reduce_list
 
 # TODO: TEMP IMPLEMENTATIONS, NEED TO CONSIDER ADDITIONAL METHODS/CALCULATIONS  
 # INTERFACE?
+
+def combustion_analysis(CO2, H2O) -> str:
+    molesC = Compound("CO2").get_amounts(grams = CO2)["moles"]
+    molesH = (Compound("H2O").get_amounts(grams = H2O)['moles'])*2
+    moles = reduce_list([molesC, molesH])
+    moles = ["" if x == 1 else x for x in moles] #Remove all 1's
+    return (f"C{moles[0]}H{moles[1]}")
+
 class Calorimeter:
     def reaction_heat(self):
         raise NotImplementedError('Implemented in CoffeeCup and Bomb objects')

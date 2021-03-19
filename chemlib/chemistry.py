@@ -6,12 +6,12 @@ import re
 import os
 
 from chemlib.utils import DimensionalAnalyzer, reduce_list
+from chemlib.constants import Kw, AVOGADROS_NUMBER
 
 this_dir, this_filename = os.path.split(__file__)
 DATA_PATH = os.path.join(this_dir, "resources", "PTE_updated.csv")
 
 SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
-AVOGADROS_NUMBER = 6.02e+23
 
 def parse_formula(formula : str) -> dict: # Formula Parsing by Aditya Matam
     def multiply(formula: dict, mul: int) -> None:
@@ -38,33 +38,10 @@ def parse_formula(formula : str) -> dict: # Formula Parsing by Aditya Matam
     return formDict
 
 class PeriodicTable(pd.DataFrame):
-    """
-    A ``pandas.Dataframe`` object that contains periodic table data:
-    
-        >>> import chemlib
-        >>> chemlib.PeriodicTable()
-            Unnamed: 0  AtomicNumber  ...                  Config MassNumber
-        0             0           1.0  ...                     1s1        1.0
-        1             1           2.0  ...                     1s2        4.0
-        2             2           3.0  ...                [He] 2s1        7.0
-        3             3           4.0  ...                [He] 2s2        9.0
-        4             4           5.0  ...            [He] 2s2 2p1       11.0
-        ..          ...           ...  ...                     ...        ...
-        113         113         114.0  ...  [Rn] 5f14 6d10 7s2 7p2      289.0
-        114         114         115.0  ...  [Rn] 5f14 6d10 7s2 7p3      288.0
-        115         115         116.0  ...  [Rn] 5f14 6d10 7s2 7p4      292.0
-        116         116         117.0  ...  [Rn] 5f14 6d10 7s2 7p5      295.0
-        117         117         118.0  ...  [Rn] 5f14 6d10 7s2 7p6      294.0
-        [118 rows x 31 columns]
-    """
-
     def __init__(self, *args, **kwargs):
         super(PeriodicTable, self).__init__(pd.read_csv(DATA_PATH))
         
     def get_element_properties_from_symbol(self, symbol):
-        # values = np.array(self.iloc[[self.index[self['Symbol'] == symbol].tolist()[0]]]).ravel()
-        # keys = list(self)
-        # return dict(zip(keys, values))
         series = self.loc[self["Symbol"] == symbol].iloc[0]
         return series.to_dict()
 
@@ -92,16 +69,6 @@ class Compound:
     """
 
     def __init__(self, formula):
-        # self.atom_list = []
-        # for i in self.occurences:
-        #     for j in range(int(self.occurences[i])): 
-        #         self.atom_list.append(i)
-        # self.types = list(self.occurences.keys())
-        # self.formula = list(zip(self.types, [self.atom_list.count(i) for i in self.types]))
-        # self.formula = sum([[i[0], i[1]] for i in self.formula], [])
-        # self.formula = (''.join([str(i) for i in self.formula])).translate(SUB)
-        # self.formula = ""
-        # self.elements = [Element(i) for i in self.atom_list]
         self.occurences = parse_formula(formula)
         self.elements = []
         self.formula = []
@@ -474,7 +441,28 @@ class Solution:
             "Volume": round(V2, 4)
         }
 
-def empirical_formula_by_percent_comp(**kwargs):
+def pH(**kwargs) -> dict:
+    if len(kwargs) > 1: 
+        raise ValueError("Accepting only one parameter: either pH, pOH, H, or OH")
+    
+    if list(kwargs.keys())[0] not in ('pH', 'pOH', 'H', 'OH'):
+        raise ValueError("Accepting either pH, pOH, H, or OH")
+
+    d =  (DimensionalAnalyzer(
+        pH = lambda pOH: 14 - pOH,
+        pOH = lambda H: 14 + np.log10(H),
+        H = lambda OH: Kw/OH,
+        OH = lambda pH: 10 ** (-(14 - pH))
+    ).plug(**kwargs))
+
+    if (d['pH'] > 7): f = "basic"
+    elif (d['pH'] < 7): f = "acidic"
+    else: f = "neutral"
+    
+    d.update(acidity = f)
+    return d
+
+def empirical_formula_by_percent_comp(**kwargs) -> str:
     elems = list(kwargs.keys())
     percs = list(kwargs.values())
     if (sum(percs) != 100):
@@ -490,20 +478,15 @@ def empirical_formula_by_percent_comp(**kwargs):
     final = [elems[i] + str(moles[i]) for i in range(len(moles))]
     
     return ("".join(final))
-    
-def combustion_analysis(CO2, H2O):
-    molesC = Compound("CO2").get_amounts(grams = CO2)["moles"]
-    molesH = (Compound("H2O").get_amounts(grams = H2O)['moles'])*2
-    moles = reduce_list([molesC, molesH])
-    moles = ["" if x == 1 else x for x in moles] #Remove all 1's
-    return (f"C{moles[0]}H{moles[1]}")
 
 if __name__ == '__main__':
-    r = Reaction.by_formula('H2 + I2 --> HI')
-    r.balance()
-    print(r)
+    # r = Reaction.by_formula('H2 + I2 --> HI')
+    # r.balance()
+    # print(r)
 
-    starting_conc=[1e-3, 2e-3, 0]
-    ending_conc=[None, None, 1.87e-3]
+    # starting_conc=[1e-3, 2e-3, 0]
+    # ending_conc=[None, None, 1.87e-3]
 
-    print(r.equilibrium_concentrations(starting_conc, ending_conc, show_work=True))
+    # print(r.equilibrium_concentrations(starting_conc, ending_conc, show_work=True))
+
+    print(pH(pH = 2))

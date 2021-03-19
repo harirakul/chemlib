@@ -9,6 +9,8 @@ class DimensionalAnalyzer():
         for item in self.kwargs:
             arg = tuple(inspect.signature(self.kwargs[item]).parameters)[0]
             self.dependencies.update({item: arg})
+        
+        self.reverse_deps = {v: k for k, v in self.dependencies.items()}
     
     def __getitem__(self, item: str):
         return self.kwargs[item]
@@ -26,11 +28,16 @@ class DimensionalAnalyzer():
             for item in self.kwargs:
                 if item not in rdict:
                     try:
+                        #known = self.reverse_deps[item]
                         rdict.update({item: rround(self.kwargs[item](rdict[self.dependencies[item]]), self.rounding)})
                     except:
                         continue
 
         return rdict
+
+class ICETable():
+    def __init__(self) -> None:
+        pass
 
 def rround(num: float, places: int) -> float:
     if 'e' in str(num): return float(f'{num:.{places}e}')
@@ -45,14 +52,16 @@ def reduce_list(L):
     return a
     
 if __name__ == "__main__":
+    import numpy as np
+    from chemlib.constants import Kw
+
     print(rround(2.32432432423e25, 5))
     # molar_mass = 50
     # AVOGADROS_NUMBER = 6.02e+23
 
-    # d = DimensionalAnalyzer(
-    #     grams = lambda mols: mols*molar_mass,
-    #     mols = lambda molecules: molecules/AVOGADROS_NUMBER,
-    #     molecules = lambda grams: grams/molar_mass*AVOGADROS_NUMBER
-    # )
-
-    # print(d.plug(mols = 25))
+    print(DimensionalAnalyzer(
+        pH = lambda pOH: 14 - pOH,
+        pOH = lambda H: 14 + np.log10(H),
+        H = lambda OH: Kw/OH,
+        OH = lambda pH: 10 ** (-(14 - pH))
+    ).plug(pH = 11.3))

@@ -1,6 +1,4 @@
-c = 2.998*10**8    #Speed of light
-h = 6.626*10**-34  #Planck's constant
-R = 1.0974*10**7  #Rydberg constant
+from chemlib.constants import c, h, R
 
 class Wave:
     def __init__(self, **kwargs):
