@@ -23,8 +23,6 @@ required = [
     'numpy',
     'sympy',
     'pandas',
-    'typing',
-    'sphinx',
     'Pillow'
 ]
 
