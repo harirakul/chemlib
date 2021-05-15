@@ -1,6 +1,7 @@
 import inspect
 from fractions import Fraction
 import pandas as pd
+from sympy import Eq, Symbol, solve
 
 class DimensionalAnalyzer():
     def __init__(self, rounding = 3, **kwargs) -> None:
@@ -59,25 +60,43 @@ class Quantity():
         self.final = self.initial + self.change*x
 
 class ICETable():
-    def __init__(self, quantities: list, relationship = None) -> None:
+    def __init__(self, quantities: list, relationship = None, show_work = False) -> None:
         if not any(q.solvable() for q in quantities) and relationship is None:
             raise ValueError("Not enough information to solve for x given the quantities. A relationship between the final values needs to be provided.")
         
         self.quantities = quantities
         self.relationship = relationship
+        self.show_work = show_work
     
-    def solve(self):
+    def show(self, *args):
+        if self.show_work: print(*args)
+    
+    def solve(self) -> float:
         if any(q.solvable() for q in self.quantities):
             for q in self.quantities:
                 if q.solvable():
                     self.x = q.solve()
                     break
+        
+        else: #have to use a relationship
+            x = Symbol('x')
+            arg = [a.initial + a.change*x for a in self.quantities]
+            eqn = self.relationship(*arg)
+            solns = solve(eqn)
 
-            for q in self.quantities:
-                if not q.solvable():
-                    q.plug(self.x)
-                    
+            for s in solns:
+                if s > 0 and 'I' not in str(s):
+                    self.x = s
+                    break
+
+        for q in self.quantities:
+            if not q.solvable():
+                q.plug(self.x)
+                  
         self.update_table()
+        self.show(str(eqn)[3:-1].replace(',', ' ='))
+        self.show('x =', self.x)
+        return self.x
     
     def update_table(self):
         data = []
@@ -87,7 +106,7 @@ class ICETable():
         df = pd.DataFrame(data).T
         df.rename(columns=df.iloc[0], inplace=True)
         df.drop(df.index[0], inplace=True)
-        print(df)
+        self.show(df)
 
 def rround(num: float, places: int) -> float:
     if 'e' in str(num): return float(f'{num:.{places}e}')
@@ -108,8 +127,11 @@ if __name__ == "__main__":
     ice = ICETable([
         Quantity("A", change = 1),
         Quantity("B", change = 3),
-        Quantity("X", change = -1, initial = 2, final = 1.25)
-    ], relationship=lambda a, b, x: x/(b**3 * a))
+        Quantity("X", change = -1, initial = 2)
+    ],
+    relationship= lambda a, b, x: Eq(x / (a * b**3), 0.146),
+    show_work = True)
+
     ice.solve()
 
     # print(rround(2.32432432423e25, 5))
