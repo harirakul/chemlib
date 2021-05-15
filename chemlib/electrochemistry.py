@@ -3,8 +3,7 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 import os
-
-F = 96485 #Faraday's constant in coulombs
+from chemlib.constants import F 
 
 this_dir, this_filename = os.path.split(__file__)
 DIAGRAM_PATH = os.path.join(this_dir, "resources", "gcell_root.png")
