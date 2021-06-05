@@ -334,7 +334,7 @@ class Reaction:
         amounts = [reactants[i].get_amounts(**{mode: args[i]}) for i in range(len(args))]
         moles = [i['moles'] for i in amounts]
         eq_amounts = [self.get_amounts(i + 1, moles = moles[i]) for i in range(len(args))]
-        data = [a[-1][mode.capitalize()] for a in eq_amounts]
+        data = [a[-1][mode] for a in eq_amounts]
 
         return (reactants[np.argmin(data)])
     
@@ -488,5 +488,9 @@ if __name__ == '__main__':
     # ending_conc=[None, None, 1.87e-3]
 
     # print(r.equilibrium_concentrations(starting_conc, ending_conc, show_work=True))
+
+    r = Reaction.by_formula('H2 + N2 --> NH3')
+    r.balance()
+    print(r.limiting_reagent(20, 40, mode = 'moles'))
 
     print(pH(pH = 2))
