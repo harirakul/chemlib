@@ -57,9 +57,9 @@ class Galvanic_Cell():
             "Cell Potential": self.E0
         }
 
-        self.draw()
+        #self.draw()
     
-    def draw(self):
+    def draw(self, show = True):
         def font(size):
             return ImageFont.truetype("arial.ttf", size, encoding="unic")
 
@@ -86,6 +86,9 @@ class Galvanic_Cell():
         editor.text((420, 412), f"{self.cathode_soln}(aq)", (0, 0, 0), font = font(15))
 
         self.diagram = img
+        
+        if show:
+            self.diagram.show()
 
 def electrolysis(element: str, n: int, **kwargs) -> dict:
     keys = kwargs.keys()
@@ -122,4 +125,6 @@ def electrolysis(element: str, n: int, **kwargs) -> dict:
     }
 
 if __name__ == "__main__":
+    g = Galvanic_Cell('Pb', 'Zn')
+    g.draw()
     print(electrolysis('Ti', 4, amps=1, grams=0.839))
