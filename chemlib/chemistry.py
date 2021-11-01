@@ -235,14 +235,17 @@ class Reaction:
                 matrix.append(col)
             
             matrix = sympy.Matrix(np.array(matrix).transpose()).rref() #Row - echelon form
-            solutions = list(np.array(matrix[0][:, -1].tolist() + [matrix[-1][-1]], dtype=np.object))
-            solutions = np.array([[i] if type(i) is int else i for i in solutions]).ravel().astype(np.float)
+            solutions = matrix[0][:, -1]
+            lcm = sympy.lcm([i.q for i in solutions])
+            solutions = lcm * solutions
+            solutions = list(solutions)
             solutions = [abs(i) for i in solutions]
-            denominators = [f.denominator for f in [Fraction(x).limit_denominator() for x in solutions]]
-            solutions = [int(i*max(denominators)) for i in solutions]
-            solutions[-1] = max(denominators)
+
             while 0 in solutions:
                 solutions.remove(0)
+
+            if(len(compounds) > len(solutions)):
+                solutions.append(lcm)
 
             final_reactants = []
             final_products = []

@@ -3,7 +3,7 @@ import unittest
 import sys
 sys.path.insert(1, '../chemlib')
 
-from chemlib.chemistry import Compound
+from chemlib.chemistry import Compound, Reaction
 
 CMPDS = {
     "H2SO4": {"H": 2, "S": 1, "O": 4},
@@ -22,6 +22,32 @@ class TestFormulae(unittest.TestCase):
     def test_formulae(self):
         for formula in CMPDS:
             self.assertEqual(Compound(formula).occurences, CMPDS[formula], msg = formula)
+
+EQUATIONS = [
+    {
+        "R": ['H2','O2'],
+        "P": ['H2O'],
+    },
+    {
+        "R": ['H6C6', 'O2'],
+        "P": ['CO2','H2O'],
+    },
+    {
+        "R": ['Na2S', 'HCl'],
+        "P": ['NaCl','H2S'],
+    },
+]
+
+class TestBalancing(unittest.TestCase):
+
+    def test_balancing(self):
+        for reaction in EQUATIONS:
+            left = [Compound(i) for i in reaction['R']]
+            right = [Compound(i) for i in reaction['P']]
+            r = Reaction(left, right)
+            r.balance()
+            print(r)
+            self.assertTrue(r.is_balanced)
 
 if __name__ == "__main__":
     unittest.main()
