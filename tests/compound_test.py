@@ -23,6 +23,7 @@ class TestFormulae(unittest.TestCase):
         for formula in CMPDS:
             self.assertEqual(Compound(formula).occurences, CMPDS[formula], msg = formula)
 
+#Balancing Equation Test Inputs
 EQUATIONS = [
     {
         "R": ['H2','O2'],
