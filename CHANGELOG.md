@@ -1,5 +1,9 @@
 # chemlib Changelog
 
+## v2.2.2 (2 November 2021)
+
+- Fixed major bug with H6C6 combustion in Balancing Equations - [Issue #19](https://github.com/harirakul/chemlib/issues/19)
+
 ## v2.2.1 (5 June 2021)
 
 - Holding off on image generation for Galvanic Cells (use `gcell.draw()` to manually generate diagram) - [Issue #11](https://github.com/harirakul/chemlib/issues/11)
