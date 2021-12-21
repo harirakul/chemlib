@@ -13,6 +13,15 @@ Instantiate a ``chemlib.Reaction`` object with a list of reactant Compounds and 
 >>> HNO3 = Compound("HNO3")
 >>> r = Reaction([N2O5, H2O], [HNO3])
 
+.. py:classmethod:: chemlib.chemistry.Reaction.by_formula(cls, formula: str)
+
+OR Instantiate a ``chemlib.Reaction`` object using a string to represent the formula:
+
+In the formula string, place the formulae of reactants separated by ``+`` signs on the left side of the arrow ``-->``. On the right side of the arrow, place the formulae of products separated by ``+`` signs:
+
+>>> from chemlib import Reaction
+>>> r = Reaction.by_formula("N2O5 + H2O --> HNO3")
+
     .. data:: chemlib.chemistry.Reaction.formula
         :type: str
 
@@ -36,6 +45,7 @@ Instantiate a ``chemlib.Reaction`` object with a list of reactant Compounds and 
     
     >>> r.product_formulas
     ['H₁N₁O₃']
+
 
 Combustion Reactions
 --------------------

@@ -82,10 +82,11 @@
 <h1>Chemical Reactions<a class="headerlink" href="#chemical-reactions" title="Permalink to this headline"></a></h1>
 <section id="making-a-reaction">
 <h2>Making a Reaction<a class="headerlink" href="#making-a-reaction" title="Permalink to this headline"></a></h2>
-<dl class="py class">
+<dl class="py attribute">
 <dt class="sig sig-object py" id="chemlib.chemistry.Reaction">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">chemlib.chemistry.</span></span><span class="sig-name descname"><span class="pre">Reaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reactants</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">products</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chemlib/chemistry.html#Reaction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chemlib.chemistry.Reaction" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">chemlib.chemistry.</span></span><span class="sig-name descname"><span class="pre">Reaction</span></span><a class="reference internal" href="_modules/chemlib/chemistry.html#Reaction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#chemlib.chemistry.Reaction" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-obj docutils literal notranslate"><span class="pre">chemlib.chemistry.chemlib.chemistry.Reaction._name</span></code></p>
+</dd></dl>
 
 <p>Instantiate a <code class="docutils literal notranslate"><span class="pre">chemlib.Reaction</span></code> object with a list of reactant Compounds and product Compounds.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Compound</span><span class="p">,</span> <span class="n">Reaction</span>
@@ -93,6 +94,17 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">H2O</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;H2O&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">HNO3</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;HNO3&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">Reaction</span><span class="p">([</span><span class="n">N2O5</span><span class="p">,</span> <span class="n">H2O</span><span class="p">],</span> <span class="p">[</span><span class="n">HNO3</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="chemlib.chemistry.Reaction.by_formula">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-prename descclassname"><span class="pre">chemlib.chemistry.Reaction.</span></span><span class="sig-name descname"><span class="pre">by_formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formula</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.Reaction.by_formula" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<p>OR Instantiate a <code class="docutils literal notranslate"><span class="pre">chemlib.Reaction</span></code> object using a string to represent the formula:</p>
+<p>In the formula string, place the formulae of reactants separated by <code class="docutils literal notranslate"><span class="pre">+</span></code> signs on the left side of the arrow <code class="docutils literal notranslate"><span class="pre">--&gt;</span></code>. On the right side of the arrow, place the formulae of products separated by <code class="docutils literal notranslate"><span class="pre">+</span></code> signs:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">chemlib</span> <span class="kn">import</span> <span class="n">Reaction</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">Reaction</span><span class="o">.</span><span class="n">by_formula</span><span class="p">(</span><span class="s2">&quot;N2O5 + H2O --&gt; HNO3&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
