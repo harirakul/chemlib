@@ -4,7 +4,7 @@ import sympy
 from fractions import Fraction
 import re
 import os
-from typing import List, Dict
+from typing import Any, List, Dict
 
 from chemlib.utils import DimensionalAnalyzer, reduce_list
 from chemlib.constants import Kw, AVOGADROS_NUMBER
@@ -95,6 +95,14 @@ class Compound:
     def set_coefficient(self, coeff: int):
         self.coefficient = coeff
 
+    def get_occurences(self, multiplied=False):
+        if multiplied:
+            new = {}
+            for key in self.occurences:
+                new[key] = self.occurences[key] * self.coefficient
+            return new
+        return self.occurences
+
     def molar_mass(self) -> float:
         mass = 0
         for element, count in self.element_counts.items():
@@ -183,7 +191,7 @@ class ReactionReal:
             unique_elements.update(compound.occurences.keys())
         unique_elements = list(unique_elements)
         element_IDs = {unique_elements[i]: i  for i in range(len(unique_elements))}
-        # print(f"Element ID Map: {element_IDs}")
+        print(f"Element ID Map: {element_IDs}")
         matrix = sympy.zeros(
             len(unique_elements), len(self.reactants) + len(self.products)
         ) # row, col
@@ -198,7 +206,13 @@ class ReactionReal:
                 colCounter += 1
             switch *= -1
 
-        rowE = matrix.rref()[0] # may be erroneous, investigate pivot locations...       
+        sympy.pprint(matrix)
+        print()
+
+        rowE = matrix.rref()[0]
+
+        sympy.pprint(rowE)  
+        print(matrix.rref()[1])     
         # dropping 0 trailing columns
         while True:
             lastCol = list(rowE.col(-1))
@@ -207,42 +221,68 @@ class ReactionReal:
             rowE.col_del(-1)
 
         # multiply each term by max quotient
+        
         lastCol = list(rowE.col(-1))
         mul = max([fraction.q for fraction in lastCol])
         coeffs = [abs(n * mul) for n in lastCol]
         coeffs.append(mul)       
-       
+
+        if not all(coeffs):
+            raise ValueError("Reaction cannot be balanced!")
+
+        self.compounds = self.reactants + self.products
+
         self.__assign_coefficients(coeffs)
         self.__update()
         self.balanced = True
 
     def __assign_coefficients(self, coeffs: List[int]):
-        coef_iter = iter(coeffs)
-        for comp_list in (self.reactants, self.products):
-            for compound in comp_list:
-                try:
-                    coeff_value = next(coef_iter)
-                    compound.set_coefficient(coeff_value)
-                except StopIteration:
-                    return
+        assert(len(self.compounds) == len(coeffs))
+        for i in range(len(coeffs)):
+            self.compounds[i].set_coefficient(coeffs[i])
 
     def __update(self):
         lhs = " + ".join([str(comp) for comp in self.reactants])
         rhs = " + ".join([str(comp) for comp in self.products])
-        self.compounds = self.reactants + self.products
         self.formula = f"{lhs} --> {rhs}"
 
 
+def union(main: Dict[Any, int], addand: Dict[Any, int]):
+    for key in addand:
+        if key in main:
+            main[key] += addand[key]
+        else:
+            main[key] = addand[key]
+
+def test(r: ReactionReal):
+    lhs = {}
+    for compound in r.reactants:
+        ocs = compound.get_occurences(True)
+        union(lhs, ocs)
+    rhs = {}
+    for compound in r.products:
+        ocs = compound.get_occurences(True)
+        union(rhs, ocs)
+
+    print("\nReactants:")
+    for key, value in sorted(lhs.items()):
+        print(f"{key}: {value}")
+
+    print("\nProducts:")
+    for key, value in sorted(rhs.items()):
+        print(f"{key}: {value}")
+
 if __name__ == "__main__":
-    # r = ReactionReal.by_formula(
-    #     "MnS + As2Cr10O35 + H2SO4 --> HMnO4 + AsH3 + CrS3O12 + H2O"
-    # )
+#    r = ReactionReal.by_formula(
+#        "H2 + C7H8O2 --> C6H6O1 + C1H4 + H2O"
+#    )
     r = ReactionReal.by_formula(
-        "H2 + C7H8O2 --> C6H6O1 + C1H4 + H2O1"
+        "K4Fe(SCN)6 + K2Cr2O7 + H2SO4 --> Fe2(SO4)3 + Cr2(SO4)3 + CO2 + H2O + K2SO4 + KNO3"
     )
-    print(r)
     r.balance()
     print(r)
+
+    test(r)
    
 
 
@@ -293,12 +333,12 @@ class Reaction:
         self.balanced = (self.reactant_occurences == self.product_occurences)
         
     def update_formula(self) -> None:
-        # self.formula = []
-        # for i in self.reactants: self.formula.append(i.formula)
-        # self.formula.append(' --> ')
-        # for i in self.products: self.formula.append(i.formula)
+        self.formula = []
+        for i in self.reactants: self.formula.append(i.formula)
+        self.formula.append(' --> ')
+        for i in self.products: self.formula.append(i.formula)
 
-        self.formula = self.reactant_formulas + [" --> "] + self.product_formulas
+        # self.formula = self.reactant_formulas + [" --> "] + self.product_formulas
 
         self.coefficients = {i:self.formula.count(i) for i in self.formula}
         self.constituents = list(dict.fromkeys(self.formula))
