@@ -1,6 +1,31 @@
 Aqueous Solutions
 ========================================
 
+Acidity Calculation (pH, pOH)
+-----------------------------
+.. py:function:: chemlib.chemistry.pH(**kwargs)
+
+   For any inputted pH, pOH, [H+], or [OH-], finds the corresponding values.
+
+   :param kwargs: The value of the chosen input (pH=, pOH=, H=, or OH=)
+   :rtype: dict
+
+What is the pH, pOH and [OH-] given a [H+] of 1.07x10^-6 M?
+
+>>> import chemlib
+>>> chemlib.pH(H=1.07e-6)
+{'H': 1.07e-06, 'pOH': 8.029, 'pH': 5.971, 'OH': 9.354e-09, 'acidity': 'acidic'}
+
+What is the pH, pOH, and [H+] given a [OH-] of 2.06x10^-3 M?
+
+>>> chemlib.pH(OH=2.06e-3)
+{'OH': 0.002, 'H': 5e-12, 'pOH': 2.699, 'pH': 11.301, 'acidity': 'basic'}
+
+What is the pOH, [H+], and [OH-] given a pH of 5.2?
+
+>>> chemlib.pH(pH = 5.2)
+{'pH': 5.2, 'OH': 1.585e-09, 'H': 6.309e-06, 'pOH': 8.8, 'acidity': 'acidic'}
+
 Making a Solution
 -----------------
 .. py:class:: chemlib.chemistry.Solution(self, solute, molarity)

@@ -43,6 +43,7 @@
 <li class="toctree-l1"><a class="reference internal" href="formulae.html">Empirical Formulae</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reactions.html">Chemical Reactions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Aqueous Solutions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#acidity-calculation-ph-poh">Acidity Calculation (pH, pOH)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#making-a-solution">Making a Solution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dilutions">Dilutions</a></li>
 </ul>
@@ -77,6 +78,39 @@
              
   <section id="aqueous-solutions">
 <h1>Aqueous Solutions<a class="headerlink" href="#aqueous-solutions" title="Permalink to this headline"></a></h1>
+<section id="acidity-calculation-ph-poh">
+<h2>Acidity Calculation (pH, pOH)<a class="headerlink" href="#acidity-calculation-ph-poh" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="chemlib.chemistry.pH">
+<span class="sig-prename descclassname"><span class="pre">chemlib.chemistry.</span></span><span class="sig-name descname"><span class="pre">pH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#chemlib.chemistry.pH" title="Permalink to this definition"></a></dt>
+<dd><p>For any inputted pH, pOH, [H+], or [OH-], finds the corresponding values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kwargs</strong> – The value of the chosen input (pH=, pOH=, H=, or OH=)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>What is the pH, pOH and [OH-] given a [H+] of 1.07x10^-6 M?</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">chemlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chemlib</span><span class="o">.</span><span class="n">pH</span><span class="p">(</span><span class="n">H</span><span class="o">=</span><span class="mf">1.07e-6</span><span class="p">)</span>
+<span class="go">{&#39;H&#39;: 1.07e-06, &#39;pOH&#39;: 8.029, &#39;pH&#39;: 5.971, &#39;OH&#39;: 9.354e-09, &#39;acidity&#39;: &#39;acidic&#39;}</span>
+</pre></div>
+</div>
+<p>What is the pH, pOH, and [H+] given a [OH-] of 2.06x10^-3 M?</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chemlib</span><span class="o">.</span><span class="n">pH</span><span class="p">(</span><span class="n">OH</span><span class="o">=</span><span class="mf">2.06e-3</span><span class="p">)</span>
+<span class="go">{&#39;OH&#39;: 0.002, &#39;H&#39;: 5e-12, &#39;pOH&#39;: 2.699, &#39;pH&#39;: 11.301, &#39;acidity&#39;: &#39;basic&#39;}</span>
+</pre></div>
+</div>
+<p>What is the pOH, [H+], and [OH-] given a pH of 5.2?</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chemlib</span><span class="o">.</span><span class="n">pH</span><span class="p">(</span><span class="n">pH</span> <span class="o">=</span> <span class="mf">5.2</span><span class="p">)</span>
+<span class="go">{&#39;pH&#39;: 5.2, &#39;OH&#39;: 1.585e-09, &#39;H&#39;: 6.309e-06, &#39;pOH&#39;: 8.8, &#39;acidity&#39;: &#39;acidic&#39;}</span>
+</pre></div>
+</div>
+</section>
 <section id="making-a-solution">
 <h2>Making a Solution<a class="headerlink" href="#making-a-solution" title="Permalink to this headline"></a></h2>
 <dl class="py class">

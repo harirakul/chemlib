@@ -497,3 +497,5 @@ if __name__ == '__main__':
     print(r.limiting_reagent(20, 40, mode = 'moles'))
 
     print(pH(pH = 2))
+
+    pH(pOH = 9)
