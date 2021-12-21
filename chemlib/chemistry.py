@@ -153,6 +153,7 @@ class ReactionReal:
         # fields
         self.reactants = reactants
         self.products = products
+        self.compounds = []
         self.balanced = False
         self.formula = ""
         self.__update()
@@ -209,10 +210,11 @@ class ReactionReal:
         lastCol = list(rowE.col(-1))
         mul = max([fraction.q for fraction in lastCol])
         coeffs = [abs(n * mul) for n in lastCol]
-        coeffs.append(mul)
-        
+        coeffs.append(mul)       
+       
         self.__assign_coefficients(coeffs)
         self.__update()
+        self.balanced = True
 
     def __assign_coefficients(self, coeffs: List[int]):
         coef_iter = iter(coeffs)
@@ -227,6 +229,7 @@ class ReactionReal:
     def __update(self):
         lhs = " + ".join([str(comp) for comp in self.reactants])
         rhs = " + ".join([str(comp) for comp in self.products])
+        self.compounds = self.reactants + self.products
         self.formula = f"{lhs} --> {rhs}"
 
 
