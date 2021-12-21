@@ -4,6 +4,7 @@ import sympy
 from fractions import Fraction
 import re
 import os
+from typing import List, Dict
 
 from chemlib.utils import DimensionalAnalyzer, reduce_list
 from chemlib.constants import Kw, AVOGADROS_NUMBER
@@ -37,6 +38,12 @@ def parse_formula(formula : str) -> dict: # Formula Parsing by Aditya Matam
 
     return formDict
 
+def get_formula_coefficient(formula: str) -> int:
+    if not formula[0].isdigit():
+        return 1
+    match = re.match(r"\d+", formula)
+    return match.group()
+
 class PeriodicTable(pd.DataFrame):
     def __init__(self, *args, **kwargs):
         super(PeriodicTable, self).__init__(pd.read_csv(DATA_PATH))
@@ -68,28 +75,33 @@ class Compound:
     Represents a chemical compound.
     """
 
-    def __init__(self, formula):
+    def __init__(self, formula, coefficient=1):
         self.occurences = parse_formula(formula)
-        self.elements = []
-        self.formula = []
+        self.element_counts = {}
+        # self.elements = []
+        self.formula = [] # list, eventually str
         for symbol in self.occurences:
             count = self.occurences[symbol]
             self.formula.append(f"{symbol}{count}")
-            for _ in range(count):
-                self.elements.append(Element(symbol))
+            self.element_counts[Element(symbol)] = count
+            # for _ in range(count):
+                # self.elements.append(Element(symbol))
         self.formula = ''.join(self.formula).translate(SUB)
-        self.coefficient = 1 if not self.formula[0].isdigit() else int(re.match(r'\d+', self.formula))
+        self.coefficient = coefficient # if not self.formula[0].isdigit() else int(re.match(r'\d+', self.formula))
 
     def __str__(self) -> str:
-        return self.formula
+        return f"{str(self.coefficient)}•{self.formula}"
+
+    def set_coefficient(self, coeff: int):
+        self.coefficient = coeff
 
     def molar_mass(self) -> float:
         mass = 0
-        for element in self.elements:
-            mass += element.AtomicMass
+        for element, count in self.element_counts.items():
+            mass += (element.AtomicMass * count)
         return round(mass, 2)
 
-    def percentage_by_mass(self, element) -> float:
+    def percentage_by_mass(self, element: str) -> float:
         return round(((self.occurences[element] * Element(element).AtomicMass) / self.molar_mass()) * 100, 3)
 
     def oxidation_numbers(self) -> dict:
@@ -136,6 +148,101 @@ class Compound:
             molecules = lambda grams: grams/self.molar_mass()*AVOGADROS_NUMBER
         ).plug(**kwargs)
 
+class ReactionReal:
+    def __init__(self, reactants: List[Compound], products: List[Compound]):
+        # fields
+        self.reactants = reactants
+        self.products = products
+        self.balanced = False
+        self.formula = ""
+        self.__update()
+
+    # secondary construction method
+    @classmethod 
+    def by_formula(cls, formula: str):
+        reactants, products = formula.split('>')
+        reactants = [Compound(f) for f in [i.strip(' -') for i in reactants.split('+')]]
+        products = [Compound(f) for f in [i.strip(' -') for i in products.split('+')]]
+        return cls(reactants, products)
+    
+    def __str__(self) -> str:
+        return self.formula
+
+    def is_balanced(self) -> bool:
+        return self.balanced
+
+    def balance(self):
+        # get all unique elements, mark each with unique ID (dict)
+            # length is number of rows
+        # get total number of reactants and products 
+            # number of cols
+        
+        unique_elements = set()
+        for compound in self.reactants:
+            unique_elements.update(compound.occurences.keys())
+        unique_elements = list(unique_elements)
+        element_IDs = {unique_elements[i]: i  for i in range(len(unique_elements))}
+        # print(f"Element ID Map: {element_IDs}")
+        matrix = sympy.zeros(
+            len(unique_elements), len(self.reactants) + len(self.products)
+        ) # row, col
+
+        switch = 1
+        colCounter = 0
+        for comp_list in (self.reactants, self.products):           
+            for compound in comp_list:
+                for symbol, count in compound.occurences.items():
+                    ID = element_IDs[symbol] # row
+                    matrix[ID, colCounter] = count * switch
+                colCounter += 1
+            switch *= -1
+
+        rowE = matrix.rref()[0] # may be erroneous, investigate pivot locations...       
+        # dropping 0 trailing columns
+        while True:
+            lastCol = list(rowE.col(-1))
+            if any(lastCol):
+                break
+            rowE.col_del(-1)
+
+        # multiply each term by max quotient
+        lastCol = list(rowE.col(-1))
+        mul = max([fraction.q for fraction in lastCol])
+        coeffs = [abs(n * mul) for n in lastCol]
+        coeffs.append(mul)
+        
+        self.__assign_coefficients(coeffs)
+        self.__update()
+
+    def __assign_coefficients(self, coeffs: List[int]):
+        coef_iter = iter(coeffs)
+        for comp_list in (self.reactants, self.products):
+            for compound in comp_list:
+                try:
+                    coeff_value = next(coef_iter)
+                    compound.set_coefficient(coeff_value)
+                except StopIteration:
+                    return
+
+    def __update(self):
+        lhs = " + ".join([str(comp) for comp in self.reactants])
+        rhs = " + ".join([str(comp) for comp in self.products])
+        self.formula = f"{lhs} --> {rhs}"
+
+
+if __name__ == "__main__":
+    # r = ReactionReal.by_formula(
+    #     "MnS + As2Cr10O35 + H2SO4 --> HMnO4 + AsH3 + CrS3O12 + H2O"
+    # )
+    r = ReactionReal.by_formula(
+        "H2 + C7H8O2 --> C6H6O1 + C1H4 + H2O1"
+    )
+    print(r)
+    r.balance()
+    print(r)
+   
+
+
 class Reaction:
     def __init__(self, reactants: list, products: list):
         self.reinit(reactants, products)
@@ -145,6 +252,11 @@ class Reaction:
     
     @classmethod
     def by_formula(cls, formula: str):
+        """Creates Reaction instance with equation written as string
+        Example: H2 + O2 -> H2O
+        :return: Reaction instance
+        :rtype: Reaction
+        """
         reactants, products = formula.split('>')
         reactants = [Compound(f) for f in [i.strip(' -') for i in reactants.split('+')]]
         products = [Compound(f) for f in [i.strip(' -') for i in products.split('+')]]
@@ -175,17 +287,15 @@ class Reaction:
                         else:
                             self.product_occurences[key] += reactant.occurences[key]
                             
-        if self.reactant_occurences == self.product_occurences:
-            self.is_balanced = True
-        else:
-            self.is_balanced = False
+        self.balanced = (self.reactant_occurences == self.product_occurences)
         
     def update_formula(self) -> None:
-        self.formula = []
+        # self.formula = []
+        # for i in self.reactants: self.formula.append(i.formula)
+        # self.formula.append(' --> ')
+        # for i in self.products: self.formula.append(i.formula)
 
-        for i in self.reactants: self.formula.append(i.formula)
-        self.formula.append(' --> ')
-        for i in self.products: self.formula.append(i.formula)
+        self.formula = self.reactant_formulas + [" --> "] + self.product_formulas
 
         self.coefficients = {i:self.formula.count(i) for i in self.formula}
         self.constituents = list(dict.fromkeys(self.formula))
@@ -204,7 +314,7 @@ class Reaction:
         :return: None
         :rtype: void
         """
-        if not self.is_balanced:
+        if not self.balanced:
             reference_vector = []
             seen_formulas = []
             for j in [self.reactants, self.products]:
@@ -261,9 +371,10 @@ class Reaction:
             final_products = sum(final_products, [])
 
             self.reinit(final_reactants, final_products)
+            self.balanced = True
 
-        else:
-            return True
+    def is_balanced(self):
+        return self.balanced
 
     def get_amounts(self, compound_number, **kwargs):
         """Gets Stoichiometric equivalents for all compounds in reaction from inputted grams, moles, or molecules.
@@ -273,7 +384,7 @@ class Reaction:
         :return: Amounts of grams, moles, and molecules for each compound.
         :rtype: list
         """
-        if not self.is_balanced:
+        if not self.balanced:
             self.balance()
 
         keys = kwargs.keys()
@@ -322,7 +433,7 @@ class Reaction:
         if mode not in ['grams', 'molecules', 'moles']:
             raise ValueError("mode must be either grams, moles, or molecules. Default is grams")
 
-        if not self.is_balanced: self.balance()
+        if not self.balanced: self.balance()
 
         reactants = []
         rformulas = []
@@ -343,7 +454,7 @@ class Reaction:
     
     def equilibrium_concentrations(self, starting_conc: list, ending_conc: list, show_work = False) -> dict:
         # Error Handling
-        if not self.is_balanced: self.balance()
+        if not self.balanced: self.balance()
         if (len(starting_conc) != len(ending_conc) != len(self.constituents)): raise ValueError
         if (any(i == None for i in starting_conc)): raise ValueError("All starting concentrations must be known.")
         if (all(i == None for i in ending_conc)): raise ValueError("At least one ending concentration must be known.")
@@ -387,6 +498,7 @@ class Reaction:
         d = dict(zip(self.constituents, new_ending))
         d.update({"Kc": Kc})
         return d
+
 
 class Combustion(Reaction):
 
@@ -482,18 +594,18 @@ def empirical_formula_by_percent_comp(**kwargs) -> str:
     
     return ("".join(final))
 
-if __name__ == '__main__':
-    # r = Reaction.by_formula('H2 + I2 --> HI')
-    # r.balance()
-    # print(r)
+# if __name__ == '__main__':
+#     # r = Reaction.by_formula('H2 + I2 --> HI')
+#     # r.balance()
+#     # print(r)
 
-    # starting_conc=[1e-3, 2e-3, 0]
-    # ending_conc=[None, None, 1.87e-3]
+#     # starting_conc=[1e-3, 2e-3, 0]
+#     # ending_conc=[None, None, 1.87e-3]
 
-    # print(r.equilibrium_concentrations(starting_conc, ending_conc, show_work=True))
+#     # print(r.equilibrium_concentrations(starting_conc, ending_conc, show_work=True))
 
-    r = Reaction.by_formula('H2 + N2 --> NH3')
-    r.balance()
-    print(r.limiting_reagent(20, 40, mode = 'moles'))
+#     r = Reaction.by_formula('H2 + N2 --> NH3')
+#     r.balance()
+#     print(r.limiting_reagent(20, 40, mode = 'moles'))
 
-    print(pH(pH = 2))
+#     print(pH(pH = 2))
