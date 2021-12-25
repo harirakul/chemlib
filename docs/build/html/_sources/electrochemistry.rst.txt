@@ -38,10 +38,9 @@ Access the cell potential of the galvanic cell:
         :type: PIL.Image
 
 The diagram of the galvanic cell is a ``PIL.Image`` object.
-To view:
+To generate diagram:
 
->>> g.diagram.show()
->>> 
+>>> g.draw()
 
 .. image:: ../../chemlib/screenshots/GCell.jpg
     :alt: GCell
