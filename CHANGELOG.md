@@ -1,5 +1,10 @@
 # chemlib Changelog
 
+## v2.2.3 (13 February 2022)
+
+- Fixed bug with initialization of Ds, Rg, and Cn - [Issue #27](https://github.com/harirakul/chemlib/issues/27)
+- Added classmethod ``by_num`` to the Element class
+
 ## v2.2.2 (2 November 2021)
 
 - Fixed major bug with H6C6 combustion in Balancing Equations - [Issue #19](https://github.com/harirakul/chemlib/issues/19)
