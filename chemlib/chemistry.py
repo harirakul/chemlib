@@ -44,6 +44,10 @@ class PeriodicTable(pd.DataFrame):
     def get_element_properties_from_symbol(self, symbol):
         series = self.loc[self["Symbol"] == symbol].iloc[0]
         return series.to_dict()
+    
+    def get_element_properties_from_num(self, num):
+        series = self.loc[num-1]
+        return series.to_dict()
 
 pte = PeriodicTable()
 
@@ -57,6 +61,12 @@ class Element:
         for key in self.properties:
             setattr(self, key, self.properties[key])
     
+    @classmethod
+    def by_num(cls, num: int):
+        row = pte.loc[num-1]
+        return cls(row['Symbol'])
+        #self.properties = pte.get_element_properties_from_num(num)
+
     def __getitem__(self, key: str):
         return self.properties[key]
 
@@ -492,10 +502,17 @@ if __name__ == '__main__':
 
     # print(r.equilibrium_concentrations(starting_conc, ending_conc, show_work=True))
 
-    r = Reaction.by_formula('H2 + N2 --> NH3')
-    r.balance()
-    print(r.limiting_reagent(20, 40, mode = 'moles'))
+    # r = Reaction.by_formula('H2 + N2 --> NH3')
+    # r.balance()
+    # print(r.limiting_reagent(20, 40, mode = 'moles'))
 
-    print(pH(pH = 2))
+    # print(pH(pH = 2))
 
-    pH(pOH = 9)
+    # pH(pOH = 9)
+
+    pte = PeriodicTable()
+    # print(pte)
+    # print(pte.loc[2])
+
+    x = Element.by_num(24)
+    print(x.properties)
