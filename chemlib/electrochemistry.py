@@ -49,7 +49,7 @@ class Galvanic_Cell:
             self.cathode = (e2, REDPOTS[e2])
 
         self.electrodes = (self.anode, self.cathode)
-        self.cell_potential = self.E0 = round(self.cathode[1][0] - self.anode[1][0], 3)
+        self.cell_potential = self.E0 = self.cathode[1][0] - self.anode[1][0]
         self.line_notation = f"{self.anode[0]} | {self.anode[0]}{self.anode[1][1]}+ || {self.cathode[0]}{self.cathode[1][1]}+ | {self.cathode[0]}".replace(
             "1", ""
         )

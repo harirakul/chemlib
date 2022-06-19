@@ -108,11 +108,10 @@ class Compound:
         return self.formula
 
     def molar_mass(self) -> float:
-        return round(sum([element.AtomicMass for element in self.elements]), 2)
+        return sum([element.AtomicMass for element in self.elements])
 
     def percentage_by_mass(self, element) -> float:
-        return round((self.occurences[element] * Element(element).AtomicMass)
-                     / self.molar_mass() * 100, 3)
+        return (self.occurences[element] * Element(element).AtomicMass) / self.molar_mass() * 100
 
     def oxidation_numbers(self) -> dict:
         if len(self.occurences.keys()) == 1:
@@ -529,8 +528,8 @@ class Solution:
 
         return {
             "Solute": self.solute.formula,
-            "Molarity": round(m2, 4),
-            "Volume": round(v2, 4),
+            "Molarity": m2,
+            "Volume": v2,
         }
 
 
