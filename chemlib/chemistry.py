@@ -93,14 +93,14 @@ class Compound:
     def __str__(self) -> str:
         return self.formula
 
-    def molar_mass(self) -> float:
+    def molar_mass(self, decimals=2) -> float:
         mass = 0
         for element in self.elements:
             mass += element.AtomicMass
-        return round(mass, 2)
+        return round(mass, decimals)
 
-    def percentage_by_mass(self, element) -> float:
-        return round(((self.occurences[element] * Element(element).AtomicMass) / self.molar_mass()) * 100, 3)
+    def percentage_by_mass(self, element, decimals=3) -> float:
+        return round(((self.occurences[element] * Element(element).AtomicMass) / self.molar_mass()) * 100, decimals)
 
     def oxidation_numbers(self) -> dict:
         if len(self.occurences.keys()) == 1:
@@ -435,7 +435,7 @@ class Solution:
             grams = lambda moles: moles*self.solute.molar_mass()
         ).plug(**kwargs)
 
-    def dilute(self, V1 = None, M2 = None, V2 = None, inplace = False) -> dict:
+    def dilute(self, V1 = None, M2 = None, V2 = None, inplace = False, decimals=4) -> dict:
         if V1 is None:
             raise TypeError("You need to specify a starting volume of Solution in liters.")
         if V2 != None and M2 != None:
@@ -450,8 +450,8 @@ class Solution:
 
         return {
             "Solute": self.solute.formula,
-            "Molarity": round(M2, 4),
-            "Volume": round(V2, 4)
+            "Molarity": round(M2, decimals),
+            "Volume": round(V2, decimals)
         }
 
 def pH(**kwargs) -> dict:
