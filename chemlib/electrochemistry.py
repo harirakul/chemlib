@@ -8,7 +8,7 @@ from chemlib.constants import F
 this_dir, this_filename = os.path.split(__file__)
 DIAGRAM_PATH = os.path.join(this_dir, "resources", "gcell_root.png")
 
-REDUCTION_POTENTIALS = REDPOTS = {
+REDPOTS = {  # Reduction Potentials
     "Ba": (-2.90, 2),
     "Ca": (-2.87, 2),
     "Na": (-2.71, 2),
@@ -34,17 +34,19 @@ REDUCTION_POTENTIALS = REDPOTS = {
 
 
 class GalvanicCell:
-    def __init__(self, electrode1: str, electrode2: str, decimals=3) -> None:
+    def __init__(self, electrode1: str, electrode2: str) -> None:
         self.diagram = None
         e1, e2 = electrode1, electrode2
 
         if e1 not in REDPOTS:
             raise NotImplementedError(
-                f"The reduction potential of {e1} is not yet implemented or {e1} is not a valid electrode."
+                f"The reduction potential of {e1} is not yet implemented "
+                f"or {e1} is not a valid electrode."
             )
         if e2 not in REDPOTS:
             raise NotImplementedError(
-                f"The reduction potential of {e2} is not yet implemented or {e2} is not a valid electrode."
+                f"The reduction potential of {e2} is not yet implemented "
+                f"or {e2} is not a valid electrode."
             )
 
         if REDPOTS[e1][0] > REDPOTS[e2][0]:
@@ -55,12 +57,11 @@ class GalvanicCell:
             self.cathode = (e2, REDPOTS[e2])
 
         self.electrodes = (self.anode, self.cathode)
-        self.cell_potential = self.E0 = round(
-            self.cathode[1][0] - self.anode[1][0], decimals
-        )
-        self.line_notation = f"{self.anode[0]} | {self.anode[0]}{self.anode[1][1]}+ " \
-                             f"|| {self.cathode[0]}{self.cathode[1][1]}+ | {self.cathode[0]}" \
-                             f"".replace("1", "")
+        self.cell_potential = self.E0 = self.cathode[1][0] - self.anode[1][0]
+        self.line_notation = \
+            f"{self.anode[0]} | {self.anode[0]}{self.anode[1][1]}+ " \
+            f"|| {self.cathode[0]}{self.cathode[1][1]}+ | {self.cathode[0]}" \
+            f"".replace("1", "")
         endings = ["2SO4", "SO4", "2(SO4)3"]
         self.anode_soln = f"{self.anode[0]}{endings[self.anode[1][1] - 1]}"
         self.cathode_soln = f"{self.cathode[0]}{endings[self.cathode[1][1] - 1]}"
@@ -114,32 +115,23 @@ class GalvanicCell:
 
 
 def electrolysis(element: str, n: int, **kwargs) -> dict:
-    keys = kwargs.keys()
-
-    if "seconds" not in keys and "amps" not in keys and "grams" not in keys:
-        raise TypeError("Expecting two args from either grams= , amps= , or seconds=")
-
-    if len(kwargs) != 2:
-        raise TypeError(
-            f"Got {len(kwargs)} arguments when expecting 2 from either grams= , amps= , or seconds="
-        )
-
+    type_error = f"Expected 2 params: [grams|amps|seconds], got {len(kwargs)}"
     elem = Element(element)
-
-    if ("seconds" in keys) and ("amps" in keys):
+    if "seconds" in kwargs and "amps" in kwargs:
         secs = kwargs["seconds"]
         amps = kwargs["amps"]
         grams = secs * amps / F / n * float(elem.AtomicMass)
-
-    elif ("seconds" in keys) and ("grams" in keys):
+    elif "seconds" in kwargs and "grams" in kwargs:
         secs = kwargs["seconds"]
         grams = kwargs["grams"]
         amps = grams / float(elem.AtomicMass) * n * F / secs
-
     else:
-        amps = kwargs["amps"]
-        grams = kwargs["grams"]
-        secs = grams / float(elem.AtomicMass) * n * F / amps
+        try:
+            amps = kwargs["amps"]
+            grams = kwargs["grams"]
+            secs = grams / float(elem.AtomicMass) * n * F / amps
+        except KeyError:
+            raise TypeError(type_error)
 
     return {
         "element": element,

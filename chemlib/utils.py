@@ -5,10 +5,9 @@ from sympy import Eq, Symbol, solve
 
 
 class DimensionalAnalyzer:
-    def __init__(self, rounding=3, **kwargs) -> None:
+    def __init__(self, **kwargs) -> None:
         self.kwargs = kwargs
         self.dependencies = {}
-        self.rounding = rounding
         for item in self.kwargs:
             arg = tuple(inspect.signature(self.kwargs[item]).parameters)[0]
             self.dependencies.update({item: arg})
@@ -26,21 +25,16 @@ class DimensionalAnalyzer:
         rdict = {}
         for var in params:
             self.validate(var)
-            rdict.update({var: rround(params[var], self.rounding)})
+            rdict.update({var: params[var]})
 
         while len(rdict) != len(self.kwargs):
             for item in self.kwargs:
                 if item not in rdict:
                     try:
                         # known = self.reverse_deps[item]
-                        rdict.update(
-                            {
-                                item: rround(
-                                    self.kwargs[item](rdict[self.dependencies[item]]),
-                                    self.rounding,
-                                )
-                            }
-                        )
+                        rdict.update({
+                                item: self.kwargs[item](
+                                    rdict[self.dependencies[item]])})
                     except KeyError:
                         continue
 
@@ -125,13 +119,6 @@ class ICETable:
         self.show(df)
 
 
-def rround(num: float, places: int) -> float:
-    if "e" in str(num):
-        return float(f"{num:.{places}e}")
-    else:
-        return round(num, places)
-
-
 def reduce_list(_list):
     a = _list
     denominators = [f.denominator for f in [Fraction(x).limit_denominator() for x in _list]]
@@ -153,12 +140,3 @@ if __name__ == "__main__":
     )
 
     ice.solve()
-
-    # print(rround(2.32432432423e25, 5))
-
-    # print(DimensionalAnalyzer(
-    #     pH = lambda pOH: 14 - pOH,
-    #     pOH = lambda H: 14 + np.log10(H),
-    #     H = lambda OH: Kw/OH,
-    #     OH = lambda pH: 10 ** (-(14 - pH))
-    # ).plug(pH = 11.3))

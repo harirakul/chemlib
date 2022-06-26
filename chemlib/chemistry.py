@@ -15,7 +15,7 @@ SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 
 def parse_formula(formula: str) -> dict:  # Formula Parsing by Aditya Matam
     def multiply(f: dict, multiplier: int) -> None:
-        for key in formula:
+        for key in f:
             f[key] *= multiplier
 
     form_dict = {}  
@@ -99,27 +99,20 @@ class Compound:
                 self.elements.append(Element(symbol))
         self.formula = "".join(self.formula).translate(SUB)
         self.coefficient = (
-            1 if not self.formula[0].isdigit() else int(re.match(r"\d+", self.formula))
+            self.formula[0].isdigit()
+            and int(re.match(r"\d+", self.formula))
+            or 1
         )
 
     def __str__(self) -> str:
         return self.formula
 
-    def molar_mass(self, decimals=2) -> float:
-        mass = 0
-        for element in self.elements:
-            mass += element.AtomicMass
-        return round(mass, decimals)
+    def molar_mass(self) -> float:
+        return sum([element.AtomicMass for element in self.elements])
 
-    def percentage_by_mass(self, element, decimals=3) -> float:
-        return round(
-            (
-                (self.occurences[element] * Element(element).AtomicMass)
-                / self.molar_mass()
-            )
-            * 100,
-            decimals,
-        )
+    def percentage_by_mass(self, element) -> float:
+        return ((self.occurences[element] * Element(element).AtomicMass)
+                / self.molar_mass() * 100)
 
     def oxidation_numbers(self) -> dict:
         if len(self.occurences.keys()) == 1:
@@ -151,16 +144,11 @@ class Compound:
         return ox_nums
 
     def get_amounts(self, **kwargs) -> dict:
-        keys = kwargs.keys()
-
-        if "grams" not in keys and "moles" not in keys and "molecules" not in keys:
+        if (len(kwargs) != 1
+            or list(kwargs)[0] not in ("grams", "moles", "molecules")
+        ):
             raise TypeError(
-                "Expecting one argument: either grams= , moles= , or molecules="
-            )
-
-        if len(kwargs) > 1:
-            raise TypeError(
-                f"Got {len(kwargs)} arguments when expecting 1. Use either grams= , moles=, or molecules="
+                f"Expected 1 param: [grams|moles|molecules], got {len(kwargs)}"
             )
 
         return DimensionalAnalyzer(
@@ -249,90 +237,84 @@ class Reaction:
         :return: None
         :rtype: void
         """
-        if not self.is_balanced:
-            reference_vector = []
-            seen_formulas = []
-            for j in [self.reactants, self.products]:
-                for compound in j:
-                    for i in compound.elements:
-                        if i.Symbol not in seen_formulas:
-                            seen_formulas.append(i.Symbol)
-                            reference_vector.append(i)
+        if self.is_balanced:
+            return
+        reference_vector = []
+        seen_formulas = []
+        for j in [self.reactants, self.products]:
+            for compound in j:
+                for i in compound.elements:
+                    if i.Symbol not in seen_formulas:
+                        seen_formulas.append(i.Symbol)
+                        reference_vector.append(i)
 
-            compound_formulas = []
-            compounds = []
-            for j in [i for i in self.compounds]:
-                if j.formula not in compound_formulas:
-                    compound_formulas.append(j.formula)
-                    compounds.append(j)
+        compound_formulas = []
+        compounds = []
+        for j in [i for i in self.compounds]:
+            if j.formula not in compound_formulas:
+                compound_formulas.append(j.formula)
+                compounds.append(j)
 
-            matrix = []
-            for compound in compounds:
-                col = []
-                for m in seen_formulas:
-                    try:
-                        if compound.formula in self.product_formulas:
-                            col.append(-compound.occurences[m])
-                        else:
-                            col.append(compound.occurences[m])
-                    except KeyError:
-                        col.append(0)
-                matrix.append(col)
+        matrix = []
+        for compound in compounds:
+            col = []
+            for m in seen_formulas:
+                try:
+                    if compound.formula in self.product_formulas:
+                        col.append(-compound.occurences[m])
+                    else:
+                        col.append(compound.occurences[m])
+                except KeyError:
+                    col.append(0)
+            matrix.append(col)
 
-            matrix = sympy.Matrix(
-                np.array(matrix).transpose()
-            ).rref()  # Row - echelon form
-            solutions = matrix[0][:, -1]
-            lcm = sympy.lcm([i.q for i in solutions])
-            solutions = lcm * solutions
-            solutions = list(solutions)
-            solutions = [abs(i) for i in solutions]
+        matrix = sympy.Matrix(
+            np.array(matrix).transpose()
+        ).rref()  # Row - echelon form
+        solutions = matrix[0][:, -1]
+        lcm = sympy.lcm([i.q for i in solutions])
+        solutions = lcm * solutions
+        solutions = list(solutions)
+        solutions = [abs(i) for i in solutions]
 
-            while 0 in solutions:
-                solutions.remove(0)
+        while 0 in solutions:
+            solutions.remove(0)
 
-            if len(compounds) > len(solutions):
-                solutions.append(lcm)
+        if len(compounds) > len(solutions):
+            solutions.append(lcm)
 
-            final_reactants = []
-            final_products = []
+        final_reactants = []
+        final_products = []
 
-            for sol in range(len(compounds)):
-                if compounds[sol].formula in self.reactant_formulas:
-                    final_reactants.append([compounds[sol]] * solutions[sol])
+        for sol in range(len(compounds)):
+            if compounds[sol].formula in self.reactant_formulas:
+                final_reactants.append([compounds[sol]] * solutions[sol])
 
-                if compounds[sol].formula in self.product_formulas:
-                    final_products.append([compounds[sol]] * solutions[sol])
+            if compounds[sol].formula in self.product_formulas:
+                final_products.append([compounds[sol]] * solutions[sol])
 
-            final_reactants = sum(final_reactants, [])
-            final_products = sum(final_products, [])
+        final_reactants = sum(final_reactants, [])
+        final_products = sum(final_products, [])
 
-            self.reinit(final_reactants, final_products)
-
-        else:
-            return True
+        self.reinit(final_reactants, final_products)
 
     def get_amounts(self, compound_number, **kwargs):
-        """Gets Stoichiometric equivalents for all compounds in reaction from inputted grams, moles, or molecules.
-        :param compound_number: The number of compound by order of appearance in the reaction.
+        """Gets Stoichiometric equivalents for all compounds in reaction from
+        inputted grams, moles, or molecules.
+        :param compound_number: The number of compound by order of appearance
+        in the reaction.
         :type compound_number: int
-        :raises TypeError: Expecting one argument: either grams= , moles= , or molecules=
+        :raises TypeError: Expecting one argument: either grams, moles
+        or molecules
         :return: Amounts of grams, moles, and molecules for each compound.
         :rtype: list
         """
-        if not self.is_balanced:
-            self.balance()
+        self.balance()
 
-        keys = kwargs.keys()
-
-        if "grams" not in keys and "moles" not in keys and "molecules" not in keys:
-            raise ValueError(
-                "Expecting one argument: either grams= , moles= , or molecules="
-            )
-
-        if len(kwargs) > 1:
-            raise ValueError(
-                f"Got {len(kwargs)} arguments when expecting 1. Use either grams= , moles=, or molecules="
+        if len(kwargs) != 1 or list(kwargs)[0] not in ("grams", "moles",
+                                                       "molecules"):
+            raise TypeError(
+                f"Expected 1 param: [grams|moles|molecules], got {len(kwargs)}"
             )
 
         seen_formulas = []
@@ -344,8 +326,9 @@ class Reaction:
 
         if compound_number > len(compound_list) or compound_number < 1:
             raise ValueError(
-                f"The reaction has {len(compound_list)} compounds."
-                "Please use a compound number between 1 and {len(compound_list)}, inclusive."
+                f"The reaction has {len(compound_list)} compounds. "
+                "Please use a compound number between 1 and "
+                f"{len(compound_list)}, inclusive."
             )
 
         seen_set = []
@@ -375,9 +358,10 @@ class Reaction:
         return amounts
 
     def limiting_reagent(self, *args, mode="grams"):
-        if mode not in ["grams", "molecules", "moles"]:
+        if mode not in ("grams", "molecules", "moles"):
             raise ValueError(
-                "mode must be either grams, moles, or molecules. Default is grams"
+                "mode param must be either grams, moles, or molecules. "
+                "Default is grams"
             )
 
         if not self.is_balanced:
@@ -397,10 +381,12 @@ class Reaction:
             )
 
         amounts = [
-            reactants[i].get_amounts(**{mode: args[i]}) for i in range(len(args))
+            reactants[i].get_amounts(**{mode: args[i]})
+            for i in range(len(args))
         ]
         moles = [i["moles"] for i in amounts]
-        eq_amounts = [self.get_amounts(i + 1, moles=moles[i]) for i in range(len(args))]
+        eq_amounts = [self.get_amounts(i + 1, moles=moles[i])
+                      for i in range(len(args))]
         data = [a[-1][mode] for a in eq_amounts]
 
         return reactants[np.argmin(data)]
@@ -513,7 +499,8 @@ class Solution:
 
         if len(kwargs) != 1:
             raise ValueError(
-                f"Got {len(kwargs)} arguments when expecting 1. Use either either moles= , grams=, or liters="
+                f"Got {len(kwargs)} arguments when expecting 1."
+                "Use either either moles= , grams=, or liters="
             )
 
         return DimensionalAnalyzer(
@@ -542,14 +529,16 @@ class Solution:
 
         return {
             "Solute": self.solute.formula,
-            "Molarity": round(m2, decimals),
-            "Volume": round(v2, decimals),
+            "Molarity": m2,
+            "Volume": v2,
         }
 
 
 def pH(**kwargs) -> dict:
     if len(kwargs) > 1:
-        raise ValueError("Accepting only one parameter: either pH, pOH, H, or OH")
+        raise ValueError(
+            "Accepting only one parameter: either pH, pOH, H, or OH"
+        )
 
     if list(kwargs.keys())[0] not in ("pH", "pOH", "H", "OH"):
         raise ValueError("Accepting either pH, pOH, H, or OH")
