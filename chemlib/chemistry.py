@@ -5,37 +5,15 @@ from fractions import Fraction
 import re
 import os
 
-from chemlib.utils import DimensionalAnalyzer, reduce_list
+from chemlib.utils import DimensionalAnalyzer 
+from chemlib.parse import parse_formula
 from chemlib.constants import Kw, AVOGADROS_NUMBER
 
 this_dir, this_filename = os.path.split(__file__)
 DATA_PATH = os.path.join(this_dir, "resources", "PTE_updated.csv")
 
 SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
-
-def parse_formula(formula : str) -> dict: # Formula Parsing by Aditya Matam
-    def multiply(formula: dict, mul: int) -> None:
-        for key in formula: formula[key] *= mul
-
-    formDict = {}
-    # PARENS
-    for match in re.finditer(r"\((.*?)\)(\d*)", formula):
-        parens = parse_formula(match.group(1))
-        mul = match.group(2)
-        if not mul: mul = 1
-        multiply(parens, int(mul))
-        formDict.update(parens)
-    # REST
-    for match in re.finditer(r"(\(?)([A-Z][a-z]?)(\d*)(\)?)", formula):
-        left, elem, mul, right = match.groups()
-        if left or right: continue
-        if not mul: mul = 1
-        if elem in formDict:
-            formDict[elem] += int(mul)
-        else:
-            formDict[elem] = int(mul)
-
-    return formDict
+REV_SUB = str.maketrans("₀₁₂₃₄₅₆₇₈₉", "0123456789")
 
 class PeriodicTable(pd.DataFrame):
     def __init__(self, *args, **kwargs):
@@ -78,7 +56,8 @@ class Compound:
     Represents a chemical compound.
     """
 
-    def __init__(self, formula):
+    def __init__(self, formula: str):
+        formula = formula.translate(REV_SUB)
         self.occurences = parse_formula(formula)
         self.elements = []
         self.formula = []
@@ -486,13 +465,37 @@ def empirical_formula_by_percent_comp(**kwargs) -> str:
     for i in range(len(compounds)):
         moles.append((compounds[i].get_amounts(grams = percs[i]))['moles'])
 
-    moles = [i/min(moles) for i in moles]
-    moles = reduce_list(moles)
-    final = [elems[i] + str(moles[i]) for i in range(len(moles))]
+    lowest = min(moles)
+    moles = [round(i/lowest, 3) for i in moles]
+
+    def is_list_inted(vals, prec=0.001):
+        for i in vals:
+            if int(i) != i:
+                return False
+
+        return True
+
+    print(moles)
+    multiplied_moles = moles.copy()
+    mul = 2
+    while not is_list_inted(multiplied_moles):
+        multiplied_moles = [i * mul for i in moles]
+        mul += 1
+
+    final = []
+    for i in range(len(elems)):
+        final.append(f"{elems[i]}{int(multiplied_moles[i])}")
+
+    print(f"EMP_FORMULA: {multiplied_moles}")
     
-    return ("".join(final))
+    return "".join(final).translate(SUB)
 
 if __name__ == '__main__':
+    P = 43.64
+    O = 100 - P
+    empirical = empirical_formula_by_percent_comp(P = P, O = O)
+    print(empirical)
+
     # r = Reaction.by_formula('H2 + I2 --> HI')
     # r.balance()
     # print(r)
@@ -510,9 +513,9 @@ if __name__ == '__main__':
 
     # pH(pOH = 9)
 
-    pte = PeriodicTable()
-    # print(pte)
-    # print(pte.loc[2])
+    # pte = PeriodicTable()
+    # # print(pte)
+    # # print(pte.loc[2])
 
-    x = Element.by_num(24)
-    print(x.properties)
+    # x = Element.by_num(24)
+    # print(x.properties)
