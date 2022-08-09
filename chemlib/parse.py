@@ -4,8 +4,8 @@ FORMULA_PARENS = re.compile(r"\((.*?)\)(\d*)")
 FORMULA_REGULAR = re.compile(r"(\(?)([A-Z][a-z]?)(\d*)(\)?)")
 
 def parse_formula(formula : str) -> dict: 
-    def multiply(formula: dict, mul: int) -> None:
-        for key in formula: formula[key] *= mul
+    def multiply(form: dict, mul: int) -> None:
+        for key in form: form[key] *= mul
 
     formDict = {}
     # PARENS
@@ -26,3 +26,8 @@ def parse_formula(formula : str) -> dict:
             formDict[elem] = int(mul)
 
     return formDict
+
+if __name__ == '__main__':
+    b = "CH3COO"
+    form = parse_formula(b)
+    print(form)
