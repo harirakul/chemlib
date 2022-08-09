@@ -38,7 +38,8 @@ class Element:
         self.properties = pte.get_element_properties_from_symbol(symbol)
         for key in self.properties:
             setattr(self, key, self.properties[key])
-    
+
+
     @classmethod
     def by_num(cls, num: int):
         row = pte.loc[num-1]
@@ -50,6 +51,7 @@ class Element:
 
     def __str__(self):
         return self["Symbol"]
+
 
 class Compound:
     """
@@ -71,6 +73,9 @@ class Compound:
 
     def __str__(self) -> str:
         return self.formula
+
+    def __eq__(self, other) -> bool:
+        return type(self) == type(other) and self.occurences == other.occurences
 
     def molar_mass(self, decimals=2) -> float:
         mass = 0
@@ -466,29 +471,30 @@ def empirical_formula_by_percent_comp(**kwargs) -> str:
         moles.append((compounds[i].get_amounts(grams = percs[i]))['moles'])
 
     lowest = min(moles)
-    moles = [round(i/lowest, 3) for i in moles]
+    moles_ratio = [round(i/lowest, 3) for i in moles]
 
-    def is_list_inted(vals, prec=0.001):
+    # 4.988
+    # 8.02
+
+    def is_list_inted(vals):
         for i in vals:
-            if int(i) != i:
+            if round(i) != i:
                 return False
 
         return True
 
-    print(moles)
-    multiplied_moles = moles.copy()
+    print(moles_ratio)
+    multiplied_moles = moles_ratio.copy()
     mul = 2
     while not is_list_inted(multiplied_moles):
-        multiplied_moles = [i * mul for i in moles]
+        multiplied_moles = [i * mul for i in moles_ratio]
         mul += 1
 
     final = []
     for i in range(len(elems)):
         final.append(f"{elems[i]}{int(multiplied_moles[i])}")
 
-    print(f"EMP_FORMULA: {multiplied_moles}")
-    
-    return "".join(final).translate(SUB)
+    return Compound("".join(final))
 
 if __name__ == '__main__':
     P = 43.64
