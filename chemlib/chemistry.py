@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import sympy
+from sympy import lcm, gcd, Matrix, shape
 from fractions import Fraction
 import re
 import os
@@ -214,59 +215,57 @@ class Reaction:
         :return: None
         :rtype: void
         """
+        matrix = self._reactionToMatrix()
         if not self.is_balanced:
-            reference_vector = []
-            seen_formulas = []
-            for j in [self.reactants, self.products]:
-                for compound in j:
-                    for i in compound.elements:
-                        if i.Symbol not in seen_formulas:
-                            seen_formulas.append(i.Symbol)
-                            reference_vector.append(i)
-
             compound_formulas = []
             compounds = []
             for j in [i for i in self.compounds]:
                 if j.formula not in compound_formulas:
                     compound_formulas.append(j.formula)
                     compounds.append(j)
-
-            matrix = []
-            for compound in compounds:
-                col = []
-                for m in seen_formulas:
-                    try:
-                        if compound.formula in self.product_formulas:
-                            col.append(-compound.occurences[m])
-                        else:
-                            col.append(compound.occurences[m])
-                    except:
-                        col.append(0)
-                matrix.append(col)
+                    
+            toRemove = []
+            zeroRow = [0] * shape(matrix)[1]
+            for i in range(shape(matrix)[0]):
+                if list(matrix.row(i)) == zeroRow:
+                    toRemove.append(i)
+            toRemove.reverse()
+            for num in toRemove:
+                matrix.row_del(num)
+            size = shape(matrix)
+            rows = size[0]
+            columns = size[1]
+            if rows == columns:
+                print("Not a real reaction (Can't be balanced)")
+                self.is_balanced = False
+                return
+            extraColumns = columns - rows
+            solution = [0] * columns
+            for i in range(extraColumns):
+                index = columns - i - 1
+                curr = list(matrix.col(index))
+                sol = lcm([j.q for j in curr])
+                solution[index] = sol
+            for i in range(rows):
+                val = 0
+                row = list(matrix.row(i))
+                for j in range(extraColumns):
+                    index = columns - j - 1
+                    val += solution[index] * row[index]
+                solution[i] = -val
+            div = gcd(solution)
+            solution = [val/div for val in solution]
             
-            matrix = sympy.Matrix(np.array(matrix).transpose()).rref() #Row - echelon form
-            solutions = matrix[0][:, -1]
-            lcm = sympy.lcm([i.q for i in solutions])
-            solutions = lcm * solutions
-            solutions = list(solutions)
-            solutions = [abs(i) for i in solutions]
-
-            while 0 in solutions:
-                solutions.remove(0)
-
-            if(len(compounds) > len(solutions)):
-                solutions.append(lcm)
-
             final_reactants = []
             final_products = []
 
             for sol in range(len(compounds)):
                 if compounds[sol].formula in self.reactant_formulas:
-                    final_reactants.append([compounds[sol]]*solutions[sol])
+                    final_reactants.append([compounds[sol]]*solution[sol])
 
                 if compounds[sol].formula in self.product_formulas:
-                    final_products.append([compounds[sol]]*solutions[sol])
-            
+                    final_products.append([compounds[sol]]*solution[sol])
+
             final_reactants = sum(final_reactants, [])
             final_products = sum(final_products, [])
 
@@ -274,6 +273,27 @@ class Reaction:
 
         else:
             return True
+
+    def _reactionToMatrix(self):
+        elements = []
+        for element in list(self.reactant_occurences.keys()) + list(self.product_occurences.keys()):
+            if element not in elements:
+                elements.append(element)
+        elemMatrix = []
+        for elem in elements:
+            elemList = []
+            for compound in self.reactants:
+                if elem in compound.occurences.keys():
+                    elemList.append(compound.occurences[elem])
+                else:
+                    elemList.append(0)
+            for compound in self.products:
+                if elem in compound.occurences.keys():
+                    elemList.append(-compound.occurences[elem])
+                else:
+                    elemList.append(0)
+            elemMatrix.append(elemList)
+        return Matrix(elemMatrix).rref()[0]
 
     def get_amounts(self, compound_number, **kwargs):
         """Gets Stoichiometric equivalents for all compounds in reaction from inputted grams, moles, or molecules.
