@@ -223,7 +223,6 @@ class Reaction:
                 if j.formula not in compound_formulas:
                     compound_formulas.append(j.formula)
                     compounds.append(j)
-                    
             toRemove = []
             zeroRow = [0] * shape(matrix)[1]
             for i in range(shape(matrix)[0]):
@@ -236,9 +235,7 @@ class Reaction:
             rows = size[0]
             columns = size[1]
             if rows == columns:
-                print("Not a real reaction (Can't be balanced)")
-                self.is_balanced = False
-                return
+                raise ValueError("Not a real reaction (Can't be balanced)")
             extraColumns = columns - rows
             solution = [0] * columns
             for i in range(extraColumns):
