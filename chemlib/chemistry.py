@@ -480,7 +480,6 @@ def empirical_formula_by_percent_comp(**kwargs) -> str:
 
         return True
 
-    print(moles_ratio)
     multiplied_moles = moles_ratio.copy()
     mul = 2
     while not is_list_inted(multiplied_moles):
