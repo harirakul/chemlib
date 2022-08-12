@@ -471,11 +471,11 @@ def empirical_formula_by_percent_comp(**kwargs) -> Compound:
         moles.append((compounds[i].get_amounts(grams = percs[i]))['moles'])
 
     lowest = min(moles)
-    moles_ratio = [round(i/lowest, 3) for i in moles]
+    moles_ratio = [i/lowest for i in moles]
 
     def is_list_inted(vals):
         for i in vals:
-            if round(i) != i:
+            if abs(round(i) - i) > 0.09: # precision (X.1 considered decimal, X.08 considered whole)
                 return False
 
         return True
@@ -488,7 +488,7 @@ def empirical_formula_by_percent_comp(**kwargs) -> Compound:
 
     final = []
     for i in range(len(elems)):
-        final.append(f"{elems[i]}{int(multiplied_moles[i])}")
+        final.append(f"{elems[i]}{round(multiplied_moles[i])}")
 
     return Compound("".join(final))
 
