@@ -71,6 +71,7 @@ Contains all the properties of the respective element:
         :type: str or NaN
     .. py:data:: chemlib.chemistry.Element.Density
         :type: float
+        :value: The density in kg/L
     .. py:data:: chemlib.chemistry.Element.MeltingPoint
         :type: float
     .. py:data:: chemlib.chemistry.Element.BoilingPoint
@@ -79,6 +80,21 @@ Contains all the properties of the respective element:
         :type: float
     .. py:data:: chemlib.chemistry.Element.Discoverer
         :type: str
+    .. py:data:: chemlib.chemistry.Element.Year
+        :type: str
+        :value: Year of discovery
+    .. py:data:: chemlib.chemistry.Element.SpecificHeat
+        :type: float
+    .. py:data:: chemlib.chemistry.Element.Shells
+        :type: float
+    .. py:data:: chemlib.chemistry.Element.Valence
+        :type: float
+    .. py:data:: chemlib.chemistry.Element.Config
+        :type: float
+        :value: Electron configuration
+    .. py:data:: chemlib.chemistry.Element.MassNumber
+        :type: float
+
 
 Other Constants
 ---------------
