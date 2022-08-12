@@ -459,7 +459,7 @@ def pH(**kwargs) -> dict:
     d.update(acidity = f)
     return d
 
-def empirical_formula_by_percent_comp(**kwargs) -> str:
+def empirical_formula_by_percent_comp(**kwargs) -> Compound:
     elems = list(kwargs.keys())
     percs = list(kwargs.values())
     if (sum(percs) != 100):
@@ -473,9 +473,6 @@ def empirical_formula_by_percent_comp(**kwargs) -> str:
     lowest = min(moles)
     moles_ratio = [round(i/lowest, 3) for i in moles]
 
-    # 4.988
-    # 8.02
-
     def is_list_inted(vals):
         for i in vals:
             if round(i) != i:
@@ -483,7 +480,6 @@ def empirical_formula_by_percent_comp(**kwargs) -> str:
 
         return True
 
-    print(moles_ratio)
     multiplied_moles = moles_ratio.copy()
     mul = 2
     while not is_list_inted(multiplied_moles):
