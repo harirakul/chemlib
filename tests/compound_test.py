@@ -37,6 +37,10 @@ EQUATIONS = [
         "R": ['Na2S', 'HCl'],
         "P": ['NaCl','H2S'],
     },
+    {
+        "R": ['H2', 'C7H8O2'],
+        "P": ['C6H6O', 'C1H4', 'H2O']
+    },
 ]
 
 class TestBalancing(unittest.TestCase):
