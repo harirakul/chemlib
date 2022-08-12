@@ -63,7 +63,7 @@ class TestEmpiricalFormula(unittest.TestCase):
             "C5H8O2"
         ),
         CasePair(
-            { "C": 24.8, "H": 2.0, "Cl": 73.1 },
+            { "C": 24.8, "H": 2.0, "Cl": 73.2 },
             "CHCl"
         ),
         CasePair(
@@ -88,7 +88,7 @@ class TestEmpiricalFormula(unittest.TestCase):
         for case in self.TEST_CASES:
             percs = empirical_formula_by_percent_comp(**case.parameter)
             final = Compound(case.expected)
-            self.assertEqual(percs, final, msg=percs)
+            self.assertEqual(percs, final, msg=f"{percs} == {final}")
 
 if __name__ == "__main__":
     unittest.main()
