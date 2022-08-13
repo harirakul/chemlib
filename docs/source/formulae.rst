@@ -9,7 +9,7 @@ EF by Percentage Composition
 
    :param kwargs: The percentage compositions of elements in the compound ``(<Element symbol> = <Percentage Composition> ...)``
    :return: The empirical formula of the compound.
-   :rtype: str
+   :rtype: chemlib.chemistry.Compound
    :raises ValueError: If the sums of the percentages is not equal to 100.
 
 Get the empirical formula of a compound that is composed of 80.6% C, and 19.4% H by mass:

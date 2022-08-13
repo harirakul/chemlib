@@ -6,37 +6,15 @@ from fractions import Fraction
 import re
 import os
 
-from chemlib.utils import DimensionalAnalyzer, reduce_list
+from chemlib.utils import DimensionalAnalyzer 
+from chemlib.parse import parse_formula
 from chemlib.constants import Kw, AVOGADROS_NUMBER
 
 this_dir, this_filename = os.path.split(__file__)
 DATA_PATH = os.path.join(this_dir, "resources", "PTE_updated.csv")
 
 SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
-
-def parse_formula(formula : str) -> dict: # Formula Parsing by Aditya Matam
-    def multiply(formula: dict, mul: int) -> None:
-        for key in formula: formula[key] *= mul
-
-    formDict = {}
-    # PARENS
-    for match in re.finditer(r"\((.*?)\)(\d*)", formula):
-        parens = parse_formula(match.group(1))
-        mul = match.group(2)
-        if not mul: mul = 1
-        multiply(parens, int(mul))
-        formDict.update(parens)
-    # REST
-    for match in re.finditer(r"(\(?)([A-Z][a-z]?)(\d*)(\)?)", formula):
-        left, elem, mul, right = match.groups()
-        if left or right: continue
-        if not mul: mul = 1
-        if elem in formDict:
-            formDict[elem] += int(mul)
-        else:
-            formDict[elem] = int(mul)
-
-    return formDict
+REV_SUB = str.maketrans("₀₁₂₃₄₅₆₇₈₉", "0123456789")
 
 class PeriodicTable(pd.DataFrame):
     def __init__(self, *args, **kwargs):
@@ -61,7 +39,8 @@ class Element:
         self.properties = pte.get_element_properties_from_symbol(symbol)
         for key in self.properties:
             setattr(self, key, self.properties[key])
-    
+
+
     @classmethod
     def by_num(cls, num: int):
         row = pte.loc[num-1]
@@ -74,12 +53,14 @@ class Element:
     def __str__(self):
         return self["Symbol"]
 
+
 class Compound:
     """
     Represents a chemical compound.
     """
 
-    def __init__(self, formula):
+    def __init__(self, formula: str):
+        formula = formula.translate(REV_SUB)
         self.occurences = parse_formula(formula)
         self.elements = []
         self.formula = []
@@ -93,6 +74,9 @@ class Compound:
 
     def __str__(self) -> str:
         return self.formula
+
+    def __eq__(self, other) -> bool:
+        return type(self) == type(other) and self.occurences == other.occurences
 
     def molar_mass(self, decimals=2) -> float:
         mass = 0
@@ -492,7 +476,7 @@ def pH(**kwargs) -> dict:
     d.update(acidity = f)
     return d
 
-def empirical_formula_by_percent_comp(**kwargs) -> str:
+def empirical_formula_by_percent_comp(**kwargs) -> Compound:
     elems = list(kwargs.keys())
     percs = list(kwargs.values())
     if (sum(percs) != 100):
@@ -503,13 +487,34 @@ def empirical_formula_by_percent_comp(**kwargs) -> str:
     for i in range(len(compounds)):
         moles.append((compounds[i].get_amounts(grams = percs[i]))['moles'])
 
-    moles = [i/min(moles) for i in moles]
-    moles = reduce_list(moles)
-    final = [elems[i] + str(moles[i]) for i in range(len(moles))]
-    
-    return ("".join(final))
+    lowest = min(moles)
+    moles_ratio = [i/lowest for i in moles]
+
+    def is_list_inted(vals):
+        for i in vals:
+            if abs(round(i) - i) > 0.09: # precision (X.1 considered decimal, X.08 considered whole)
+                return False
+
+        return True
+
+    multiplied_moles = moles_ratio.copy()
+    mul = 2
+    while not is_list_inted(multiplied_moles):
+        multiplied_moles = [i * mul for i in moles_ratio]
+        mul += 1
+
+    final = []
+    for i in range(len(elems)):
+        final.append(f"{elems[i]}{round(multiplied_moles[i])}")
+
+    return Compound("".join(final))
 
 if __name__ == '__main__':
+    P = 43.64
+    O = 100 - P
+    empirical = empirical_formula_by_percent_comp(P = P, O = O)
+    print(empirical)
+
     # r = Reaction.by_formula('H2 + I2 --> HI')
     # r.balance()
     # print(r)
@@ -527,9 +532,9 @@ if __name__ == '__main__':
 
     # pH(pOH = 9)
 
-    pte = PeriodicTable()
-    # print(pte)
-    # print(pte.loc[2])
+    # pte = PeriodicTable()
+    # # print(pte)
+    # # print(pte.loc[2])
 
-    x = Element.by_num(24)
-    print(x.properties)
+    # x = Element.by_num(24)
+    # print(x.properties)
