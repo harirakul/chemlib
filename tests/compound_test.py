@@ -20,31 +20,9 @@ class TestFormulae(unittest.TestCase):
         "C2H5OH": {"C": 2, "H": 6, "O": 1}
     }
     def test_formulae(self):
-        for formula in CMPDS:
-            self.assertEqual(Compound(formula).occurences, CMPDS[formula], msg = formula)
-
-#Balancing Equation Test Inputs
-EQUATIONS = [
-    {
-        "R": ['H2','O2'],
-        "P": ['H2O'],
-    },
-    {
-        "R": ['H6C6', 'O2'],
-        "P": ['CO2','H2O'],
-    },
-    {
-        "R": ['Na2S', 'HCl'],
-        "P": ['NaCl','H2S'],
-    },
-    {
-        "R": ['H2', 'C7H8O2'],
-        "P": ['C6H6O', 'C1H4', 'H2O']
-    },
-]
-=======
         for formula_str, formula_parsed in self.CMPDS.items():
             self.assertEqual(Compound(formula_str).occurences, formula_parsed, msg=formula_str)
+
 
 class TestBalancing(unittest.TestCase):
 
