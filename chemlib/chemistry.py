@@ -9,7 +9,7 @@ from chemlib.utils import DimensionalAnalyzer, reduce_list
 from chemlib.constants import Kw, AVOGADROS_NUMBER
 
 this_dir, this_filename = os.path.split(__file__)
-DATA_PATH = os.path.join(this_dir, "resources", "PTE_updated.csv")
+DATA_PATH = os.path.join(this_dir, "resources", "PTE.csv")
 
 SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 
