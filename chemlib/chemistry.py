@@ -11,7 +11,7 @@ from chemlib.parse import parse_formula
 from chemlib.constants import Kw, AVOGADROS_NUMBER
 
 this_dir, this_filename = os.path.split(__file__)
-DATA_PATH = os.path.join(this_dir, "resources", "PTE_updated.csv")
+DATA_PATH = os.path.join(this_dir, "resources", "PTE.csv")
 
 SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 REV_SUB = str.maketrans("₀₁₂₃₄₅₆₇₈₉", "0123456789")
