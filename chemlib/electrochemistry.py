@@ -33,7 +33,7 @@ REDUCTION_POTENTIALS = REDPOTS = {
 }
 
 class Galvanic_Cell():
-    def __init__(self, electrode1: str, electrode2: str, decimals=3) -> None:
+    def __init__(self, electrode1: str, electrode2: str) -> None:
         e1, e2 = electrode1, electrode2
 
         if e1 not in REDPOTS:
@@ -49,7 +49,7 @@ class Galvanic_Cell():
             self.cathode = (e2, REDPOTS[e2])
         
         self.electrodes = (self.anode, self.cathode)
-        self.cell_potential = self.E0 = round(self.cathode[1][0] - self.anode[1][0], decimals)
+        self.cell_potential = self.E0 = self.cathode[1][0] - self.anode[1][0]
         self.line_notation = f"{self.anode[0]} | {self.anode[0]}{self.anode[1][1]}+ || {self.cathode[0]}{self.cathode[1][1]}+ | {self.cathode[0]}".replace("1", '')
         endings = ["2SO4", "SO4", "2(SO4)3"]
         self.anode_soln = f"{self.anode[0]}{endings[self.anode[1][1] - 1]}"
