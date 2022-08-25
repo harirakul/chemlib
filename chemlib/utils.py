@@ -4,10 +4,9 @@ import pandas as pd
 from sympy import Eq, Symbol, solve
 
 class DimensionalAnalyzer():
-    def __init__(self, rounding = 3, **kwargs) -> None:
+    def __init__(self, **kwargs) -> None:
         self.kwargs = kwargs
         self.dependencies = {}
-        self.rounding = rounding
         for item in self.kwargs:
             arg = tuple(inspect.signature(self.kwargs[item]).parameters)[0]
             self.dependencies.update({item: arg})
@@ -24,14 +23,14 @@ class DimensionalAnalyzer():
         rdict = {}
         for var in params:
             self.validate(var)
-            rdict.update({var: rround(params[var], self.rounding)})
+            rdict.update({var: params[var]})
 
         while len(rdict) != len(self.kwargs):
             for item in self.kwargs:
                 if item not in rdict:
                     try:
                         #known = self.reverse_deps[item]
-                        rdict.update({item: rround(self.kwargs[item](rdict[self.dependencies[item]]), self.rounding)})
+                        rdict.update({item: self.kwargs[item](rdict[self.dependencies[item]])})
                     except:
                         continue
 
@@ -107,10 +106,6 @@ class ICETable():
         df.rename(columns=df.iloc[0], inplace=True)
         df.drop(df.index[0], inplace=True)
         self.show(df)
-
-def rround(num: float, places: int) -> float:
-    if 'e' in str(num): return float(f'{num:.{places}e}')
-    else: return round(num, places)
 
 def reduce_list(L):
     a = L
