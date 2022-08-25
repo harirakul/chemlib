@@ -1,5 +1,14 @@
 # chemlib Changelog
 
+## v2.2.4 (25 August 2022)
+
+- Fixed major bug with limited amount of reactants/products in Balancing Reactions - [Issue #45](https://github.com/harirakul/chemlib/pull/45)
+- Fixed bug with Empirical Formula generation - [Issue #41](https://github.com/harirakul/chemlib/issues/41)
+- Removed rounding altogether to avoid inaccurate calculations - [Issue #34](https://github.com/harirakul/chemlib/issues/34)
+- Cleaned data types and null values from Periodic Table CSV - [PR #44](https://github.com/harirakul/chemlib/pull/44)
+- Added reduction potentials for halogenes F, Cl, Br and I - [PR #23](https://github.com/harirakul/chemlib/pull/23)
+- Overloaded the `==` operator for the `Compound` class, allowing for easy checking of equality between compounds
+
 ## v2.2.3 (13 February 2022)
 
 - Fixed bug with initialization of Ds, Rg, and Cn - [Issue #27](https://github.com/harirakul/chemlib/issues/27)
