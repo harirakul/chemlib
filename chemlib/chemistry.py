@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
-import sympy
 from sympy import lcm, gcd, Matrix, shape
-from fractions import Fraction
 import re
 import os
 
