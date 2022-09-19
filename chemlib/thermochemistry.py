@@ -1,4 +1,4 @@
-from chemlib.chemistry import Combustion, Compound, Reaction
+from chemlib.chemistry import Compound, Reaction
 from chemlib.utils import reduce_list
 
 # TODO: TEMP IMPLEMENTATIONS, NEED TO CONSIDER ADDITIONAL METHODS/CALCULATIONS  
