@@ -397,14 +397,6 @@ class Reaction:
         d.update({"Kc": Kc})
         return d
 
-class Combustion(Reaction):
-
-    def __init__(self, compound):
-        if type(compound) is str:
-            compound = Compound(compound)
-        super().__init__(reactants=[compound, Compound("O2")], products=[Compound("H2O"), Compound("CO2")])
-        self.balance()
-
 class Solution:
     def __init__(self, solute: Compound, molarity: float):
         if type(solute) is Compound: self.solute = solute

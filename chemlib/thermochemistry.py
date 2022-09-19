@@ -4,6 +4,14 @@ from chemlib.utils import reduce_list
 # TODO: TEMP IMPLEMENTATIONS, NEED TO CONSIDER ADDITIONAL METHODS/CALCULATIONS  
 # INTERFACE?
 
+class Combustion(Reaction):
+
+    def __init__(self, compound):
+        if type(compound) is str:
+            compound = Compound(compound)
+        super().__init__(reactants=[compound, Compound("O2")], products=[Compound("H2O"), Compound("CO2")])
+        self.balance()
+
 def combustion_analysis(CO2, H2O) -> str:
     molesC = Compound("CO2").get_amounts(grams = CO2)["moles"]
     molesH = (Compound("H2O").get_amounts(grams = H2O)['moles'])*2
