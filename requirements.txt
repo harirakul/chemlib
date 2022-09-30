@@ -2,5 +2,5 @@ numpy
 sympy
 pandas
 typing
-sphinx==5.1.1
+sphinx==5.2.3
 Pillow
